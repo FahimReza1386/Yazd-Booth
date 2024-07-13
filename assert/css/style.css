@@ -1,0 +1,892 @@
+@font-face{
+    font-family: 'vazir';
+    src: url('../font/vazir-font-v16.1.0/Vazir-Thin.eot') format('eot'),
+    url('../font/vazir-font-v16.1.0/Vazir.ttf') format('ttf'),
+    url('../font/vazir-font-v16.1.0/Vazir.woff') format('woff'),
+    url('../font/vazir-font-v16.1.0/Vazir.woff2') format('woff2');
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'vazir' , sans-serif;
+
+}
+
+
+.header-right{
+    width: 17rem;
+    height: 4rem;
+    overflow: hidden;
+    border: 1px solid black;
+    float: right;
+    border-radius: 5px;
+    margin: 1% 2% ;
+}
+
+.header-right img{
+    width: 100%;
+    height: 100%;
+}
+
+.search{
+    width: 40%;
+    height: 4rem;
+    margin: 1% 30% 0 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.search .inp-search{
+    width: 80%;
+    height: 100%;
+    border-radius: 0px 5px 5px 0;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'vazir' , sans-serif;
+    font-weight: 400;
+}
+
+.search img{
+    width: 60px;
+    background-color: #ffffff !important;
+    border-radius: 5px 0 0px 5px;
+    float: left;
+    cursor: pointer;
+}
+
+.header-left{
+    width: 120px;
+    float: left;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.header-left img{
+    width: 40%;
+    float: left;
+    margin-left: 10px;
+}
+
+.Cards{
+    margin-top: 10px !important;
+    padding: 10px;
+}
+
+.card{
+    width: 25% !important;
+    height: auto !important;
+    margin-right: 2rem !important;
+    box-shadow: 0px 2px 4px #00000082;
+}
+
+.card-img-top{
+    margin: 15px 2.5rem !important;
+    width: 70% !important;
+}
+
+.card h4{
+    font-weight: bold;
+}
+
+.Cards.row{
+    --bs-gutter-x: -3rem !important; 
+    flex-wrap: nowrap !important;
+    overflow: hidden !important;
+    overflow-x: scroll !important;
+
+}
+
+.Cards::-webkit-scrollbar{
+    width: 2px;
+    background-color: none;
+}
+
+
+.close-tabliq{
+    color: red;
+    cursor: pointer; 
+    margin-right: 5rem;
+}
+
+.WellCome1{
+    color:#000; 
+    margin-right: 15rem;
+}
+
+.WellCome2{
+    float: left; 
+    color: #000;
+    margin-left: 10rem;
+}
+
+.sub-Title{
+    color: #FF9F1C;
+    font-weight: bold;
+    font-size: 40px;
+    margin:20px 30px ;
+}
+
+.Booth{
+    width: 28rem !important;
+    height: 21rem !important;
+    margin: 10px 2rem !important;
+}
+
+.Booth .img{
+    width: 100%;
+    background-color: red;
+    padding: 10px;
+    height: 45%;
+
+}
+
+.Booth .img img{
+    width: 20% !important;
+    height: auto !important;
+    margin: 5px 30px 16px 5px !important;
+}
+
+
+
+.Booth-Titr{
+    text-shadow: 1px 1px 1px red;
+    margin: 0px 5% 0 0;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.Booth-p{
+    font-size: 15px;
+    font-weight: 400;
+    margin: 15px 50px 30px 30px;
+}
+
+
+#Booth-heart{
+    width: 12% !important;
+    height: auto !important;
+    float: left;
+    margin: -100px 30px;
+}
+
+
+
+.number-heart{
+    font-size: 30px;
+    float: left;
+    margin: -20px 0 10px 7%;
+    font-weight: bold;
+}
+
+.Onvan-Category{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold; 
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.Onvan-Category:hover{
+    color: #FF9F1C;
+    transition: all 0.5s ease; 
+}
+
+.Category img{
+    width: 50% !important;
+    padding: 5px;
+    margin-right: 100px !important;
+}
+
+
+.Poshtiban{
+    margin: 15px 62px 15px 23px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px #00000082;
+    border-radius: 5px;
+    height: 45rem;
+}
+
+.posh-right {
+    float: right;
+    width: 34rem;
+    height: 43rem;
+}
+
+
+.posh-right h1{
+    font-size: 26px;
+    font-weight: 700;
+    margin: 7rem 2rem 10px 0;
+}
+.posh-right h2{
+    font-size: 22px;
+    font-weight: 700;
+    margin: 7rem 7rem 10px 0;
+}
+.posh-right h3{
+    font-weight: 700;
+    font-size: 20px;
+    margin: 7rem 14rem 10px 0;
+}
+
+
+.posh-left{
+    float: left;
+    width: 22rem !important;
+    margin: 0 0 0% 0%;
+    overflow: hidden;
+    height: 43rem;
+}
+
+
+.posh-left h1{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 25px 0 4rem 7rem;
+    text-shadow: 1px 1px 1px black;
+    float: left;
+    color: #FF9F1C;
+}
+.posh-left h2{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 4rem 0 5px 6rem;
+    float: left;
+}
+.posh-left img{
+    width: 19rem !important;
+}
+
+
+.left-img{
+    width: 20rem;
+}
+
+
+.Footer{
+    background-color: #2EC4B6;
+    width: 100%;
+    height: 40rem;
+    border-radius: 0 100px 0 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Foot-About {
+    width: 40rem;
+    height: 0rem;
+    padding: 30px;
+}
+
+.Foot-Titr {
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 40px 3rem;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+.About{
+    background-color: #CBF3F0;
+    height: 24rem;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: justify;
+    letter-spacing: 0px;
+}
+
+
+.Foot-RealtionShip{
+    width: 45rem;
+    height: 30rem;
+    border-radius: 10px;
+    padding-top: 30px;
+    text-align: justify;
+    float: left;
+        margin-right: 50px;
+}
+
+
+.RelationShip{
+    height: auto;
+    border-radius: 10px;
+    padding: 30px;
+    line-height: 3;
+    text-align: center;
+}
+
+
+.RelationShip .images img{
+    width: 2.5rem;
+    margin: 0 3%;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px #00000082;
+
+}
+
+.RelationShip .images img:hover{
+    animation: SlideTop 1.5s ease;
+}
+
+
+.RelationShip .Foot-Address{
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+}
+
+
+.RelationShip .Foot-Address .Onvan{
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+}
+.RelationShip .Foot-Address .Address{
+    font-size: 15px;
+    font-weight: 300;
+    float: right;
+    margin-right: 30px;
+}
+.RelationShip .Foot-Phone{
+    width: 19rem;
+    height: 50px;
+}
+.RelationShip .Foot-Phone img{
+    width: 3rem;
+    float: left;
+
+}
+
+
+
+.Phone{
+    display: flex;
+
+}
+.RelationShip .Foot-Phone h2{
+    font-size: 18px;
+    font-weight: 700;
+    margin: 17px 10px;
+}
+
+.Foot-Access{
+    height: 22rem;
+    border-radius: 10px;
+    padding-top: 30px;
+    text-align: justify;
+    width: 51%;
+}
+
+.Access{
+    height: 28rem;
+    border-radius: 10px;
+    text-align: justify;
+    line-height: 3;
+    text-align: center;
+    width: 94%;
+}
+
+
+.Access ul li{
+    display: block;
+}
+
+.Access ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    margin-right:10px ;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+@keyframes SlideTop {
+    0%{
+        transform: translateY(0px) ;
+        box-shadow: 0px 2px 4px #ffffff ;
+
+    }
+    100%{
+        box-shadow: 0px 4px 4px #ffffff;
+        transform: translateY(-20px) ;
+    }
+}
+
+
+
+
+
+
+/*                              موبایل                                   */
+
+
+
+
+
+@media only screen and (max-width: 600px){
+
+    .header{
+        padding: 10px 5px !important;
+        background-color: #2EC4B6;
+        display: flex;
+    }
+
+    .header-right{
+        width: 10rem;
+        height: 3rem;
+        overflow: hidden;
+        border: 1px solid black;
+        float: right;
+        border-radius: 5px;
+        margin: 15px 7% 0px 0;
+    }
+
+    .header i{
+        font-size: 50px !important;
+        margin: 10px 5px 0 0;
+    }
+    
+    .header-right img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .search{
+        width: 94%;
+        height: 3.5rem;
+        overflow: hidden;
+        background-color: red;
+        border-radius: 5px;
+        margin: 10px 0px;
+        display: none;
+    }
+    
+    .search .inp-search{
+        width: 83%;
+        outline: none;
+        border: none;
+        text-align: center;
+        font-size: 15px;
+        font-family: 'vazir', sans-serif;
+        font-weight: 400;
+        border-radius: 0 5px 5px 0;
+    }
+    
+    .search img{
+        width: 17%;
+        background-color: #ffffff !important;
+        border-radius: 5px 0 0px 5px;
+        float: left;
+        cursor: pointer;
+    }
+    
+    .header-left{
+        width: 100px;
+        float: left;
+        overflow: hidden;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+    
+    .header-left img{
+        width: 40%;
+        float: left;
+        margin-left: 10px;
+    }
+
+    .img-mnu{
+        display: block !important;
+    }
+
+    .navbar{
+        display: none !important;
+    }
+    
+    .Cards{
+        margin-top: 10px !important;
+        padding: 10px;
+    }
+    
+    .card{
+        width: 50% !important;
+        height: auto !important;
+        margin-right: 2rem !important;
+        box-shadow: 0px 2px 4px #00000082;
+    }
+    
+    .card-img-top{
+        margin: 15px 2.5rem !important;
+        width: 50% !important;
+    }
+    
+    .card h4{
+        font-weight: 500;
+        font-size: 15px;
+    }
+    
+    .card-body .btn-primary{
+        background-color: #FF9F1C;
+        color: #000;
+        font-weight: bold;
+        font-size: 10px;
+        margin-top: 50%;
+    }
+
+    .card-body {
+        padding: 1px 10px;
+    }
+
+    .Cards.row{
+        --bs-gutter-x: -3rem !important; 
+        flex-wrap: nowrap !important;
+        overflow: hidden !important;
+        overflow-x: scroll !important;
+    
+    }
+    
+    .Cards::-webkit-scrollbar{
+        width: 2px;
+        background-color: none;
+    }
+    
+    .close-tabliq{
+        color: red;
+        cursor: pointer;
+        width: 6%;
+        margin: 0;
+    }
+
+    .WellCome1{
+        color: #000;
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .WellCome2{
+        float: left;
+        color: #000;
+        margin-left: 0;
+        font-size: 13px;
+        margin-top: 19px;
+    }
+
+    .sabt-booth a{
+        background-color: #2EC4B6;
+        float: left;
+        padding: 5px 10px;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: bold;
+        margin-top: -20px;
+        margin-left: -25px;
+    
+    }
+
+
+    .sub-Title{
+        color: #FF9F1C;
+        font-weight: bold;
+        font-size: 15px;
+        margin:20px 30px ;
+    }
+    
+    .Booth{
+        width: 15rem !important;
+        height: 15rem !important;
+        margin: 10px 2rem !important;
+    }
+    
+    .Booth .img{
+        width: 100%;
+        background-color: red;
+        padding: 10px;
+        height: 40%;
+        padding-right: 20px;
+    }
+    
+    .Booth .img img{
+        width: 27% !important;
+        height: auto !important;
+        margin: 5px 0px 0px 10px !important;
+    }
+    
+    
+    
+    .Booth-Titr{
+        margin: 0px 5% 0 0;
+        text-decoration: none;
+        color: black;
+        font-size: 10px;
+        font-weight: 800;
+        text-shadow: 0px 0px 0px black !important;
+    }
+    
+    .Booth-p{
+        margin: 15px 25px 0px 0px;
+        font-weight: 700 !important;
+        font-size: 9px !important;
+    }
+    
+    
+    #Booth-heart{
+        width: 20% !important;
+        height: auto !important;
+        float: left;
+        margin: 10px 0px;
+    }
+    
+    
+    
+    .number-heart{
+        font-size: 20px;
+        float: left;
+        margin: 55px 0 0px -18%;
+        font-weight: bold;
+    }
+    
+    .Onvan-Category{
+        text-decoration: none;
+        color: #000;
+        font-weight: bold; 
+        cursor: pointer;
+        font-size: 23px;
+    }
+    
+    .Onvan-Category:hover{
+        color: #FF9F1C;
+        transition: all 0.5s ease; 
+    }
+    
+    .Category img{
+        width: 50% !important;
+        padding: 5px;
+        margin-right: 100px !important;
+    }
+    
+    
+    .Poshtiban{
+        margin: 15px 62px 15px 23px;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 4px #00000082;
+        border-radius: 5px;
+        height: 45rem;
+        display: none;
+    }
+    
+    .posh-right {
+        float: right;
+        width: 34rem;
+        height: 43rem;
+    }
+    
+    
+    .posh-right h1{
+        font-size: 26px;
+        font-weight: 700;
+        margin: 7rem 2rem 10px 0;
+    }
+    .posh-right h2{
+        font-size: 22px;
+        font-weight: 700;
+        margin: 7rem 7rem 10px 0;
+    }
+    .posh-right h3{
+        font-weight: 700;
+        font-size: 20px;
+        margin: 7rem 14rem 10px 0;
+    }
+    
+    
+    .posh-left{
+        float: left;
+        width: 22rem !important;
+        margin: 0 0 0% 0%;
+        overflow: hidden;
+        height: 43rem;
+    }
+    
+    
+    .posh-left h1{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 25px 0 4rem 7rem;
+        text-shadow: 1px 1px 1px black;
+        float: left;
+        color: #FF9F1C;
+    }
+    .posh-left h2{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 4rem 0 5px 6rem;
+        float: left;
+    }
+    .posh-left img{
+        width: 19rem !important;
+    }
+    
+    
+    .left-img{
+        width: 20rem;
+    }
+    
+    
+    .Footer{
+        background-color: #2EC4B6;
+        width: 100%;
+        height: 40rem;
+        border-radius: 0 100px 0 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        display: none;
+    }
+    
+    .Foot-About {
+        width: 40rem;
+        height: 0rem;
+        padding: 30px;
+    }
+    
+    .Foot-Titr {
+        color: #ffffff;
+        text-align: center;
+        margin: 0 0 40px 3rem;
+        font-size: 30px;
+        font-weight: 800;
+    }
+    
+    
+    .About{
+        background-color: #CBF3F0;
+        height: 24rem;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: justify;
+        letter-spacing: 0px;
+    }
+    
+    
+    .Foot-RealtionShip{
+        width: 45rem;
+        height: 30rem;
+        border-radius: 10px;
+        padding-top: 30px;
+        text-align: justify;
+        float: left;
+            margin-right: 50px;
+    }
+    
+    
+    .RelationShip{
+        height: auto;
+        border-radius: 10px;
+        padding: 30px;
+        line-height: 3;
+        text-align: center;
+    }
+    
+    
+    .RelationShip .images img{
+        width: 2.5rem;
+        margin: 0 3%;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px #00000082;
+    
+    }
+    
+    .RelationShip .images img:hover{
+        animation: SlideTop 1.5s ease;
+    }
+    
+    
+    .RelationShip .Foot-Address{
+        width: 100%;
+        height: 100px;
+        margin-top: 50px;
+    }
+    
+    
+    .RelationShip .Foot-Address .Onvan{
+        font-size: 20px;
+        font-weight: bold;
+        float: right;
+    }
+    .RelationShip .Foot-Address .Address{
+        font-size: 15px;
+        font-weight: 300;
+        float: right;
+        margin-right: 30px;
+    }
+    .RelationShip .Foot-Phone{
+        width: 19rem;
+        height: 50px;
+    }
+    .RelationShip .Foot-Phone img{
+        width: 3rem;
+        float: left;
+    
+    }
+    
+    
+    
+    .Phone{
+        display: flex;
+    
+    }
+    .RelationShip .Foot-Phone h2{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 17px 10px;
+    }
+    
+    .Foot-Access{
+        height: 22rem;
+        border-radius: 10px;
+        padding-top: 30px;
+        text-align: justify;
+        width: 51%;
+    }
+    
+    .Access{
+        height: 28rem;
+        border-radius: 10px;
+        text-align: justify;
+        line-height: 3;
+        text-align: center;
+        width: 94%;
+    }
+    
+    
+    .Access ul li{
+        display: block;
+    }
+    
+    .Access ul li a{
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        margin-right:10px ;
+        font-weight: 500;
+    }
+    
+    
+}
