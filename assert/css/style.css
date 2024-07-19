@@ -16,6 +16,12 @@
 }
 
 
+/*------------------------------------- کامپیوتر -----------------------------------------*/
+
+.header i{
+    display: none;
+}
+
 .header-right{
     width: 17rem;
     height: 4rem;
@@ -54,7 +60,7 @@
 
 .search img{
     width: 60px;
-    background-color: #ffffff !important;
+    background-color: #ffffff ;
     border-radius: 5px 0 0px 5px;
     float: left;
     cursor: pointer;
@@ -74,13 +80,13 @@
 }
 
 .Cards{
-    margin-top: 10px !important;
+    margin-top: 10px ;
     padding: 10px;
 }
 
 .card{
-    width: 25% !important;
-    height: auto !important;
+    width: 25% ;
+    height: auto ;
     margin-right: 2rem !important;
     box-shadow: 0px 2px 4px #00000082;
 }
@@ -304,6 +310,12 @@
     padding: 30px;
     text-align: justify;
     letter-spacing: 0px;
+    box-shadow: 1px 2px 20px 0px #bb8585;
+}
+
+.About h2{
+    line-height: 2.5; 
+    font-size: 17px;
 }
 
 
@@ -410,14 +422,6 @@
     font-weight: 500;
 }
 
-
-
-
-
-
-
-
-
 @keyframes SlideTop {
     0%{
         transform: translateY(0px) ;
@@ -434,8 +438,7 @@
 
 
 
-
-/*                              موبایل                                   */
+/*------------------------------------- موبایل -----------------------------------------*/
 
 
 
@@ -462,6 +465,7 @@
     .header i{
         font-size: 50px !important;
         margin: 10px 5px 0 0;
+        display: block;
     }
     
     .header-right img{
@@ -678,7 +682,7 @@
     .Category img{
         width: 50% !important;
         padding: 5px;
-        margin-right: 100px !important;
+        margin-right: 100px ;
     }
     
     
@@ -718,7 +722,7 @@
     
     .posh-left{
         float: left;
-        width: 22rem !important;
+        width: 22rem;
         margin: 0 0 0% 0%;
         overflow: hidden;
         height: 43rem;
@@ -740,7 +744,7 @@
         float: left;
     }
     .posh-left img{
-        width: 19rem !important;
+        width: 19rem;
     }
     
     
@@ -752,54 +756,56 @@
     .Footer{
         background-color: #2EC4B6;
         width: 100%;
-        height: 40rem;
+        height: 55rem;
         border-radius: 0 100px 0 0;
         padding: 10px;
         display: flex;
-        flex-wrap: nowrap;
-        display: none;
+        flex-wrap: wrap;
     }
     
     .Foot-About {
-        width: 40rem;
-        height: 0rem;
-        padding: 30px;
+        width: 66% ;
+        height: 25rem;
+        padding: 30px 10px;
+    }
     }
     
     .Foot-Titr {
         color: #ffffff;
         text-align: center;
-        margin: 0 0 40px 3rem;
-        font-size: 30px;
+        margin: 0 10px 40px 0px;
+        font-size: 22px;
         font-weight: 800;
     }
     
     
     .About{
         background-color: #CBF3F0;
-        height: 24rem;
+        height: 19rem;
         border-radius: 10px;
         padding: 30px;
         text-align: justify;
-        letter-spacing: 0px;
     }
     
+    .About h2{
+        line-height: 2; 
+        font-size: 13px;
+    }
     
     .Foot-RealtionShip{
         width: 45rem;
         height: 30rem;
         border-radius: 10px;
-        padding-top: 30px;
         text-align: justify;
         float: left;
-            margin-right: 50px;
+        margin: 0;
     }
     
     
     .RelationShip{
         height: auto;
         border-radius: 10px;
-        padding: 30px;
+        padding: 0px 30px;
         line-height: 3;
         text-align: center;
     }
@@ -859,22 +865,29 @@
     }
     
     .Foot-Access{
-        height: 22rem;
+        height: 25rem;
         border-radius: 10px;
         padding-top: 30px;
-        text-align: justify;
-        width: 51%;
+        width: 34%;
     }
     
     .Access{
         height: 28rem;
         border-radius: 10px;
-        text-align: justify;
-        line-height: 3;
+        line-height: 2.5;
         text-align: center;
         width: 94%;
+        margin-top: 50px;
+
     }
     
+    .Foot-Access .Foot-Titr{
+        color: #ffffff;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 800;
+        margin: 0 0 0 13px;
+    }
     
     .Access ul li{
         display: block;
@@ -882,11 +895,24 @@
     
     .Access ul li a{
         text-decoration: none;
-        font-size: 20px;
+        font-size: 13px;
         color: black;
-        margin-right:10px ;
+        margin-right: 10px;
         font-weight: 500;
+    }
+
+
+
+
+
+    @media only screen and (min-width : 600px) {
+        .Foot-Access{
+            height: 25rem;
+            border-radius: 10px;
+            padding-top: 30px;
+            width: 45%;
+        }
     }
     
     
-}
+    
