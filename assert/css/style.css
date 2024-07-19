@@ -85,8 +85,8 @@
 }
 
 .card{
-    width: 25% ;
-    height: auto ;
+    width: 25% !important;
+    height: auto !important;
     margin-right: 2rem !important;
     box-shadow: 0px 2px 4px #00000082;
 }
@@ -101,10 +101,10 @@
 }
 
 .Cards.row{
-    --bs-gutter-x: -3rem !important; 
-    flex-wrap: nowrap !important;
-    overflow: hidden !important;
-    overflow-x: scroll !important;
+    --bs-gutter-x: -3rem ; 
+    flex-wrap: nowrap ;
+    overflow: hidden ;
+    overflow-x: scroll ;
 
 }
 
@@ -177,8 +177,8 @@
 
 
 #Booth-heart{
-    width: 12% !important;
-    height: auto !important;
+    width: 12% ;
+    height: auto ;
     float: left;
     margin: -100px 30px;
 }
@@ -206,9 +206,9 @@
 }
 
 .Category img{
-    width: 50% !important;
+    width: 50% ;
     padding: 5px;
-    margin-right: 100px !important;
+    margin-right: 100px ;
 }
 
 
@@ -247,7 +247,7 @@
 
 .posh-left{
     float: left;
-    width: 22rem !important;
+    width: 22rem ;
     margin: 0 0 0% 0%;
     overflow: hidden;
     height: 43rem;
@@ -269,7 +269,7 @@
     float: left;
 }
 .posh-left img{
-    width: 19rem !important;
+    width: 19rem ;
 }
 
 
@@ -387,53 +387,60 @@
 
 }
 .RelationShip .Foot-Phone h2{
-    font-size: 18px;
-    font-weight: 700;
-    margin: 17px 10px;
+    font-size: 28px ;
+    font-weight: 700 ;
+    margin: 17px 10px ;
 }
 
 .Foot-Access{
-    height: 22rem;
-    border-radius: 10px;
-    padding-top: 30px;
-    text-align: justify;
-    width: 51%;
+    height: 22rem ;
+    border-radius: 10px ;
+    padding-top: 30px ;
+    text-align: justify ;
+    width: 51% ;
 }
 
 .Access{
-    height: 28rem;
-    border-radius: 10px;
-    text-align: justify;
-    line-height: 3;
+    height: 28rem ;
+    border-radius: 10px; 
+    text-align: justify ;
+    line-height: 3 ;
+    text-align: center ;
+    width: 94% ;
+}
+
+.Foot-Access .Foot-Titr{
+    color: #ffffff;
     text-align: center;
-    width: 94%;
+    margin: 0 0 40px 3rem;
+    font-size: 30px;
+    font-weight: 800;
 }
 
 
 .Access ul li{
-    display: block;
+    display: block ;
 }
 
 .Access ul li a{
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    margin-right:10px ;
-    font-weight: 500;
+    text-decoration: none ;
+    font-size: 20px ;
+    color: black ;
+    margin-right:10px  ;
+    font-weight: 500 ;
 }
 
 @keyframes SlideTop {
     0%{
-        transform: translateY(0px) ;
-        box-shadow: 0px 2px 4px #ffffff ;
+        transform: translateY(0px)  ;
+        box-shadow: 0px 2px 4px #ffffff  ;
 
     }
     100%{
-        box-shadow: 0px 4px 4px #ffffff;
-        transform: translateY(-20px) ;
+        box-shadow: 0px 4px 4px #ffffff ;
+        transform: translateY(-20px)  ;
     }
 }
-
 
 
 
@@ -447,7 +454,7 @@
 @media only screen and (max-width: 600px){
 
     .header{
-        padding: 10px 5px !important;
+        padding: 10px 5px  ;
         background-color: #2EC4B6;
         display: flex;
     }
@@ -463,7 +470,7 @@
     }
 
     .header i{
-        font-size: 50px !important;
+        font-size: 50px ;
         margin: 10px 5px 0 0;
         display: block;
     }
@@ -496,7 +503,7 @@
     
     .search img{
         width: 17%;
-        background-color: #ffffff !important;
+        background-color: #ffffff ;
         border-radius: 5px 0 0px 5px;
         float: left;
         cursor: pointer;
@@ -516,16 +523,12 @@
         margin-left: 10px;
     }
 
-    .img-mnu{
-        display: block !important;
-    }
-
     .navbar{
         display: none !important;
     }
     
     .Cards{
-        margin-top: 10px !important;
+        margin-top: 10px ;
         padding: 10px;
     }
     
@@ -533,7 +536,7 @@
         width: 50% !important;
         height: auto !important;
         margin-right: 2rem !important;
-        box-shadow: 0px 2px 4px #00000082;
+        box-shadow: 0px 2px 4px #00000082 !important;
     }
     
     .card-img-top{
@@ -555,14 +558,14 @@
     }
 
     .card-body {
-        padding: 1px 10px;
+        padding: 1px 10px !important;
     }
 
     .Cards.row{
-        --bs-gutter-x: -3rem !important; 
-        flex-wrap: nowrap !important;
-        overflow: hidden !important;
-        overflow-x: scroll !important;
+        --bs-gutter-x: -3rem ; 
+        flex-wrap: nowrap ;
+        overflow: hidden ;
+        overflow-x: scroll ;
     
     }
     
@@ -628,7 +631,7 @@
     
     .Booth .img img{
         width: 27% !important;
-        height: auto !important;
+        height: auto ;
         margin: 5px 0px 0px 10px !important;
     }
     
@@ -640,19 +643,19 @@
         color: black;
         font-size: 10px;
         font-weight: 800;
-        text-shadow: 0px 0px 0px black !important;
+        text-shadow: 0px 0px 0px black ;
     }
     
     .Booth-p{
         margin: 15px 25px 0px 0px;
-        font-weight: 700 !important;
-        font-size: 9px !important;
+        font-weight: 700 ;
+        font-size: 9px ;
     }
     
     
     #Booth-heart{
-        width: 20% !important;
-        height: auto !important;
+        width: 20% ;
+        height: auto ;
         float: left;
         margin: 10px 0px;
     }
@@ -671,7 +674,7 @@
         color: #000;
         font-weight: bold; 
         cursor: pointer;
-        font-size: 23px;
+        font-size: 15px;
     }
     
     .Onvan-Category:hover{
@@ -680,7 +683,7 @@
     }
     
     .Category img{
-        width: 50% !important;
+        width: 50% ;
         padding: 5px;
         margin-right: 100px ;
     }
@@ -905,14 +908,51 @@
 
 
 
-    @media only screen and (min-width : 600px) {
-        .Foot-Access{
-            height: 25rem;
-            border-radius: 10px;
-            padding-top: 30px;
-            width: 45%;
-        }
+@media only screen and (width : 768px) {
+    .Foot-Access{
+        height: 25rem;
+        border-radius: 10px;
+        padding-top: 30px;
+        width: 45%;
     }
-    
-    
-    
+
+    .posh-right{
+        float: right;
+        width: 20rem;
+        height: 43rem;
+    }
+    .posh-right h1{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 7rem 0rem 10px 0;
+    }
+    .posh-right h2{
+        font-size: 13px;
+        font-weight: 700;
+        margin: 6rem 4rem 10px 0;
+    }
+    .posh-right h3{
+        font-weight: 700;
+        font-size: 12px;
+        margin: 6rem 8rem 10px 0;
+    }
+
+    .posh-left{
+        float: left;
+        width: 20rem;
+        margin: 0 0 0% 0%;
+        overflow: hidden;
+        height: 43rem;
+    }
+
+    .posh-left h1{
+        margin: 25px 0 4rem 4.5rem;
+    }
+
+    .posh-left h2{
+        margin: 4rem 0px 5px 4rem ;
+    }
+
+}
+
+
