@@ -798,3 +798,201 @@
 /* ---------------Shopping cart with products------------------- */
 /* ----------------Mobile And Tablet------------------- */
 
+
+@media only screen and (max-width:600px){
+
+    .Shipping-Cart{
+        display: block;
+    }
+    .Mahsolat-Sabad{
+        width: 100%;
+    }
+
+    .Mahsol-Sabad{
+        height: 30rem;
+    }
+
+    .Mahsol-Information h1{
+        font-size: 11px;
+        font-weight: 800;
+        margin: 20px 25px 0 0;
+    }
+
+
+    .Mahsol-Information{
+        padding: 10px;
+        width: 60%;
+    }
+
+    .Mahsol-Information h6{
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .Mahsol-Information h5{
+        font-size: 17px;
+        margin: 23px 17%;
+        font-weight: 500;
+    }
+
+    .Mahsol-Information .Mahsol-Caption.Caption-1{
+        margin: 30px 0px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .Mahsol-Information .Mahsol-Caption h2 {
+        font-size: 80%;
+        font-weight: bold;
+        margin: 20px 10px 0 10px;
+    }
+
+    .Mahsol-Information .Mahsol-Caption.Caption-1 .Circle{
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .Mahsol-Information .Mahsol-Caption.Caption-1 h2{
+        font-size: 10px;
+        font-weight: bold;
+        margin: 20px 10px 0 10px;
+    }
+
+    .Mahsol-Information .Mahsol-Caption img{
+        width: 25%;
+        height: auto;
+    }
+
+    .Mahsol-Information .Quantity{
+        width: 80px;
+        height: 40px;
+        background-color: #FF9F1C;
+        border-radius: 5px;
+        margin: 37px 30px;
+        display: flex;
+    }
+
+    .Mahsol-Information .Quantity i{
+        font-size: 21px;
+        margin: 10px 7%;
+    }
+
+    .Mahsol-Information .Quantity h3{
+        font-size: 25px;
+    }
+
+    .SideBar{
+        width: 100%;
+        padding: 20px;
+        background-color: #CBF3F0;
+        height: 50rem;
+        margin: 8% 0%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 8px black;
+    }
+
+    .SideBar h2{
+        font-size: 15px;
+        font-weight: 500;
+        margin: 8% 3%;
+    }
+
+    .SideBar h4{
+        font-size: 20px;
+        font-weight: 600;
+        margin: 15% 5%;
+    }
+
+}
+
+@media only screen and (max-width:1800px) {
+
+    .Shipping-Cart .Mahsol-Sabad .Mahsol-img{
+        height: 40%;
+    }
+
+    .Mahsol-Information{
+        width: 70%;
+    }
+
+    .Mahsol-Information h1{
+        font-size: 18px;
+        font-weight: 600;
+        margin: 20px 20px 0 0;
+    
+    }
+
+    .Mahsol-Caption.Caption-1{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px 10px;
+
+    }
+
+    .Mahsol-Information .Mahsol-Caption h2{
+        font-size: 15px;
+        margin: 6% 5% 0 0;
+    }
+
+    .Mahsol-Information .Mahsol-Caption img{
+        width: 25%;
+        height: auto;
+    }
+
+    .Mahsol-Information .Mahsol-Caption .Circle{
+        margin-top: 4%;
+    }
+
+    .Mahsol-Information .Quantity{
+        margin: 30px 20px 20px 0;
+    }
+
+    .Mahsol-Information h6{
+        font-size: 23px;
+        font-weight: bold;
+        margin: 10px 15%;
+    }
+
+    .Mahsol-Information h5{
+        font-size: 17px;
+    margin: 25px 30% 0 0;
+    font-weight: 500;
+    }
+
+    .SideBar{
+        margin: 0% 2%;
+        margin: 2.5% 2%;
+    }
+
+    .SideBar h2{
+        font-size: 13px;
+        font-weight: 500;
+        margin: 10% 5%;
+    }
+
+    .SideBar h4{
+        font-size: 15px;
+        font-weight: 600;
+        margin: 20% 10%;    
+    }
+}
+
+
+@media only screen and (min-width:1024px){
+    .SideBar h2{      
+        font-size: 18px;   
+    }
+
+    .SideBar h4{
+        margin: 8% 10%;
+    }
+
+    .SideBar{
+        margin: 2% 2%;
+    }
+}

@@ -700,3 +700,147 @@
 
 
 /* ---------------------Shopping cart with products--------------------- */
+
+.Shipping-Cart{
+    width: 100%;
+    height: 40rem;
+    padding: 10px;
+    display: flex;
+}
+
+.Mahsolat-Sabad{
+    width: 60%;
+}
+
+.Mahsol-Sabad{
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    background-color: #ffffff;
+    flex-wrap: nowrap;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px black;
+
+}
+
+.Mahsol-img{
+    width: 40%;
+}
+
+.Mahsol-img img{
+    width: 90%;
+    margin: 2.5rem 2rem;
+    border-radius: 5px;
+}
+
+.Mahsol-Information h1{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 60px 0 0;
+
+}
+
+.Mahsol-Information .Mahsol-Caption{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Mahsol-Information .Mahsol-Caption .Circle{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.Mahsol-Information .Mahsol-Caption h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.Mahsol-Information .Mahsol-Caption img{
+    width: 7%;
+    margin: 0px 5% 0 0;
+    height: 45px;
+}
+
+
+.Mahsol-Information .Quantity{
+    width: 120px;
+    height: 50px;
+    background-color: #FF9F1C;
+    border-radius: 5px;
+    margin: 40px 57px;
+    display: flex;
+}
+
+
+.Mahsol-Information .Quantity i{
+    font-size: 30px;
+    margin: 10px 8%;
+}
+
+.Mahsol-Information .Quantity h3{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Mahsol-Information h6{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 20%;
+
+}
+
+.Mahsol-Information h5{
+    font-size: 30px;
+    margin: 30px 30%;
+    font-weight: 500;
+}
+
+.SideBar{
+    width: 35%;
+    background-color: #CBF3F0;
+    height: 50rem;
+    margin: 1% 2%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px black;
+}
+
+.SideBar img{
+    width: 15%;
+    margin: 1% 2%;
+    border-radius: 5px;
+}
+
+.SideBar .images-Shipping{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 4%;
+}
+
+.SideBar h2{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 3% 3%;
+}
+.SideBar h4{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 5% 10%;
+}
+
+.SideBar a{
+    width: 90%;
+    height: 7%;
+    margin: 3% 5%;
+    background-color: #FF9F1C;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+
+}
