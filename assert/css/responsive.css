@@ -1,3 +1,32 @@
+
+/* -----Footer Small Mobile ----- */
+
+
+@media  only screen and (max-width:320px){
+    .RelationShip{
+        padding: 8px 0px !important;
+    } 
+
+    .Foot-Access{
+        height: 30rem !important;
+        padding-top: 30px !important;
+        width: 34% !important;
+        overflow: hidden !important;
+    }
+
+    .About{
+        height: 24rem !important;
+    }
+
+    .RelationShip .Foot-Address{
+        margin-top: 0px !important;
+    }
+
+    .Foot-RealtionShip{
+        height: 24rem !important;
+    }
+}
+
 /* -------------------------------------------------------------Home Page------------------------------------------------------- */
 
 
@@ -1083,4 +1112,59 @@
         width: 80%;
     }
 
+}
+
+
+/* -------------Mahsolat-Page------------------- */
+
+@media only screen and (max-width:768px) {
+    label{
+        font-size: 16px;
+        font-weight: bold;
+        margin: 3px 10% 0 0;
+    }
+
+    .Filter{
+        flex-wrap: wrap;
+    }
+    .Filter-right{
+        width: 100%;
+    }
+
+    .Filter-right .inputs input{
+        width: 70%;
+    }
+
+    .Filter-left{
+        width: 100%;
+        margin: 3% 0 0 0;
+    }
+
+    .dropdown-toggle.Filter-DropDown{
+        width: 100% !important;
+    }
+
+    .Filter-left h1{
+        font-size: 20px;
+        font-weight: 600;
+        margin: -40px 35px 0 0;
+    }
+}
+
+@media only screen and (min-width:800px) {
+    label{
+        margin: 3px 10% 0 0;
+    }
+
+    .Filter-left{
+        width: 40%;
+    }
+
+    .Filter-left h1{
+        margin: -40px 43px 0 0;
+    }
+
+    .Filter-right .inputs input{
+        width: 75%;
+    }
 }
