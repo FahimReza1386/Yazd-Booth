@@ -1168,3 +1168,38 @@
         width: 75%;
     }
 }
+
+
+/* ------------------Booths-Page--------------------- */
+
+/* ----------------------Mobile---------------------- */
+
+@media only screen and (max-width:1024px){
+    .Booths{
+        margin: 50px 10% 0 0;
+        }
+
+    .Booths .Booth-Page{
+        width: 100% !important;
+        margin: 20px 0rem 0 0;
+        height: auto;
+        }
+
+    .Booths .Booth-Page img{
+        margin: 10px 28%;
+    }
+
+    .Booths .Booth-Page .Booth-Information h3{
+        font-size: 13px ;
+    } 
+    .Booths .Booth-Page .Booth-Information h5{
+        font-size: 10px ;
+    } 
+    .Booths .Booth-Page .Booth-Information a{
+        width: 80%;
+        font-size: 14px !important;
+        padding: 14px !important;
+        margin: 5% 10% 10% 0%;
+        height: auto;
+    } 
+}

@@ -1116,3 +1116,52 @@ label{
     text-align: center !important;
 
 }
+
+/* -----------------Booths-Page---------------------- */
+.Booths{
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 14% 0 0    ;
+    padding: 20px;
+    width: 80%;
+}
+
+.Booths .Booth-Page{
+    width: 40% !important;
+    height: auto;
+    background-color:#ffffff;
+    box-shadow: 0px 2px 4px #00000082;
+    border-radius:5px;
+    margin: 20px 3rem 0 0;
+}
+
+.Booths .Booth-Page img{
+    width: 40%;
+    border-radius: 5px;
+    margin: 10px 29%;
+}
+
+.Booths .Booth-Page .Booth-Information h3{
+    font-weight: bold;
+    margin: 1rem 3rem;
+    font-size: 20px;
+
+}
+.Booths .Booth-Page .Booth-Information h5{
+    font-weight: 500;
+    margin: 1rem 3rem;
+    font-size: 13px;
+}
+
+.Booths .Booth-Page .Booth-Information a{
+    width: 80%;
+    background-color: #ffa11e !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding: 10px !important;
+    margin: 5% 10% 10% 0%;
+    height: auto;
+    border-radius: 5px !important;
+}
