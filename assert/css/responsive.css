@@ -1203,3 +1203,77 @@
         height: auto;
     } 
 }
+
+/* -------------------Panel-Customer Page------------------ */
+/* ----------------Mobile And Tablet ---------------*/
+@media only screen and (max-width:768px) {
+    .Panel-Header{
+        margin: 1rem;
+    }
+
+    .Panel-right{
+        width: 100%;
+    }
+
+    .Panel-Header .Panel-right h1{
+        font-size: 20px;
+        font-weight: bold;
+        margin: 24% 2rem;
+    }
+
+    .Panel-Header .Panel-right .img{
+        width: 100px;
+        height: 100px;
+        margin: 16% 2%;
+    }
+
+    .Panel-Header .Panel-left{
+        display: none;
+    }
+
+    .Panel-Body{
+        flex-wrap: wrap;
+        margin: 1rem;
+    }
+
+
+    .Panel-Body .PanelBody-right{
+        width: 100%;
+    }
+
+    .Panel-Body .PanelBody-right h1 {
+        font-size: 17px;
+    }
+
+    .Panel-Body .PanelBody-right .PanelMenu h1{
+        font-size: 15px;
+    }
+
+
+    .PanelBody-left{
+        width: 100%;
+        margin-top: 30px;
+    }
+
+
+    .PanelBody-left .Information{
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .PanelBody-left .Information .Question{
+        font-size: 25px;
+    }
+
+}
+
+
+@media only screen and (min-width:1024px) {
+    .PanelBody-left .Information{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+    }
+    
+}
