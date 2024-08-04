@@ -1275,5 +1275,126 @@
         justify-content: center;
         padding-right: 0;
     }
+
+}
+@media only screen and (min-width:1500px) {
+    .PanelBody-left .Information{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 11rem;
+        padding-left: 10rem;
+    }
     
+}
+
+/* -------------------Booth-OwnelPanel Page ----------------------- */
+/* ------------------Mobile and Tablet ---------------------- */
+
+@media only screen and (max-width:1023px) {
+    .Profile-Owner{
+        margin: 1rem 1rem;
+        flex-wrap: wrap;
+    }
+
+    .Owner-img{
+        width: 150px;
+        height: 150px;  
+        margin: 2% auto;
+    }
+
+    .Owner-Information{
+        margin-right: 0;
+    }
+
+    .Owner-Information .Owner-Information-right{
+        width: 100%;
+    }
+
+    .Owner-Information .Owner-Information-left{
+        width: 100%;
+    }
+
+    .Qus{
+        width: 40%; 
+        font-size: 13px;
+        margin: 10px 15px;
+
+    }
+
+    .ans{
+        width: 35%;
+        font-size: 13px;
+    }
+
+    .Booth-Sabt{
+        margin: 4rem 1rem;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+
+    .Booth-Sabt .Owner-img{
+        margin: 30px auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .Booth-Sabt .Booth-Sabt-Information{
+        width: 100%;
+        margin-right: 0;
+    }
+
+
+    .Panel-Body .PanelBody-left .Poshtiban-Top .Poshtiban-img{
+        margin: 0 auto;
+    }
+
+    .Owner-i{
+        margin: 0rem 8rem 0 0;
+    }
+
+    .Mahsolat-OwnerBooth{
+        margin: 4rem 1rem;
+    }
+
+    .Mahsolat-OwnerBooth img {
+        width: 40%;
+        margin:2rem 15px;
+
+    }
+
+    .Panel-Body .PanelBody-left .Poshtiban-Top h3{
+        font-size: 13px;
+    }
+
+}
+
+
+@media only screen and (min-width:1024px) {
+    .Profile-Owner{
+        width: 97%;
+        margin: 1rem 1rem;
+    }
+
+    .Owner-Information{
+        margin-right: 4rem;
+    }
+
+    .ans{
+        font-size: 20px;
+    }
+
+    .Booth-Sabt {
+        margin: 4rem 6rem;
+        width: 80%;
+    }
+
+    .Booth-Sabt .Owner-img{
+        margin: 5% 2%;
+    }
+
+    .Mahsolat-OwnerBooth{
+        margin: 4rem 3rem;
+
+    }
 }
