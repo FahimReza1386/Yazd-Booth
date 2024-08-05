@@ -82,6 +82,14 @@
 .Cards{
     margin-top: 10px ;
     padding: 10px;
+
+}
+
+.Cards.Mahsolat-Moshabe{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+
 }
 
 .card{
@@ -934,9 +942,11 @@
 
 .featur{ 
     width: 80%;
-    margin: 5% 40px;
+    /* margin: 5% 40px; */
+    margin: 1rem auto;
     display: flex;
     flex-wrap: wrap;
+    padding: 15px;
     box-shadow: 0px 2px 4px #00000082;
 }
 .featur h3{
@@ -1523,4 +1533,307 @@ label{
     padding: 10px;
     text-align: right;
     height: 20rem;
+}   
+
+
+/* ---------------------Product-Page --------------------------- */
+
+.Product-Information{
+    width: 80%;
+    height: 60rem;
+    margin: 1rem auto;
+    padding: 10px;
+    box-shadow: 0 0 5px black;
+    border-radius: 5px;
 }
+
+.Product-Information .Product-right{
+    width: 50%;
+    height: auto;
+    float: right;
+    flex-direction: row;
+    display: flex;  
+    flex-wrap: wrap; /* به تصاویر اجازه می‌دهد در صورت نیاز به خط بعدی بروند */  
+    justify-content: center; /* تصاویر را به سمت چپ تراز می‌کند */    
+
+}
+
+.Product-Information .Product-right #large-image{
+    width: 80%;
+    margin: 1rem 3rem; 
+    border-radius: 5px; 
+    transition:width 0.5s ease; 
+    height: auto;
+
+}
+
+.Product-Information .Product-right .smal-images{
+    width: 80%;
+    height: 6rem;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 4px black;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+
+.Product-Information .Product-right .smal-images img{ 
+    width: 10%;
+    border-radius: 5px;
+    margin: 13px 2rem;
+    transition: width 0.5s ease;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.Product-Information .Product-right .Owner-i{
+    margin: 0 auto;
+}
+
+.Product-Information .Product-left{
+    width: 50%;
+    height: auto;
+    float: left;
+}
+
+.Product-Information .Product-left h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1rem 6rem;
+}
+.Product-Information .Product-left h5{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 1rem 3rem;
+}
+
+.Product-Information .Product-left .Colors{
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+    
+}
+
+.Product-Information .Product-left .Colors span{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px black;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.Product-Information .Product-left .Colors span:hover{
+    transition:width 0.3s ease;
+}
+
+.information-booth{
+    width: 90%;
+    height: auto;
+    margin: 2rem auto;
+
+}
+
+.information-booth .sale{
+    width: 10rem;
+    height: 3rem;
+    margin: 1px auto;
+    background-color: #c8bebe;
+    float: left;
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+}
+
+.information-booth .sale span{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    margin: 7% auto;
+}
+
+
+.information-booth .sale .sale-darsad{
+    width: 3rem;
+    height: auto;
+    background: red;
+    text-align: center;
+    border-radius: 30px;
+    margin: 8% auto;
+}
+
+.information-booth .information-mahsol .infor{
+    width: 90%;
+    height: auto;
+    background: #ffffff;
+    margin: 10px auto;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 4px black;
+    padding: 1px 0 1px 0;
+
+}
+.information-booth .End-price{
+    width: 90%;
+    height: auto;
+    background: rebeccapurple;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.information-booth h3{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin: 10px 3rem;
+}
+
+.information-booth h2{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 9rem 10px 0;
+}
+
+.information-booth a{
+    width: 80%;
+    height: auto;
+    background-color: #FF9F1C;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1rem 4rem;
+}
+
+.Description{
+    background-color: #ffbf69;
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 0 20px 0px 20px;
+    padding: 20px;
+    box-shadow: 0 0 4px #000000a1;
+}
+
+.Description h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 1rem auto;
+}
+
+.Description h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 1rem auto;
+
+}
+
+.Comments{
+    height: 25rem;
+    overflow: hidden;
+}
+
+.Comments-Customer{
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.Comments .Comment { 
+    width: 90%;
+    height: 7rem;
+    margin: 1rem auto;
+    background-color: #CBF3F0;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #000000a1;
+    display: flex;
+    flex-wrap: nowrap;
+
+}
+
+.Comments .Comment .Comment-right{
+    width: 30%;
+    height: auto;
+    margin: 0 auto;
+    float: right;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.Comments .Comment .Comment-right .Profile-img{
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 1rem auto;
+}
+
+.Comments .Comment .Comment-right .Profile-img img{
+    width: 100%;
+}
+
+.Comments .Comment .Comment-right h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2rem auto 2rem auto;
+}
+
+
+.Comments .Comment .Comment-center{
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.Comments .Comment .Comment-center img{
+    width: 5%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+
+.Comments .Comment .Comment-left{
+    width: 20%;
+    height: auto;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}   
+
+.Comments .Comment .Comment-left .Like-Comments{
+    width: 50%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+.Comments .Comment .Comment-left .Like-Comments img{
+    width: 40%;
+    height: auto;
+    margin: 0 auto -1rem auto;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+.Comments .Comment .Comment-left .Like-Comments h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.i-Comments{
+    font-size: 100px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+

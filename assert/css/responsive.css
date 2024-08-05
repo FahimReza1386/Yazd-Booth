@@ -538,7 +538,17 @@
 }
 
 
+@media only screen and (min-width:1000px) {
+    .About h2{
+        line-height: 2; 
+        font-size: 17px;
+    }
 
+    
+    .Access ul li a {
+        font-size: 17px
+    }
+}
 
 /* ----------------------------------------------Register Page ---------------------------------------------------- */
 
@@ -1398,3 +1408,79 @@
 
     }
 }
+
+/* -----------------Product-Page------------------- */
+/* -------------------Mobile and Tablet ---------------- */
+
+
+@media only screen and (max-width:768px) {
+    .Product-Information{
+        max-height: 127rem;
+        min-height: 103rem;
+    }
+    .Product-Information .Product-right{
+        width: 100%;
+    }
+    .Product-Information .Product-left{
+        width: 100%;
+    }
+    .Product-Information .Product-right .smal-images img {
+        width: 22%;
+    }
+    .Product-Information .Product-right .smal-images{
+        height: 10rem;
+    }
+    .Product-Information .Product-left h1 {
+        font-size: 20px;
+        margin: 1rem;
+    }
+    .Product-Information .Product-left h5{
+        margin: 1rem;
+    }
+    .Product-Information .Product-left .Colors span {
+        margin: 1rem;
+    }
+    .information-booth h2{
+        font-size: 14px;
+        margin: 10px 0 10px 0;
+    }
+    .information-booth h3{
+        font-size: 18px;
+        margin: 10px 1rem;
+    }
+    .information-booth .sale{
+        width: 8rem;
+    }
+    .information-booth a{
+        margin: 1rem 1.5rem;
+    }
+    .Description h2 {
+        font-size: 17px;
+    }
+    .Comments .Comment {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .Comments .Comment .Comment-right h1{
+        font-size: 14px;
+        margin: 2rem auto;
+    }
+
+    .Comments .Comment .Comment-right{
+        width: 60%;
+    }
+    .Comments .Comment .Comment-center{
+        width: 80%;
+    }
+    .Comments .Comment .Comment-center img {
+        width: 10%;
+    }
+    .Comments .Comment .Comment-left{
+        width: 50%;
+    }
+}
+
+
+/* --------------------------End Front-------------------:) */
