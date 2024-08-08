@@ -10,3 +10,4 @@ def Home(request):
     booth= Booth.objects.all()
     category = Category.objects.all()
     return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category})
+
