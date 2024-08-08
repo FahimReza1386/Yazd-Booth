@@ -1,4 +1,5 @@
 
+
 /* -----Footer Small Mobile ----- */
 
 
@@ -128,8 +129,13 @@
     .card h4{
         font-weight: 500;
         font-size: 15px;
+        width: 50%;
     }
-    
+
+    .like-icon{
+            margin: -55px auto;
+    }
+
     .card-body .btn-primary{
         background-color: #FF9F1C;
         color: #000;
@@ -239,6 +245,7 @@
         height: auto ;
         float: left;
         margin: 10px 0px;
+        cursor: pointer;
     }
     
     
@@ -246,7 +253,7 @@
     .number-heart{
         font-size: 20px;
         float: left;
-        margin: 55px 0 0px -18%;
+        margin: 0 auto;
         font-weight: bold;
     }
     

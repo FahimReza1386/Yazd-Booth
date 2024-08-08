@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,183 +77,62 @@
 
 
     <div class="Cards row">
+          {% for item in Product %}
             <div class="card col-md-2 mahsol" >
-                <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
+                <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
                 <div class="card-body">
-                  <h4 class="card-title">22,000,000</h4>
-                    <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+                    {% if item.is_sale %}
+                    <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }}</span>
+                  <h4 class="card-title">{{ item.sale_price|intcomma }}</h4>
+                    {% else %}
+                    <h4 class="card-title">{{ item.price|intcomma }}</h4>
+                    {% endif %}
+                    <div style="float: left;">
+                        <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
                 </div>
               </div>
-            <div class="card col-md-2 mahsol">
-                <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">22,000,000</h4>
-                    <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-                </div>
-              </div>
-            <div class="card col-md-2 mahsol">
-                <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">22,000,000</h4>
-                    <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-                </div>
-              </div>
-            <div class="card col-md-2 mahsol">
-                <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">22,000,000</h4>
-                    <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-                </div>
-              </div>
+             {% endfor %}
 
+        </div>
 
-            <div class="card col-md-2 mahsol">
-                <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">22,000,000</h4>
-                    <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-                </div>
-              </div>
-            <div class="card col-md-2 mahsol">
-                <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title " style="text-decoration: line-through;">22,000,000</h4>
-                  <!-- <span class="card-title ">22,000,000</span> -->
-                    <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-                </div>
-              </div>
-
-    </div>
 
 
     <h2 class="sub-Title">غرفه های پر بازدید :</h2>
 
 
     <div class="Cards row">
+        {% for item in Booth %}
           <div class="card Booth">
-            <div class="img">          <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
+            <div class="img">          <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+              <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+              <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
              </div>
             <div class="card-body">
-              <a class="Booth-Titr">محصولات برادران حسینی :</a>
-              <h4 class="Booth-p">تولید انواع محصولات چوبی و ماکت</h4>
-                <img id="Booth-heart" src="{% static 'img/3643770-favorite-heart-like-likes-love-loved_113432.png'%}" alt="">
-                <span class="number-heart">400</span>
+              <a class="Booth-Titr">{{ item.name }}</a>
+              <h4 class="Booth-p">{{ item.description }}</h4>
+<!--                <img id="Booth-heart" src="{% static 'img/like.png'%}" alt="">-->
+                <i class='bx bxs-like like-icon'></i>
+                <span class="number-heart">{{ item.likes }}</span>
               </div>
             </div>
-          <div class="card Booth">
-            <div class="img">          <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-             </div>
-            <div class="card-body">
-              <a class="Booth-Titr">محصولات برادران حسینی :</a>
-              <h4 class="Booth-p">تولید انواع محصولات چوبی و ماکت</h4>
-                <img id="Booth-heart" src="{% static 'img/3643770-favorite-heart-like-likes-love-loved_113432.png'%}" alt="">
-                <span class="number-heart">400</span>
-              </div>
-            </div>
-          <div class="card Booth">
-            <div class="img">          <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-             </div>
-            <div class="card-body">
-              <a class="Booth-Titr">محصولات برادران حسینی :</a>
-              <h4 class="Booth-p">تولید انواع محصولات چوبی و ماکت</h4>
-                <img id="Booth-heart" src="{% static 'img/3643770-favorite-heart-like-likes-love-loved_113432.png'%}" alt="">
-                <span class="number-heart">400</span>
-              </div>
-            </div>
-          <div class="card Booth">
-            <div class="img">          <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-             </div>
-            <div class="card-body">
-              <a class="Booth-Titr">محصولات برادران حسینی :</a>
-              <h4 class="Booth-p">تولید انواع محصولات چوبی و ماکت</h4>
-                <img id="Booth-heart" src="{% static 'img/3643770-favorite-heart-like-likes-love-loved_113432.png" alt="">
-                <span class="number-heart">400</span>
-              </div>
-            </div>
-          <div class="card Booth">
-            <div class="img">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
-              <img class="card-img-top" src="{% static 'img/firoze.jpg'%}" alt="Card image">
+        {% endfor %}
 
             </div>
-            <div class="card-body">
-              <a class="Booth-Titr">حورا سرام :</a>
-              <h4 class="Booth-p">هنر های دستی حورا</h4>
-              <img id="Booth-heart" src="{% static 'img/3643770-favorite-heart-like-likes-love-loved_113432.png'%}" alt="">
-              <span class="number-heart">400</span>
-            </div>
-          </div>
-        </div>
-    </div>
 
     <div class="Category">
       <h2 class="sub-Title">
         دسته بندی محصولات :
       </h2>
     <div class="Cards row">
+
+        {% for item in category %}
       <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/sofal.jpeg'%}" alt="Card image">
+          <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
           <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> سفال ، کاشی و سرامیک</a>
+            <a href="#" class="Onvan-Category">{{ item.name }}</a>
           </div>
         </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/felezi.jpeg'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category">صنایع و ظروف فلزی</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/sangi.jpeg'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category">صنایع دستی سنگی</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/chobi.webp'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> چوبی و حصیری</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/chobi.webp'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> چوبی و حصیری</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/chobi.webp'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> چوبی و حصیری</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/chobi.webp'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> چوبی و حصیری</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/chobi.webp'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> چوبی و حصیری</a>
-          </div>
-        </div>
-      <div class="card col-md-2 Category" >
-          <img class="card-img-top" src="{% static 'img/chobi.webp'%}" alt="Card image">
-          <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category"> چوبی و حصیری</a>
-          </div>
-        </div>
+        {% endfor %}
     </div>
     </div>
 
@@ -323,5 +203,13 @@
 
 
 
+<script src="{% static 'js/jquery.js' %}"></script>
+<script>
+    $('.like-icon').click(function (){
+        $('.like-icon').css({
+            color:'red'
+        })
+    })
+</script>
 </body>
 </html>

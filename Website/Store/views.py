@@ -6,5 +6,7 @@ from .models import *
 
 
 def Home(request):
-    products=Product
-    return render(request=request , template_name='Home.html' , context={'products':products})
+    products=Product.objects.all()
+    booth= Booth.objects.all()
+    category = Category.objects.all()
+    return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category})
