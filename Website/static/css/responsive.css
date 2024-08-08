@@ -1,0 +1,1486 @@
+
+/* -----Footer Small Mobile ----- */
+
+
+@media  only screen and (max-width:320px){
+    .RelationShip{
+        padding: 8px 0px !important;
+    } 
+
+    .Foot-Access{
+        height: 30rem !important;
+        padding-top: 30px !important;
+        width: 34% !important;
+        overflow: hidden !important;
+    }
+
+    .About{
+        height: 24rem !important;
+    }
+
+    .RelationShip .Foot-Address{
+        margin-top: 0px !important;
+    }
+
+    .Foot-RealtionShip{
+        height: 24rem !important;
+    }
+}
+
+/* -------------------------------------------------------------Home Page------------------------------------------------------- */
+
+
+/* ------------------------------------ Mobile Home_Page ------------------------------------------- */
+
+@media only screen and (max-width: 600px){
+
+    .header{
+        padding: 10px 5px  ;
+        background-color: #2EC4B6;
+        display: flex;
+    }
+
+    .header-right{
+        width: 10rem;
+        height: 3rem;
+        overflow: hidden;
+        border: 1px solid black;
+        float: right;
+        border-radius: 5px;
+        margin: 15px 7% 0px 0;
+    }
+
+    .header i{
+        font-size: 50px ;
+        margin: 10px 5px 0 0;
+        display: block;
+    }
+    
+    .header-right img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .search{
+        width: 94%;
+        height: 3.5rem;
+        overflow: hidden;
+        background-color: red;
+        border-radius: 5px;
+        margin: 10px 0px;
+        display: none;
+    }
+    
+    .search .inp-search{
+        width: 83%;
+        outline: none;
+        border: none;
+        text-align: center;
+        font-size: 15px;
+        font-family: 'vazir', sans-serif;
+        font-weight: 400;
+        border-radius: 0 5px 5px 0;
+    }
+    
+    .search img{
+        width: 17%;
+        background-color: #ffffff ;
+        border-radius: 5px 0 0px 5px;
+        float: left;
+        cursor: pointer;
+    }
+    
+    .header-left{
+        width: 100px;
+        float: left;
+        overflow: hidden;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+    
+    .header-left img{
+        width: 40%;
+        float: left;
+        margin-left: 10px;
+    }
+
+    .navbar{
+        display: none !important;
+    }
+    
+    .Cards{
+        margin-top: 10px ;
+        padding: 10px;
+    }
+    
+    .card{
+        width: 50% !important;
+        height: auto !important;
+        margin-right: 2rem !important;
+        box-shadow: 0px 2px 4px #00000082 !important;
+    }
+    
+    .card-img-top{
+        margin: 15px 2.5rem !important;
+        width: 50% !important;
+    }
+    
+    .card h4{
+        font-weight: 500;
+        font-size: 15px;
+    }
+    
+    .card-body .btn-primary{
+        background-color: #FF9F1C;
+        color: #000;
+        font-weight: bold;
+        font-size: 10px;
+        margin-top: 50%;
+    }
+
+    .card-body {
+        padding: 1px 10px !important;
+    }
+
+    .Cards.row{
+        --bs-gutter-x: -3rem ; 
+        flex-wrap: nowrap ;
+        overflow: hidden ;
+        overflow-x: scroll ;
+    
+    }
+    
+    .Cards::-webkit-scrollbar{
+        width: 2px;
+        background-color: none;
+    }
+    
+    .close-tabliq{
+        color: red;
+        cursor: pointer;
+        width: 6%;
+        margin: 0;
+    }
+
+    .WellCome1{
+        color: #000;
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .WellCome2{
+        float: left;
+        color: #000;
+        margin-left: 0;
+        font-size: 13px;
+        margin-top: 19px;
+    }
+
+    .sabt-booth a{
+        background-color: #2EC4B6;
+        float: left;
+        padding: 5px 10px;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: bold;
+        margin-top: -20px;
+        margin-left: -25px;
+    
+    }
+
+
+    .sub-Title{
+        color: #FF9F1C;
+        font-weight: bold;
+        font-size: 15px;
+        margin:20px 30px ;
+    }
+    
+    .Booth{
+        width: 15rem !important;
+        height: 15rem !important;
+        margin: 10px 2rem !important;
+    }
+    
+    .Booth .img{
+        width: 100%;
+        background-color: red;
+        padding: 10px;
+        height: 40%;
+        padding-right: 20px;
+    }
+    
+    .Booth .img img{
+        width: 27% !important;
+        height: auto ;
+        margin: 5px 0px 0px 10px !important;
+    }
+    
+    
+    
+    .Booth-Titr{
+        margin: 0px 5% 0 0;
+        text-decoration: none;
+        color: black;
+        font-size: 10px;
+        font-weight: 800;
+        text-shadow: 0px 0px 0px black ;
+    }
+    
+    .Booth-p{
+        margin: 15px 25px 0px 0px;
+        font-weight: 700 ;
+        font-size: 9px ;
+    }
+    
+    
+    #Booth-heart{
+        width: 20% ;
+        height: auto ;
+        float: left;
+        margin: 10px 0px;
+    }
+    
+    
+    
+    .number-heart{
+        font-size: 20px;
+        float: left;
+        margin: 55px 0 0px -18%;
+        font-weight: bold;
+    }
+    
+    .Onvan-Category{
+        text-decoration: none;
+        color: #000;
+        font-weight: bold; 
+        cursor: pointer;
+        font-size: 15px;
+    }
+    
+    .Onvan-Category:hover{
+        color: #FF9F1C;
+        transition: all 0.5s ease; 
+    }
+    
+    .Category img{
+        width: 50% ;
+        padding: 5px;
+        margin-right: 100px ;
+    }
+    
+    
+    .Poshtiban{
+        margin: 15px 62px 15px 23px;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 4px #00000082;
+        border-radius: 5px;
+        height: 45rem;
+        display: none;
+    }
+    
+    .posh-right {
+        float: right;
+        width: 34rem;
+        height: 43rem;
+    }
+    
+    
+    .posh-right h1{
+        font-size: 26px;
+        font-weight: 700;
+        margin: 7rem 2rem 10px 0;
+    }
+    .posh-right h2{
+        font-size: 22px;
+        font-weight: 700;
+        margin: 7rem 7rem 10px 0;
+    }
+    .posh-right h3{
+        font-weight: 700;
+        font-size: 20px;
+        margin: 7rem 14rem 10px 0;
+    }
+    
+    
+    .posh-left{
+        float: left;
+        width: 22rem;
+        margin: 0 0 0% 0%;
+        overflow: hidden;
+        height: 43rem;
+    }
+    
+    
+    .posh-left h1{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 25px 0 4rem 7rem;
+        text-shadow: 1px 1px 1px black;
+        float: left;
+        color: #FF9F1C;
+    }
+    .posh-left h2{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 4rem 0 5px 6rem;
+        float: left;
+    }
+    .posh-left img{
+        width: 19rem;
+    }
+    
+    
+    .left-img{
+        width: 20rem;
+    }
+    
+    
+    .Footer{
+        background-color: #2EC4B6;
+        width: 100%;
+        height: 55rem;
+        border-radius: 0 100px 0 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .Foot-About {
+        width: 66% ;
+        height: 25rem;
+        padding: 30px 10px;
+    }
+    }
+    
+    .Foot-Titr {
+        color: #ffffff;
+        text-align: center;
+        margin: 0 10px 40px 0px;
+        font-size: 22px;
+        font-weight: 800;
+    }
+    
+    
+    .About{
+        background-color: #CBF3F0;
+        height: 19rem;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: justify;
+    }
+    
+    .About h2{
+        line-height: 2; 
+        font-size: 13px;
+    }
+    
+    .Foot-RealtionShip{
+        width: 45rem;
+        height: 30rem;
+        border-radius: 10px;
+        text-align: justify;
+        float: left;
+        margin: 0;
+    }
+    
+    
+    .RelationShip{
+        height: auto;
+        border-radius: 10px;
+        padding: 0px 30px;
+        line-height: 3;
+        text-align: center;
+    }
+    
+    
+    .RelationShip .images img{
+        width: 2.5rem;
+        margin: 0 3%;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px #00000082;
+    
+    }
+    
+    .RelationShip .images img:hover{
+        animation: SlideTop 1.5s ease;
+    }
+    
+    
+    .RelationShip .Foot-Address{
+        width: 100%;
+        height: 100px;
+        margin-top: 50px;
+    }
+    
+    
+    .RelationShip .Foot-Address .Onvan{
+        font-size: 20px;
+        font-weight: bold;
+        float: right;
+    }
+    .RelationShip .Foot-Address .Address{
+        font-size: 15px;
+        font-weight: 300;
+        float: right;
+        margin-right: 30px;
+    }
+    .RelationShip .Foot-Phone{
+        width: 19rem;
+        height: 50px;
+    }
+    .RelationShip .Foot-Phone img{
+        width: 3rem;
+        float: left;
+    
+    }
+    
+    
+    
+    .Phone{
+        display: flex;
+    
+    }
+    .RelationShip .Foot-Phone h2{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 17px 10px;
+    }
+    
+    .Foot-Access{
+        height: 25rem;
+        border-radius: 10px;
+        padding-top: 30px;
+        width: 34%;
+    }
+    
+    .Access{
+        height: 28rem;
+        border-radius: 10px;
+        line-height: 2.5;
+        text-align: center;
+        width: 94%;
+        margin-top: 50px;
+
+    }
+    
+    .Foot-Access .Foot-Titr{
+        color: #ffffff;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 800;
+        margin: 0 0 0 13px;
+    }
+    
+    .Access ul li{
+        display: block;
+    }
+    
+    .Access ul li a{
+        text-decoration: none;
+        font-size: 13px;
+        color: black;
+        margin-right: 10px;
+        font-weight: 500;
+    }
+
+
+
+/* ------------------------------------ Tablet ------------------------------------------- */
+
+
+@media only screen and (width : 768px) {
+    .Foot-Access{
+        height: 25rem;
+        border-radius: 10px;
+        padding-top: 30px;
+        width: 45%;
+    }
+
+    .posh-right{
+        float: right;
+        width: 20rem;
+        height: 43rem;
+    }
+    .posh-right h1{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 7rem 0rem 10px 0;
+    }
+    .posh-right h2{
+        font-size: 13px;
+        font-weight: 700;
+        margin: 6rem 4rem 10px 0;
+    }
+    .posh-right h3{
+        font-weight: 700;
+        font-size: 12px;
+        margin: 6rem 8rem 10px 0;
+    }
+
+    .posh-left{
+        float: left;
+        width: 20rem;
+        margin: 0 0 0% 0%;
+        overflow: hidden;
+        height: 43rem;
+    }
+
+    .posh-left h1{
+        margin: 25px 0 4rem 4.5rem;
+    }
+
+    .posh-left h2{
+        margin: 4rem 0px 5px 4rem ;
+    }
+
+}
+
+
+@media only screen and (min-width:1000px) {
+    .About h2{
+        line-height: 2; 
+        font-size: 17px;
+    }
+
+    
+    .Access ul li a {
+        font-size: 17px
+    }
+}
+
+/* ----------------------------------------------Register Page ---------------------------------------------------- */
+
+/* ----------------mobile ------------------ */
+
+
+@media only screen and (max-width:600px) {
+    .WellCome{
+        width: 70%;
+        height: 4rem;
+        margin: 20px 10px 0 0;
+        background-color: #FF9F1C;
+        border-radius: 20px 0 20px 0;
+    }
+
+    .WellCome h2{
+        font-size: 13px;
+        font-weight: bold;
+        padding: 25px 50px;
+    }
+
+    .Register{
+        width: 90%;
+        height: 40rem;
+        background-color: #ffffff;
+        margin: 20px 2rem !important;
+        box-shadow: 0px 0px 4px black;
+        border-radius: 10px;
+    }
+
+    .Register-left{
+        float: left;
+        background-color: #cbf3f0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px 10px 10px 10px;
+    }
+    .Register-left .inputs{
+        width: 80%;
+        margin: 5px 1.5rem 0 0;
+        padding: 10px;
+        height: 30rem;
+    }
+    .Register-left button{
+        margin: 0 2rem;
+    }
+
+    .Register-right{
+        float: right;
+        width: 91%;
+        height: 100%;
+        border-radius: 0px 10px 10px 0px;
+    }
+
+    .Register-right .Register-Information i{
+        font-size: 30px;
+        color: #FF9F1C;
+        margin: 40px 15px 5px 0px;
+    }
+    .Register-right .Register-Information p{
+        font-size: 12px;
+    }
+
+    .Register .Register-Information .login{
+        margin: 5rem 22px;
+    }
+}
+
+
+/* ----------------------------tablet---------------------------- */
+
+
+@media only screen and (max-width:768px) {
+    .WellCome{
+        width: 30rem;
+        height: 6rem;
+        margin: 3rem 1rem 0 0;
+        background-color: #FF9F1C;
+        border-radius: 20px 0 20px 0;
+    }
+    .WellCome h2{
+        font-size: 23px;
+        font-weight: bold;
+        padding: 2.5rem 6rem;    
+    }
+
+    .Register{
+        margin: 20px 4rem;
+    }
+
+    .Register-left .inputs{
+        width: 80%;
+        margin: 5px 2rem 0 0;
+        padding: 10px;
+        height: 30rem;
+    }
+    .Register-left button{
+        margin: 0px 2rem;
+    }
+
+    .Register-right .Register-Information p{
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 10px;
+        margin: -30px 60px 0 0;
+    }
+
+    .Register-right .Register-Information .login{
+        margin: 6rem 2rem;
+    }
+    .Register-right .Register-Information .login a{
+        font-size: 12px;
+    }
+    .Register-right .Register-Information .login span{
+        font-size: 12px;
+    }
+}
+
+/* --------------------------laptop------------------------- */
+
+
+@media only screen and (min-width:1440px){
+    .Register{
+        width: 55%;
+        margin-right: 25rem;
+    }
+}
+
+
+
+/* ---------------------------------Login Page----------------------------- */
+
+/* -------------------------mobile--------------------------- */
+
+
+@media only screen and (max-width:600px){
+    .Login{
+        margin: 3rem 1rem;
+    }
+
+    .Login-left{
+        display: none;
+    }
+
+    .Login-right{
+        width: 100%;
+    }
+
+    .Login-right h2{
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 15% 0px 0px;
+    }
+    .Login-right .logo{
+        width: 81%;
+        margin: 4rem 2rem;
+    }
+
+    .Login-right button{
+        margin: 2rem 2rem;
+    }
+
+    .Login-right .Login-inputs input{
+        font-size: 15px;
+    }
+    .Login-right .login span{
+        font-size: 15px;
+    }
+    .Login-right .login a{
+        font-size: 15px;
+    }
+}
+
+/* --------------------------------tablet---------------------------------- */
+
+@media only screen and (max-width:1024px){
+    .Login{
+        margin: 4rem 2rem;
+    }
+
+    .Login-right{
+        float: right;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .Login-right .logo{
+        width: 100%;
+        margin: 0rem 0rem;
+    }
+
+    .Login-right h2{
+        font-size: 20px ;
+        font-weight: 600;
+        margin: 0 5rem 0px 0px ;
+    }
+
+    .Login-inputs input{
+        font-size: 15px !important;
+    }
+
+    .Login-right button{
+        margin: 2rem 5rem;
+    }
+
+    .Login-left{
+        display: none;
+    }
+}
+
+
+/* --------------------------laptop---------------------------- */
+
+
+@media only screen and (max-width:1440px){
+    .Login{
+        margin: 4rem 2rem;
+    }
+
+    .Login-right h2{
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0px 0px 0px; 
+    }
+
+    .Login-inputs input{
+        font-size: 15px !important;
+    }
+
+    .Login-right button{
+        margin: 2rem 5rem;
+    }
+    .Login-right button{
+        margin: 2rem 2rem;
+    }
+}
+
+
+
+
+/* -------------------------------Shopping cart without products---------------------------- */
+
+/* ----------------Mobile and Tablet------------ */
+
+
+@media only screen and (max-width:1440px){
+
+    .WellCome-Sabad{
+        width: 90%;
+        height: 8rem;
+        margin: 2rem 5% 0 0;
+    }
+
+    .WellCome-Sabad h2{
+        font-size: 20px;
+        font-weight: 700;
+        padding: 3rem 1rem;
+    }
+
+    .Empty{
+        width: 90%;
+        margin: 1rem 1rem;
+        height: 40rem;
+    }
+
+    .Empty h2{
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;
+        padding: 2rem 1rem;
+
+    }
+
+    .Empty img{
+        width: 70%;
+        margin: 15px 18%; 
+    }
+
+}
+
+
+
+
+/* ---------------Shopping cart with products------------------- */
+/* ----------------Mobile And Tablet------------------- */
+
+
+@media only screen and (max-width:600px){
+
+    .Shipping-Cart{
+        display: block;
+    }
+    .Mahsolat-Sabad{
+        width: 100%;
+    }
+
+    .Mahsol-Sabad{
+        height: 30rem;
+    }
+
+    .Mahsol-Information h1{
+        font-size: 11px;
+        font-weight: 800;
+        margin: 20px 25px 0 0;
+    }
+
+
+    .Mahsol-Information{
+        padding: 10px;
+        width: 60%;
+    }
+
+    .Mahsol-Information h6{
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .Mahsol-Information h5{
+        font-size: 17px;
+        margin: 23px 17%;
+        font-weight: 500;
+    }
+
+    .Mahsol-Information .Mahsol-Caption.Caption-1{
+        margin: 30px 0px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .Mahsol-Information .Mahsol-Caption h2 {
+        font-size: 80%;
+        font-weight: bold;
+        margin: 20px 10px 0 10px;
+    }
+
+    .Mahsol-Information .Mahsol-Caption.Caption-1 .Circle{
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .Mahsol-Information .Mahsol-Caption.Caption-1 h2{
+        font-size: 10px;
+        font-weight: bold;
+        margin: 20px 10px 0 10px;
+    }
+
+    .Mahsol-Information .Mahsol-Caption img{
+        width: 25%;
+        height: auto;
+    }
+
+    .Mahsol-Information .Quantity{
+        width: 80px;
+        height: 40px;
+        background-color: #FF9F1C;
+        border-radius: 5px;
+        margin: 37px 30px;
+        display: flex;
+    }
+
+    .Mahsol-Information .Quantity i{
+        font-size: 21px;
+        margin: 10px 7%;
+    }
+
+    .Mahsol-Information .Quantity h3{
+        font-size: 25px;
+    }
+
+    .SideBar{
+        width: 100%;
+        padding: 20px;
+        background-color: #CBF3F0;
+        height: 50rem;
+        margin: 8% 0%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 8px black;
+    }
+
+    .SideBar h2{
+        font-size: 15px;
+        font-weight: 500;
+        margin: 8% 3%;
+    }
+
+    .SideBar h4{
+        font-size: 20px;
+        font-weight: 600;
+        margin: 15% 5%;
+    }
+
+}
+
+@media only screen and (max-width:1800px) {
+
+    .Shipping-Cart .Mahsol-Sabad .Mahsol-img{
+        height: 40%;
+    }
+
+    .Mahsol-Information{
+        width: 70%;
+    }
+
+    .Mahsol-Information h1{
+        font-size: 18px;
+        font-weight: 600;
+        margin: 20px 20px 0 0;
+    
+    }
+
+    .Mahsol-Caption.Caption-1{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px 10px;
+
+    }
+
+    .Mahsol-Information .Mahsol-Caption h2{
+        font-size: 15px;
+        margin: 6% 5% 0 0;
+    }
+
+    .Mahsol-Information .Mahsol-Caption img{
+        width: 25%;
+        height: auto;
+    }
+
+    .Mahsol-Information .Mahsol-Caption .Circle{
+        margin-top: 4%;
+    }
+
+    .Mahsol-Information .Quantity{
+        margin: 30px 20px 20px 0;
+    }
+
+    .Mahsol-Information h6{
+        font-size: 23px;
+        font-weight: bold;
+        margin: 10px 15%;
+    }
+
+    .Mahsol-Information h5{
+        font-size: 17px;
+    margin: 25px 30% 0 0;
+    font-weight: 500;
+    }
+
+    .SideBar{
+        margin: 0% 2%;
+        margin: 2.5% 2%;
+    }
+
+    .SideBar h2{
+        font-size: 13px;
+        font-weight: 500;
+        margin: 10% 5%;
+    }
+
+    .SideBar h4{
+        font-size: 15px;
+        font-weight: 600;
+        margin: 20% 10%;    
+    }
+}
+
+
+@media only screen and (min-width:1024px){
+    .SideBar h2{      
+        font-size: 18px;   
+    }
+
+    .SideBar h4{
+        margin: 8% 10%;
+    }
+
+    .SideBar{
+        margin: 2% 2%;
+    }
+}
+
+
+/* -----------------------Create Product Page--------------------------- */
+
+/* ------------------Mobile And Tablet----------------------- */
+
+@media only screen and (max-width:768px) {
+    .img-Product{
+        width: 40%;
+        height: auto;
+        margin: 10% 32%;    
+    }
+
+    .inputs-Product{
+        width: 100%;
+        height: auto;
+        margin: 1% 0;
+    }
+
+    .inputs-Product input{
+        width: 90%;
+        height: 40px;
+        margin: 10px 18px 25px 0;
+        text-align: right;
+        font-size: 13px;
+        font-weight: bold;
+        outline: none;
+        border: none;
+        box-shadow: 0px 0px 7px black;
+        border-radius: 4px;
+        padding: 25px;
+    }
+
+    .color-Product  h1{
+        font-size: 16px;
+        margin: 30px 8%;    
+    }
+
+    .Colors{
+        margin: 4rem 2rem;    
+    }
+
+    .Colors .Circles{
+        margin: 10px 0px;
+    }
+
+    .features-Product h1{
+        font-size: 18px;
+        margin: 35px 7%;    
+    }
+
+    .features{
+        width: 100%;
+        margin: 2px 0%; 
+    }   
+
+    .featur h3{
+        font-size: 15px;
+    }
+    .featur h2{
+        font-size: 20px;
+    }
+
+    .feature-right{
+        width: 100%;
+        margin: 10px;   
+    }
+
+    .features .feature-right .featur{
+        width: 94%;
+        margin: 5% 10px;
+    }
+    .feature-left{
+        width: 100%;
+        margin: 10px;   
+    }
+
+    .features .feature-left .featur{
+        width: 94%;
+        margin: 5% 10px;
+    }
+
+    .product-btn{
+        margin: 1% 10% 4% 0%;
+        width: 80%;
+    }
+
+}
+
+
+/* -------------Mahsolat-Page------------------- */
+
+@media only screen and (max-width:768px) {
+    label{
+        font-size: 16px;
+        font-weight: bold;
+        margin: 3px 10% 0 0;
+    }
+
+    .Filter{
+        flex-wrap: wrap;
+    }
+    .Filter-right{
+        width: 100%;
+    }
+
+    .Filter-right .inputs input{
+        width: 70%;
+    }
+
+    .Filter-left{
+        width: 100%;
+        margin: 3% 0 0 0;
+    }
+
+    .dropdown-toggle.Filter-DropDown{
+        width: 100% !important;
+    }
+
+    .Filter-left h1{
+        font-size: 20px;
+        font-weight: 600;
+        margin: -40px 35px 0 0;
+    }
+}
+
+@media only screen and (min-width:800px) {
+    label{
+        margin: 3px 10% 0 0;
+    }
+
+    .Filter-left{
+        width: 40%;
+    }
+
+    .Filter-left h1{
+        margin: -40px 43px 0 0;
+    }
+
+    .Filter-right .inputs input{
+        width: 75%;
+    }
+}
+
+
+/* ------------------Booths-Page--------------------- */
+
+/* ----------------------Mobile---------------------- */
+
+@media only screen and (max-width:1024px){
+    .Booths{
+        margin: 50px 10% 0 0;
+        }
+
+    .Booths .Booth-Page{
+        width: 100% !important;
+        margin: 20px 0rem 0 0;
+        height: auto;
+        }
+
+    .Booths .Booth-Page img{
+        margin: 10px 28%;
+    }
+
+    .Booths .Booth-Page .Booth-Information h3{
+        font-size: 13px ;
+    } 
+    .Booths .Booth-Page .Booth-Information h5{
+        font-size: 10px ;
+    } 
+    .Booths .Booth-Page .Booth-Information a{
+        width: 80%;
+        font-size: 14px !important;
+        padding: 14px !important;
+        margin: 5% 10% 10% 0%;
+        height: auto;
+    } 
+}
+
+/* -------------------Panel-Customer Page------------------ */
+/* ----------------Mobile And Tablet ---------------*/
+@media only screen and (max-width:768px) {
+    .Panel-Header{
+        margin: 1rem;
+    }
+
+    .Panel-right{
+        width: 100%;
+    }
+
+    .Panel-Header .Panel-right h1{
+        font-size: 20px;
+        font-weight: bold;
+        margin: 24% 2rem;
+    }
+
+    .Panel-Header .Panel-right .img{
+        width: 100px;
+        height: 100px;
+        margin: 16% 2%;
+    }
+
+    .Panel-Header .Panel-left{
+        display: none;
+    }
+
+    .Panel-Body{
+        flex-wrap: wrap;
+        margin: 1rem;
+    }
+
+
+    .Panel-Body .PanelBody-right{
+        width: 100%;
+    }
+
+    .Panel-Body .PanelBody-right h1 {
+        font-size: 17px;
+    }
+
+    .Panel-Body .PanelBody-right .PanelMenu h1{
+        font-size: 15px;
+    }
+
+
+    .PanelBody-left{
+        width: 100%;
+        margin-top: 30px;
+    }
+
+
+    .PanelBody-left .Information{
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .PanelBody-left .Information .Question{
+        font-size: 25px;
+    }
+
+}
+
+
+@media only screen and (min-width:1024px) {
+    .PanelBody-left .Information{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+}
+@media only screen and (min-width:1500px) {
+    .PanelBody-left .Information{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 11rem;
+        padding-left: 10rem;
+    }
+    
+}
+
+/* -------------------Booth-OwnelPanel Page ----------------------- */
+/* ------------------Mobile and Tablet ---------------------- */
+
+@media only screen and (max-width:1023px) {
+    .Profile-Owner{
+        margin: 1rem 1rem;
+        flex-wrap: wrap;
+    }
+
+    .Owner-img{
+        width: 150px;
+        height: 150px;  
+        margin: 2% auto;
+    }
+
+    .Owner-Information{
+        margin-right: 0;
+    }
+
+    .Owner-Information .Owner-Information-right{
+        width: 100%;
+    }
+
+    .Owner-Information .Owner-Information-left{
+        width: 100%;
+    }
+
+    .Qus{
+        width: 40%; 
+        font-size: 13px;
+        margin: 10px 15px;
+
+    }
+
+    .ans{
+        width: 35%;
+        font-size: 13px;
+    }
+
+    .Booth-Sabt{
+        margin: 4rem 1rem;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+
+    .Booth-Sabt .Owner-img{
+        margin: 30px auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .Booth-Sabt .Booth-Sabt-Information{
+        width: 100%;
+        margin-right: 0;
+    }
+
+
+    .Panel-Body .PanelBody-left .Poshtiban-Top .Poshtiban-img{
+        margin: 0 auto;
+    }
+
+    .Owner-i{
+        margin: 0rem 8rem 0 0;
+    }
+
+    .Mahsolat-OwnerBooth{
+        margin: 4rem 1rem;
+    }
+
+    .Mahsolat-OwnerBooth img {
+        width: 40%;
+        margin:2rem 15px;
+
+    }
+
+    .Panel-Body .PanelBody-left .Poshtiban-Top h3{
+        font-size: 13px;
+    }
+
+}
+
+
+@media only screen and (min-width:1024px) {
+    .Profile-Owner{
+        width: 97%;
+        margin: 1rem 1rem;
+    }
+
+    .Owner-Information{
+        margin-right: 4rem;
+    }
+
+    .ans{
+        font-size: 20px;
+    }
+
+    .Booth-Sabt {
+        margin: 4rem 6rem;
+        width: 80%;
+    }
+
+    .Booth-Sabt .Owner-img{
+        margin: 5% 2%;
+    }
+
+    .Mahsolat-OwnerBooth{
+        margin: 4rem 3rem;
+
+    }
+}
+
+/* -----------------Product-Page------------------- */
+/* -------------------Mobile and Tablet ---------------- */
+
+
+@media only screen and (max-width:768px) {
+    .Product-Information{
+        max-height: 127rem;
+        min-height: 103rem;
+    }
+    .Product-Information .Product-right{
+        width: 100%;
+    }
+    .Product-Information .Product-left{
+        width: 100%;
+    }
+    .Product-Information .Product-right .smal-images img {
+        width: 22%;
+    }
+    .Product-Information .Product-right .smal-images{
+        height: 10rem;
+    }
+    .Product-Information .Product-left h1 {
+        font-size: 20px;
+        margin: 1rem;
+    }
+    .Product-Information .Product-left h5{
+        margin: 1rem;
+    }
+    .Product-Information .Product-left .Colors span {
+        margin: 1rem;
+    }
+    .information-booth h2{
+        font-size: 14px;
+        margin: 10px 0 10px 0;
+    }
+    .information-booth h3{
+        font-size: 18px;
+        margin: 10px 1rem;
+    }
+    .information-booth .sale{
+        width: 8rem;
+    }
+    .information-booth a{
+        margin: 1rem 1.5rem;
+    }
+    .Description h2 {
+        font-size: 17px;
+    }
+    .Comments .Comment {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .Comments .Comment .Comment-right h1{
+        font-size: 14px;
+        margin: 2rem auto;
+    }
+
+    .Comments .Comment .Comment-right{
+        width: 60%;
+    }
+    .Comments .Comment .Comment-center{
+        width: 80%;
+    }
+    .Comments .Comment .Comment-center img {
+        width: 10%;
+    }
+    .Comments .Comment .Comment-left{
+        width: 50%;
+    }
+}
+
+
+/* --------------------------End Front-------------------:) */

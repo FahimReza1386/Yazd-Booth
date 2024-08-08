@@ -1,0 +1,1839 @@
+@font-face{
+    font-family: 'vazir';
+    src: url('../font/vazir-font-v16.1.0/Vazir-Thin.eot') format('eot'),
+    url('../font/vazir-font-v16.1.0/Vazir.ttf') format('ttf'),
+    url('../font/vazir-font-v16.1.0/Vazir.woff') format('woff'),
+    url('../font/vazir-font-v16.1.0/Vazir.woff2') format('woff2');
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'vazir' , sans-serif;
+
+}
+
+
+/*------------------------------------- کامپیوتر -----------------------------------------*/
+
+.header i{
+    display: none;
+}
+
+.header-right{
+    width: 17rem;
+    height: 4rem;
+    overflow: hidden;
+    border: 1px solid black;
+    float: right;
+    border-radius: 5px;
+    margin: 1% 2% ;
+}
+
+.header-right img{
+    width: 100%;
+    height: 100%;
+}
+
+.search{
+    width: 40%;
+    height: 4rem;
+    margin: 1% 30% 0 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.search .inp-search{
+    width: 80%;
+    height: 100%;
+    border-radius: 0px 5px 5px 0;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'vazir' , sans-serif;
+    font-weight: 400;
+}
+
+.search img{
+    width: 60px;
+    background-color: #ffffff ;
+    border-radius: 5px 0 0px 5px;
+    float: left;
+    cursor: pointer;
+}
+
+.header-left{
+    width: 120px;
+    float: left;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.header-left img{
+    width: 40%;
+    float: left;
+    margin-left: 10px;
+}
+
+.Cards{
+    margin-top: 10px ;
+    padding: 10px;
+
+}
+
+.Cards.Mahsolat-Moshabe{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+.card{
+    width: 25% !important;
+    height: auto !important;
+    margin-right: 2rem !important;
+    box-shadow: 0px 2px 4px #00000082;
+}
+
+.card-img-top{
+    margin: 15px 2.5rem !important;
+    width: 70% !important;
+}
+
+.card h4{
+    font-weight: bold;
+}
+
+.Cards.row{
+    --bs-gutter-x: -3rem ; 
+    flex-wrap: nowrap ;
+    overflow: hidden ;
+    overflow-x: scroll ;
+
+}
+
+.Cards::-webkit-scrollbar{
+    width: 2px;
+    background-color: none;
+}
+
+
+.close-tabliq{
+    color: red;
+    cursor: pointer; 
+    margin-right: 5rem;
+}
+
+.WellCome1{
+    color:#000; 
+    margin-right: 15rem;
+}
+
+.WellCome2{
+    float: left; 
+    color: #000;
+    margin-left: 10rem;
+}
+
+.sub-Title{
+    color: #FF9F1C;
+    font-weight: bold;
+    font-size: 40px;
+    margin:20px 30px ;
+}
+
+.Booth{
+    width: 28rem !important;
+    height: 21rem !important;
+    margin: 10px 2rem !important;
+}
+
+.Booth .img{
+    width: 100%;
+    background-color: red;
+    padding: 10px;
+    height: 45%;
+
+}
+
+.Booth .img img{
+    width: 20% !important;
+    height: auto !important;
+    margin: 5px 30px 16px 5px !important;
+}
+
+
+
+.Booth-Titr{
+    text-shadow: 1px 1px 1px red;
+    margin: 0px 5% 0 0;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.Booth-p{
+    font-size: 15px;
+    font-weight: 400;
+    margin: 15px 50px 30px 30px;
+}
+
+
+#Booth-heart{
+    width: 12% ;
+    height: auto ;
+    float: left;
+    margin: -100px 30px;
+}
+
+
+
+.number-heart{
+    font-size: 30px;
+    float: left;
+    margin: -20px 0 10px 7%;
+    font-weight: bold;
+}
+
+.Onvan-Category{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold; 
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.Onvan-Category:hover{
+    color: #FF9F1C;
+    transition: all 0.5s ease; 
+}
+
+.Category img{
+    width: 50% ;
+    padding: 5px;
+    margin-right: 100px ;
+}
+
+
+.Poshtiban{
+    margin: 15px 62px 15px 23px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px #00000082;
+    border-radius: 5px;
+    height: 45rem;
+}
+
+.posh-right {
+    float: right;
+    width: 34rem;
+    height: 43rem;
+}
+
+
+.posh-right h1{
+    font-size: 26px;
+    font-weight: 700;
+    margin: 7rem 2rem 10px 0;
+}
+.posh-right h2{
+    font-size: 22px;
+    font-weight: 700;
+    margin: 7rem 7rem 10px 0;
+}
+.posh-right h3{
+    font-weight: 700;
+    font-size: 20px;
+    margin: 7rem 14rem 10px 0;
+}
+
+
+.posh-left{
+    float: left;
+    width: 22rem ;
+    margin: 0 0 0% 0%;
+    overflow: hidden;
+    height: 43rem;
+}
+
+
+.posh-left h1{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 25px 0 4rem 7rem;
+    text-shadow: 1px 1px 1px black;
+    float: left;
+    color: #FF9F1C;
+}
+.posh-left h2{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 4rem 0 5px 6rem;
+    float: left;
+}
+.posh-left img{
+    width: 19rem ;
+}
+
+
+.left-img{
+    width: 20rem;
+}
+
+
+.Footer{
+    background-color: #2EC4B6;
+    width: 100%;
+    height: 40rem;
+    border-radius: 0 100px 0 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Foot-About {
+    width: 40rem;
+    height: 0rem;
+    padding: 30px;
+}
+
+.Foot-Titr {
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 40px 3rem;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+.About{
+    background-color: #CBF3F0;
+    height: 24rem;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: justify;
+    letter-spacing: 0px;
+    box-shadow: 1px 2px 20px 0px #bb8585;
+}
+
+.About h2{
+    line-height: 2.5; 
+    font-size: 17px;
+}
+
+
+.Foot-RealtionShip{
+    width: 45rem;
+    height: 30rem;
+    border-radius: 10px;
+    padding-top: 30px;
+    text-align: justify;
+    float: left;
+        margin-right: 50px;
+}
+
+
+.RelationShip{
+    height: auto;
+    border-radius: 10px;
+    padding: 30px;
+    line-height: 3;
+    text-align: center;
+}
+
+
+.RelationShip .images img{
+    width: 2.5rem;
+    margin: 0 3%;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px #00000082;
+
+}
+
+.RelationShip .images img:hover{
+    animation: SlideTop 1.5s ease;
+}
+
+
+.RelationShip .Foot-Address{
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+}
+
+
+.RelationShip .Foot-Address .Onvan{
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+}
+.RelationShip .Foot-Address .Address{
+    font-size: 15px;
+    font-weight: 300;
+    float: right;
+    margin-right: 30px;
+}
+.RelationShip .Foot-Phone{
+    width: 19rem;
+    height: 50px;
+}
+.RelationShip .Foot-Phone img{
+    width: 3rem;
+    float: left;
+
+}
+
+
+
+.Phone{
+    display: flex;
+
+}
+.RelationShip .Foot-Phone h2{
+    font-size: 28px ;
+    font-weight: 700 ;
+    margin: 17px 10px ;
+}
+
+.Foot-Access{
+    height: 22rem ;
+    border-radius: 10px ;
+    padding-top: 30px ;
+    text-align: justify ;
+    width: 51% ;
+}
+
+.Access{
+    height: 28rem ;
+    border-radius: 10px; 
+    text-align: justify ;
+    line-height: 3 ;
+    text-align: center ;
+    width: 94% ;
+}
+
+.Foot-Access .Foot-Titr{
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 40px 3rem;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+.Access ul li{
+    display: block ;
+}
+
+.Access ul li a{
+    text-decoration: none ;
+    font-size: 20px ;
+    color: black ;
+    margin-right:10px  ;
+    font-weight: 500 ;
+}
+
+@keyframes SlideTop {
+    0%{
+        transform: translateY(0px)  ;
+        box-shadow: 0px 2px 4px #ffffff  ;
+
+    }
+    100%{
+        box-shadow: 0px 4px 4px #ffffff ;
+        transform: translateY(-20px)  ;
+    }
+}
+
+
+
+/* -------------------------------------------------- Register Page --------------------------------------------------- */
+
+
+
+
+.WellCome{
+    width: 40rem;
+    height: 8rem;
+    margin: 4rem 15rem 0 0;
+    background-color: #FF9F1C;
+    border-radius: 20px 0 20px 0;
+}
+
+.WellCome h2{
+    font-size: 28px;
+    font-weight: bold;
+    padding: 3rem 9rem;
+}
+
+
+.Register{
+    width: 80%;
+    height: 40rem;
+    background-color:#ffffff;
+    margin: 20px 6rem;
+    box-shadow: 0px 0px 4px black;
+    border-radius: 10px;
+}
+
+.Register-right{
+    float: right;
+    width: 40%;
+    height: 100%;
+    border-radius:0px 10px 10px 0px ;
+}
+
+.Register-right .Register-Information i{
+    font-size: 30px;
+    color: #FF9F1C;
+    margin: 60px 15px 5px 0px;
+}
+
+.Register .Register-Information p{
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 10px;
+    margin: -30px 60px 0 0;
+}
+
+
+.Register .Register-Information .login span{
+    font-size: 20px;
+    font-weight: 600;
+    margin:0 10px 0 0;
+    color: #000000;
+}
+
+.Register .Register-Information a{
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+    color: #FF9F1C;
+    text-decoration: none;
+}
+
+
+.Register .Register-Information .login{
+    margin:6rem 4rem;
+}
+
+
+.Register-left{
+    float: left;
+    background-color: #cbf3f0;
+    width: 60%;
+    height: 100%;
+    border-radius: 10px 0 0px 10px;
+}
+
+.Register-left .inputs{
+    width: 80%;
+    margin: 5px 3.5rem 0 0;
+    padding: 10px;
+    height: 30rem;
+}
+
+.Register-left .inputs input{
+    width: 90%;
+    height: 40px;
+    margin: 10px 20px 30px 0;
+    text-align: right;
+    font-size: 20px;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 2px #1108085e solid;
+    font-weight: bold;
+
+}
+
+.Register-left button{
+    width: 80%;
+    height: 10%;
+    background-color: #FF9F1C;
+    margin: 0 4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+/* --------------------------------Login Page------------------------------------- */
+
+.Login{
+    width: 90%;
+    height: 50rem;
+    box-shadow: 0px 0px 4px black;
+    margin: 4rem 5rem;
+    border-radius: 5px;
+}
+
+.Login-right{
+    float: right;
+    width: 35%;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.Login-right .logo{
+    width: 70%;
+    margin: 4rem 5rem;
+}
+
+.Login-right h2{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 70px 0px 0px;
+}
+
+.Login-right .Login-inputs{
+    margin: 7rem 0 1rem 0;
+}
+
+.Login-right button{
+    width: 80%;
+    height: 4rem;
+    background-color: #ff9f1c;
+    border: none;
+    border-radius: 5px;
+    margin: 2rem 3rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.Login-right .Login-inputs input{
+    width: 90%;
+    height: 40px;
+    margin: 10px 20px 30px 0;
+    text-align: right;
+    font-size: 20px;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 2px #1108085e solid;
+    font-weight: bold;
+}
+
+.Login-right .login span{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 10px 0 0;
+    color: #000000;
+}
+
+.Login-right .login a{
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+    color: #FF9F1C;
+    text-decoration: none;
+}
+
+.Login-left{
+    float: left;
+    width: 65%;
+    height: 100%;
+    background-color: #cbf3f0;
+    border-radius: 5px 0px 0px 5px;
+    overflow: hidden;
+}
+
+.Login-left .carousel-inner{
+    margin-top: 66px;
+    scale: 1.5;
+}
+
+
+/* ---------------------Shopping cart without products--------------------- */
+
+.WellCome-Sabad{
+    width: 90%;
+    height: 8rem;
+    margin: 2rem 6rem 0 0;
+    background-color: #FF9F1C;
+    border-radius: 20px 0 20px 0;   
+}
+
+
+.WellCome-Sabad h2{
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+    padding: 3rem 9rem;   
+}
+
+.Empty{
+    width: 90%;
+    margin: 1rem 6rem;
+    height: 40rem;
+}
+
+.Empty img{
+    width: 40%;
+    margin: 15px 30rem;
+}
+
+.Empty h2{
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+    padding: 3rem 9rem;  
+}
+
+.Empty a{
+    width: 10rem;
+    height: 3rem;
+    padding: 12px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    background-color: #ff9f1c;
+    color: black;
+    float: left;
+}
+
+
+/* ---------------------Shopping cart with products--------------------- */
+
+.Shipping-Cart{
+    width: 100%;
+    height: 40rem;
+    padding: 10px;
+    display: flex;
+}
+
+.Mahsolat-Sabad{
+    width: 60%;
+}
+
+.Mahsol-Sabad{
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    background-color: #ffffff;
+    flex-wrap: nowrap;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px black;
+
+}
+
+.Mahsol-img{
+    width: 40%;
+}
+
+.Mahsol-img img{
+    width: 90%;
+    margin: 2.5rem 2rem;
+    border-radius: 5px;
+}
+
+.Mahsol-Information h1{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 60px 0 0;
+
+}
+
+.Mahsol-Information .Mahsol-Caption{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Circle{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.Mahsol-Information .Mahsol-Caption h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.Mahsol-Information .Mahsol-Caption img{
+    width: 7%;
+    margin: 0px 5% 0 0;
+    height: 45px;
+}
+
+
+.Mahsol-Information .Quantity{
+    width: 120px;
+    height: 50px;
+    background-color: #FF9F1C;
+    border-radius: 5px;
+    margin: 40px 57px;
+    display: flex;
+}
+
+
+.Mahsol-Information .Quantity i{
+    font-size: 30px;
+    margin: 10px 8%;
+}
+
+.Mahsol-Information .Quantity h3{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Mahsol-Information h6{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 20%;
+
+}
+
+.Mahsol-Information h5{
+    font-size: 30px;
+    margin: 30px 30%;
+    font-weight: 500;
+}
+
+.SideBar{
+    width: 35%;
+    background-color: #CBF3F0;
+    height: 50rem;
+    margin: 1% 2%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px black;
+}
+
+.SideBar img{
+    width: 15%;
+    margin: 1% 2%;
+    border-radius: 5px;
+}
+
+.SideBar .images-Shipping{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 4%;
+}
+
+.SideBar h2{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 3% 3%;
+}
+.SideBar h4{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 5% 10%;
+}
+
+.SideBar a{
+    width: 90%;
+    height: 7%;
+    margin: 3% 5%;
+    background-color: #FF9F1C;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+
+}
+
+
+
+/* ------------------------Create Product Page------------------------ */
+
+.img-Product{
+    width: 25%;
+    height: auto;
+    margin: 2% 37%;
+}
+
+.img-Product img{
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px black
+}
+
+.inputs-Product{
+    width: 80%;
+    height: auto;
+    margin: 1% 17%;
+}
+
+.inputs-Product input{
+    width: 40%;
+    height: 40px;
+    margin: 10px 20px 30px 0;
+    text-align: right;
+    font-size: 17px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 7px black;
+    border-radius: 2px;
+    padding: 30px;
+}
+
+.Colors{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4rem 17rem;
+
+}
+
+.color-Product h1{
+    font-size: 30px;
+    margin: 35px 18%;
+}
+
+.Colors .Circles .Circle{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px black;
+    display: inline-block;
+}
+
+.color-Product .Colors i{
+    font-size: 60px;
+    margin: 2rem 2rem;
+}
+
+.Circles{
+    width: 100px;
+    margin: 10px 30px;
+    text-align: center;
+}
+
+.features-Product h1{
+    font-size: 30px;
+    margin: 35px 18%;
+}
+.features{
+    width: 66%;
+    margin: 2px 17%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.feature-right{
+    width: 45%;
+    margin: 10px;
+}
+
+.feature-left{
+    width: 45%;
+    margin: 10px;
+}
+
+.featur{ 
+    width: 80%;
+    /* margin: 5% 40px; */
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    box-shadow: 0px 2px 4px #00000082;
+}
+.featur h3{
+    margin: 15px 15%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.featur h2{
+    margin: 15px 30px;
+    font-size: 20px;
+}
+
+.product-btn{
+    width: 20%;
+    background-color: #ffa11e !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding-top: 10px !important;
+    margin: 1% 55% 4% 0%;
+    height: 50px;
+    border-radius: 5px !important;
+    font-family: 'Vazir', sans-serif !important;
+}
+
+.product-btn:hover{
+    background-color: #2EC4B6 !important;
+    transition: all ease .5s;
+}
+
+/* ---------------Mahsolat-Page------------------- */
+
+
+.Filter{
+    width: 100%;
+    height: auto;
+    background-color: #ffbf69;
+    padding: 10px;
+    border-bottom: 2px solid #0000004d;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.Filter-right{
+    width: 47%;
+    height: auto;
+}
+
+
+.Filter-right .inputs input{
+    width: 50%;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin: 3% 3%;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+
+label{
+    font-size: 26px;
+    font-weight: bold;
+    margin: 3px 20% 0 0;
+    font-family: 'vazir', sans-serif;
+}
+
+.Filter-left{
+    width: 30%;
+    height: auto;
+    margin-right: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1%;
+    
+}
+
+.Filter-left input{
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
+}
+
+.Filter-left h1{
+    font-size: 20px;
+    font-weight: 600;
+    margin: -40px 15% 0 0;
+    font-family: 'vazir', sans-serif;
+}
+
+.dropdown-toggle.Filter-DropDown{
+    width: 80% !important;
+    font-size: 20px !important;
+    font-family: 'vazir', sans-serif !important;
+}
+
+.dropdown-toggle::after{
+    margin-right: 30px;
+}
+
+.Mahsolat{
+    background-color: #ffffff;
+    margin: 15px 4%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px #00000082;
+
+}
+
+.Mahsol.Mahsolat-Page{
+    border-radius:5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.Mahsol.Mahsolat-Page img{
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.Mahsol.Mahsolat-Page .Layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #ffbf69);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+
+}
+
+.Mahsol.Mahsolat-Page:hover .Layer{
+    height: 100%;
+}
+
+.Mahsol.Mahsolat-Page .Layer h6{
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.Mahsol.Mahsolat-Page .Layer h2{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px;
+    color: #ffffff;
+}
+.Mahsol.Mahsolat-Page .Layer a{
+    margin: 0% 0% !important;
+    width: 60% !important;
+    background-color: #2EC4B6 !important;
+    color: #ffffff !important;
+    margin-top: 20px !important;
+    font-size: 18px !important;
+    text-align: center !important;
+
+}
+
+/* -----------------Booths-Page---------------------- */
+.Booths{
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 14% 0 0    ;
+    padding: 20px;
+    width: 80%;
+}
+
+.Booths .Booth-Page{
+    width: 40% !important;
+    height: auto;
+    background-color:#ffffff;
+    box-shadow: 0px 2px 4px #00000082;
+    border-radius:5px;
+    margin: 20px 3rem 0 0;
+}
+
+.Booths .Booth-Page img{
+    width: 40%;
+    border-radius: 5px;
+    margin: 10px 29%;
+}
+
+.Booths .Booth-Page .Booth-Information h3{
+    font-weight: bold;
+    margin: 1rem 3rem;
+    font-size: 20px;
+
+}
+.Booths .Booth-Page .Booth-Information h5{
+    font-weight: 500;
+    margin: 1rem 3rem;
+    font-size: 13px;
+}
+
+.Booths .Booth-Page .Booth-Information a{
+    width: 80%;
+    background-color: #ffa11e !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding: 10px !important;
+    margin: 5% 10% 10% 0%;
+    height: auto;
+    border-radius: 5px !important;
+}
+
+
+
+/* -------------------------Panel-Customer Page ----------------------------- */
+
+.Panel-Header{
+    width: 90%;
+    height: auto;
+    background: #ffffff;
+    padding: 10px;
+    margin: 3rem;
+    display: flex;
+    flex-wrap: nowrap;
+    box-shadow: 0px 0px 8px black;
+    border-radius: 5px;
+}
+
+.Panel-right{
+    width: 60%;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.Panel-Header .Panel-right .img{
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px black;
+    margin: 5% 2%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Panel-Header .Panel-right .img img{
+    width: 100%;
+    border-radius: 50%;
+    
+}
+
+.Panel-Header .Panel-right h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 15% 2rem;
+}
+
+.Panel-left{
+    width: 40%;
+    height: auto;
+    text-align: left;
+}
+
+.Panel-left img{
+    width: 30%;
+    margin: 4rem 2rem;
+
+}
+
+.Panel-Body{
+    width: 90%;
+    height: auto;
+    margin: 3rem;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.PanelBody-right{
+    width: 50%;
+    background: #ffffff;
+}
+
+.PanelBody-right h1{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.PanelBody-right .PanelMenu{
+    width: 94%;
+    height: 80px;
+    overflow: hidden;
+    background-color: #CBF3F0;
+    display: flex;
+    flex-wrap: nowrap;
+    box-shadow: 0px 0px 8px black;
+    margin: 4% 3%;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.PanelBody-right .PanelMenu .PanelMenu-right{
+    width: 30%;
+}
+
+.PanelBody-right .PanelMenu .PanelMenu-right img{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    float: right;
+}
+
+.PanelBody-right .PanelMenu .PanelMenu-left{
+    width: 30%;
+    text-align: left;
+}
+
+.PanelBody-right .PanelMenu .PanelMenu-left img{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    float: left;
+}
+
+
+.PanelBody-right .PanelMenu img{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
+
+.PanelBody-right .PanelMenu h1{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 25px 2rem; 
+}
+
+
+.PanelBody-left{
+    width: 50%;
+    box-shadow: 0px 0px 8px black;
+
+}
+
+.PanelBody-left .Profile{
+    width: 250px;
+    height: 250px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px black;
+
+}
+
+.PanelBody-left .Profile img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+.PanelBody-left .Information{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-right: 50px;
+}
+
+.PanelBody-left .Information .Question{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 80px;
+}
+
+.PanelBody-left .Information .answer{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0px 20rem;
+}
+
+.PanelBody-left a{
+    width: 80% !important;
+    height: auto;
+    padding: 15px !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    background-color: #FF9F1C !important;
+    color: #ffffff;
+    margin: 10% 10%;
+}
+
+
+
+/* -------------------Booth-Owner-Panel Page ------------------ */
+
+.Profile-Owner{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    margin: 1rem 6rem;
+    border-radius: 5px;
+    box-shadow: 0 0 3px black;
+    display: flex;
+    background-color: #CBF3F0;
+    flex-wrap: nowrap;
+}
+
+.Owner-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px black;
+    background-color: #ffffff;
+    margin: 0 10%;
+}
+
+.Owner-img img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+.Owner-Information{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 13rem;
+    width: 65%;
+}
+
+.Owner-Information .Owner-Information-right{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.Owner-Information .Owner-Information-left{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Qus{
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    margin: 10px;
+    display: block;
+    width: 40%;
+    height: 50px;
+}
+
+.ans{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    display: block;
+    width: 15%;
+    margin: 1rem 0rem 0 0;
+    height: 50px;
+}
+
+.Booth-Sabt{
+    width: 65%;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 0 4px black;
+    border-radius: 5px;
+    margin: 4rem 20rem;
+    padding: 10px;
+    display: flex;
+}
+
+.Booth-Sabt .Owner-img{
+    margin: 5% 4%;
+}
+
+.Booth-Sabt .Booth-Sabt-Information{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 7rem;
+}
+
+.Booth-Sabt .Booth-Sabt-Information .Qus{
+    height: 50px;
+    width: 45%;
+}
+
+.Booth-Sabt .Booth-Sabt-Information .ans{
+    height: 50px;
+    width: 45%;
+}
+
+.Mahsolat-OwnerBooth{
+    width: 90%;
+    height: 25rem;
+    background-color: white;
+    box-shadow: 0 0 4px black;
+    border-radius: 5px;
+    margin: 4rem 6rem;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.Mahsolat-OwnerBooth img{
+    width: 15%;
+    border: 2px solid #0000006b;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px black;
+    height: auto;
+    margin-top: 5rem;
+}
+
+
+.Owner-i{
+    font-size: 100px;
+    margin: 0rem 55rem 0 0;
+    cursor: pointer;
+}
+
+.Panel-Body .PanelBody-left .Poshtiban-Top .Poshtiban-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px black;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+
+.Panel-Body .PanelBody-left .Poshtiban-Top .Poshtiban-img img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.Panel-Body .PanelBody-left .Poshtiban-Top{
+    width: 80%;
+    margin: 3% 10%;
+    text-align: center;
+}
+
+
+.Panel-Body .PanelBody-left .Poshtiban-Top h1{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 7% 0%;
+}
+
+.Panel-Body .PanelBody-left .Poshtiban-Top h3{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 7% 0%;
+}
+
+.Panel-Body .PanelBody-left .Poshtiban-Body textarea{
+    width: 80%;
+    font-size: ۲0px;
+    background-color: #2EC4B6;
+    color: white;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    margin: 2% 10%;
+    padding: 10px;
+    text-align: right;
+    height: 20rem;
+}   
+
+
+/* ---------------------Product-Page --------------------------- */
+
+.Product-Information{
+    width: 80%;
+    height: 60rem;
+    margin: 1rem auto;
+    padding: 10px;
+    box-shadow: 0 0 5px black;
+    border-radius: 5px;
+}
+
+.Product-Information .Product-right{
+    width: 50%;
+    height: auto;
+    float: right;
+    flex-direction: row;
+    display: flex;  
+    flex-wrap: wrap; /* به تصاویر اجازه می‌دهد در صورت نیاز به خط بعدی بروند */  
+    justify-content: center; /* تصاویر را به سمت چپ تراز می‌کند */    
+
+}
+
+.Product-Information .Product-right #large-image{
+    width: 80%;
+    margin: 1rem 3rem; 
+    border-radius: 5px; 
+    transition:width 0.5s ease; 
+    height: auto;
+
+}
+
+.Product-Information .Product-right .smal-images{
+    width: 80%;
+    height: 6rem;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 4px black;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+
+.Product-Information .Product-right .smal-images img{ 
+    width: 10%;
+    border-radius: 5px;
+    margin: 13px 2rem;
+    transition: width 0.5s ease;
+    height: auto;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.Product-Information .Product-right .Owner-i{
+    margin: 0 auto;
+}
+
+.Product-Information .Product-left{
+    width: 50%;
+    height: auto;
+    float: left;
+}
+
+.Product-Information .Product-left h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1rem 6rem;
+}
+.Product-Information .Product-left h5{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 1rem 3rem;
+}
+
+.Product-Information .Product-left .Colors{
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+    
+}
+
+.Product-Information .Product-left .Colors span{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px black;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.Product-Information .Product-left .Colors span:hover{
+    transition:width 0.3s ease;
+}
+
+.information-booth{
+    width: 90%;
+    height: auto;
+    margin: 2rem auto;
+
+}
+
+.information-booth .sale{
+    width: 10rem;
+    height: 3rem;
+    margin: 1px auto;
+    background-color: #c8bebe;
+    float: left;
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+}
+
+.information-booth .sale span{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    margin: 7% auto;
+}
+
+
+.information-booth .sale .sale-darsad{
+    width: 3rem;
+    height: auto;
+    background: red;
+    text-align: center;
+    border-radius: 30px;
+    margin: 8% auto;
+}
+
+.information-booth .information-mahsol .infor{
+    width: 90%;
+    height: auto;
+    background: #ffffff;
+    margin: 10px auto;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 4px black;
+    padding: 1px 0 1px 0;
+
+}
+.information-booth .End-price{
+    width: 90%;
+    height: auto;
+    background: rebeccapurple;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.information-booth h3{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin: 10px 3rem;
+}
+
+.information-booth h2{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 9rem 10px 0;
+}
+
+.information-booth a{
+    width: 80%;
+    height: auto;
+    background-color: #FF9F1C;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1rem 4rem;
+}
+
+.Description{
+    background-color: #ffbf69;
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+    border-radius: 0 20px 0px 20px;
+    padding: 20px;
+    box-shadow: 0 0 4px #000000a1;
+}
+
+.Description h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 1rem auto;
+}
+
+.Description h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 1rem auto;
+
+}
+
+.Comments{
+    height: 25rem;
+    overflow: hidden;
+}
+
+.Comments-Customer{
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.Comments .Comment { 
+    width: 90%;
+    height: 7rem;
+    margin: 1rem auto;
+    background-color: #CBF3F0;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #000000a1;
+    display: flex;
+    flex-wrap: nowrap;
+
+}
+
+.Comments .Comment .Comment-right{
+    width: 30%;
+    height: auto;
+    margin: 0 auto;
+    float: right;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.Comments .Comment .Comment-right .Profile-img{
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 1rem auto;
+}
+
+.Comments .Comment .Comment-right .Profile-img img{
+    width: 100%;
+}
+
+.Comments .Comment .Comment-right h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2rem auto 2rem auto;
+}
+
+
+.Comments .Comment .Comment-center{
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.Comments .Comment .Comment-center img{
+    width: 5%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+
+.Comments .Comment .Comment-left{
+    width: 20%;
+    height: auto;
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}   
+
+.Comments .Comment .Comment-left .Like-Comments{
+    width: 50%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+.Comments .Comment .Comment-left .Like-Comments img{
+    width: 40%;
+    height: auto;
+    margin: 0 auto -1rem auto;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+.Comments .Comment .Comment-left .Like-Comments h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.i-Comments{
+    font-size: 100px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
