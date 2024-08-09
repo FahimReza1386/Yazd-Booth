@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block header %}
+        <div class="header text-white" style="background-color: #2EC4B6; padding: 10px 5px; height: 7rem;">
+      <i class='bx bx-menu'></i>
+      <div class="header-right">
+            <img src="{% static 'img/logo-asli.png'%}" alt="">
+        </div>
+        <div class="header-left">
+            <img src="{% static 'img/user_person_profile_avatar_icon_190943.png'%}" alt="">
+            <img src="{% static 'img/shoppingbasket3_114870.png'%}" alt="">
+        </div>
+        <!-- <img style="width: 11%; display: none;"  class="img-mnu" src="{% static 'img/icon-menubar.ico" alt=""> -->
+        <div class="search">
+            <img src="{% static 'img/search.png'%}">
+            <input type="text" name="search" class="inp-search" placeholder="محصول دلخواهتان را جستجو کنید ...">
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    Hi Contact
+{% endblock %}

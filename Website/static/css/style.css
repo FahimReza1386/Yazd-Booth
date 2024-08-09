@@ -629,13 +629,13 @@
     width: 90%;
     height: 40px;
     margin: 10px 20px 30px 0;
-    text-align: right;
-    font-size: 20px;
+    text-align: center;
+    font-size: 18px;
     outline: none;
     background: none;
     border: none;
     border-bottom: 2px #1108085e solid;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .Login-right .login span{
