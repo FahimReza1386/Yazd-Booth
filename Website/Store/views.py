@@ -44,22 +44,31 @@ def Logout(request):
 def Register(request):
     if request.method == "POST":
         forms = RegisterForm(request.POST)
-        if forms.is_valid():
-            forms.save()
-            if forms.data['password1'] == forms.data['password2']:
-                username = forms.data['username']
-                password2 = forms.data['password2']
-                user = authenticate(username=username, password=password2)
-                if user is not None :
-                    login(request, user)
-                    messages.success(request , 'حساب کاربری شما با موفقیت ساخته شد ...')
-                    return redirect('/')
+        users = User.objects.filter(username=forms.data['username']).all()
+        if len(users)<=0:
+            if forms.is_valid():
+                if forms.data['password1'] == forms.data['password2']:
+                    forms.save()
+                    username = forms.data['username']
+                    password2 = forms.data['password2']
+                    user = authenticate(username=username, password=password2)
+                    if user is not None:
+                        login(request, user)
+                        messages.success(request , 'حساب کاربری شما با موفقیت ساخته شد ...')
+                        return redirect('/')
+                else:
+                    messages.success(request , "اختطار ! رمز عبور ها با یکدیگر متفاوت اند ..")
+                    return redirect('Register')
             else:
-                messages.success(request , "اختطار ! رمز عبور ها با یکدیگر متفاوت اند ..")
-                return redirect('Register')
+                messages.error(request, 'فیلد های وارد شده اشتباه میباشد ...')
+                return redirect('/')
         else:
-            messages.error(request , 'فیلد های وارد شده اشتباه میباشد ...')
-            return redirect('/')
+            messages.success(request, 'نام کاربری وجود دارد ...')
+            return redirect('Register')
+
     else:
         forms = RegisterForm()
         return render(request=request , template_name='Register.html' , context={'form':forms})
+
+
+
