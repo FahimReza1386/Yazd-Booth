@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="WellCome">
+        <h2>به بخش ثبت نام خوش آمدید</h2>
+    </div>
+
+
+    <div class="Register">
+
+            <div class="Register-left">
+                  <form method="POST" action="{% url 'Register' %}">
+                                            {% csrf_token %}
+
+                <div class="inputs">
+                    {% for item in form %}
+                        {{ item }}
+                    {% endfor %}
+
+                </div>
+                <button type="submit">ثبت نام</button>
+              </form>
+            </div>
+        <div class="Register-right">
+            <div class="Register-Information">
+                <i class='bx bxs-square'></i>
+                <p>لطفا نام و نام خانوادگی خود را به فارسی وارد کنید.</p>
+                <i class='bx bxs-square'></i>
+                <p>حداقل رمز عبور ۸ کارکتر باشد .</p>
+                <i class='bx bxs-square'></i>
+                <p>رمز عبور باید شامل حروف بزرگ و کوچک باشد .</p>
+                <i class='bx bxs-square'></i>
+                <p>رمز عبور باید شامل اعداد باشد .</p>
+
+
+                <div class="login">
+                    <span>ثبت نام کردید ؟</span><a href="#">ورود به حساب</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

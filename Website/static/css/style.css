@@ -551,13 +551,13 @@
     width: 90%;
     height: 40px;
     margin: 10px 20px 30px 0;
-    text-align: right;
     font-size: 20px;
     outline: none;
     background: none;
     border: none;
     border-bottom: 2px #1108085e solid;
     font-weight: bold;
+    text-align: center;
 
 }
 
@@ -570,14 +570,8 @@
     border-radius: 5px;
     font-size: 20px;
     font-weight: bold;
+    padding: 10px;
 }
-
-
-
-
-
-
-
 
 /* --------------------------------Login Page------------------------------------- */
 
@@ -1846,3 +1840,6 @@ label{
     transition: all 0.3s ease;
 }
 
+#id_usable_password{
+    display: none;
+}
