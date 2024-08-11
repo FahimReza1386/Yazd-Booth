@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+
+<h2 class="sub-Title">فیلتر بندی :</h2>
+
+<div class="Filter">
+    <div class="Filter-right">
+        <div class="inputs">
+            <label> از :</label>
+            <input type="text" placeholder="0 تومان">
+            <label> تا :</label>
+            <input type="text" placeholder="0 تومان">
+        </div>
+    </div>
+    <div class="Filter-left">
+        <label>بر اساس‌ :</label>
+        <div class="dropdown" style="width: 50%; margin-right: 10%;">
+            <button type="button" class="btn btn-light ml-5 dropdown-toggle Filter-DropDown" data-bs-toggle="dropdown">
+                مرتبط بودن
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item active" href="#">پربازدید ترین</a></li>
+                <li><a class="dropdown-item" href="#">جدید ترین</a></li>
+                <li><a class="dropdown-item" href="#">پرفروش ترین</a></li>
+                <li><a class="dropdown-item" href="#">ارزان ترین</a></li>
+                <li><a class="dropdown-item" href="#">گران ترین</a></li>
+                <li><a class="dropdown-item" href="#">سریع ترین ارسال</a></li>
+                <li><a class="dropdown-item" href="#">پیشنهاد خریداران</a></li>
+            </ul>
+        </div>
+        <div style="width: 40%;margin: 3% 20% 0 0;">
+            <input type="checkbox" style="width: 25px;background-color: #CBF3F0;">
+            <h1>کالای موجود</h1>
+        </div>
+        <div style="width: 40%;margin-top:3%; ">
+            <input type="checkbox" style="width: 25px;background-color: #CBF3F0;">
+            <h1>عکس دار</h1>
+        </div>
+    </div>
+</div>
+<div class="Mahsolat">
+    {% for item in product %}
+    <div class="Mahsol Mahsolat-Page">
+        <div class="Layer">
+            <h6>{{ item.name }}</h6>
+            {% if item.is_sale %}
+            <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
+                <h2><span class="Pardakht"></span> تومان</h2>
+            {% else %}
+
+            {% endif %}
+            <a href="'product/{{ item.id }}'" class="btn product-btn"
+                style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
+        </div>
+        <img src="{{ item.image.url }}" alt="image-product">
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+{% for item in product %}
+<script src="{% static 'js/jquery.js' %}"></script>
+
+<script>
+    var sale = {{ item.Discountـpercentage }} / 100;
+    var Gheimat = {{ item.price }};
+    var pardakht = 0;
+
+    function Hesab() {
+        pardakht = Gheimat - (Gheimat * sale); // محاسبه مقدار پرداخت
+        var pardakht2 = pardakht.toLocaleString();
+        $('.Pardakht').html(pardakht2);
+    }
+
+
+    Hesab(); // فراخوانی تابع
+</script>
+
+
+{% endfor %}
+
+{% endblock %}

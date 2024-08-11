@@ -1078,6 +1078,7 @@ label{
     border-radius:5px;
     position: relative;
     overflow: hidden;
+    max-width: 300px;
 }
 
 .Mahsol.Mahsolat-Page img{

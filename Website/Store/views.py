@@ -78,3 +78,14 @@ def Product_Page(request , id):
     comment=Comments.objects.filter(product=id).all()
 
     return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment})
+
+
+def Category_Page(request , foo):
+    foo1 = foo.replace('-' , ' ')
+    try:
+        category = Category.objects.get(name=foo1)
+        product=Product.objects.filter(category=category)
+        return render(request=request , template_name='Category.html' , context={'product':product})
+    except:
+        messages.success(request , "این دسته بندی وجود ندارد ...")
+        return redirect('/')
