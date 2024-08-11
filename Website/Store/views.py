@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
+
 # Create your views here.
 
 
@@ -72,3 +73,8 @@ def Register(request):
 
 
 
+def Product_Page(request , id):
+    product= Product.objects.filter(id=id).all()
+    comment=Comments.objects.filter(product=id).all()
+
+    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment})

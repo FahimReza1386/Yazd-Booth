@@ -934,13 +934,16 @@
     flex-wrap: wrap;
 }
 .feature-right{
-    width: 45%;
+    width: 100%;
     margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .feature-left{
     width: 45%;
     margin: 10px;
+    display: none;
 }
 
 .featur{ 

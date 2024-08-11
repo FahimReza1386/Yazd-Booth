@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    {% for item in product %}
+
+    <div class="Product-Information">
+        <div class="Product-right">
+            <img id="large-image" src="{{ item.image.url }}" alt="img-Product" class="img-product active">
+            <div class="smal-images" style="width: 100%;">
+                <img src="{{ item.image.url }}" onclick="changeImage('{% static 'img/firoze.jpg' %}')" alt="Smal-Image 1"
+                    class="img-product">
+
+            </div>
+            <i class='bx bx-down-arrow-alt Owner-i'></i>
+        </div>
+
+
+        <div class="Product-left">
+            <h1>{{ item.name }}</h1>
+            <h5>رنگ های محصول انتخابی :</h5>
+
+            <div class="Colors">
+
+
+                <span class="clr"></span>
+                {% for item in item.colors.all %}
+                        <span class="clr" style="background-color: {{ item.name }}"></span>
+                {% endfor %}
+            </div>
+
+            <div class="information-booth">
+                {% if item.is_sale %}
+                <div class="sale">
+                    <span>تخفیف</span>
+                    <div class="sale-darsad">{{ item.Discountـpercentage }}</div>
+                </div>
+                {% else %}
+                <div class="sale" style="display: none">
+                    <span>تخفیف</span>
+                    <div class="sale-darsad">{{ item.Discountـpercentage }}</div>
+                </div>
+                {% endif %}
+                <div class="information-mahsol" style="padding: 10px;">
+                    <div class="address infor">
+                        <h3>آدرس خرید حضوری :</h3>
+                        <h2>{{ item.booth.address }}</h2>
+                    </div>
+                    <div class="history infor">
+                        <h3>سابقه در یزد غرفه :</h3>
+                        <h2>۲ سال</h2>
+                    </div>
+                    <div class="category infor">
+                        <h3>در دسته بندی :</h3>
+                        <h2>{{ item.category }}</h2>
+                    </div>
+                    <div class="price infor">
+                        <h3>قیمت :</h3>
+                        <h2 class="Gheimat" style="text-decoration: line-through">{{ item.price|intcomma }} تومان</h2>
+                    </div>
+                </div>
+                <hr />
+                <div class="End-Price">
+                    <h3>قابل پرداخت :</h3>
+                     <h2><span class="Pardakht"></span> تومان</h2>
+                </div>
+                <a href="#" class="btn">افزودن به سبد خرید</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+    <div class="Description">
+        <h1>معرفی :</h1>
+        <h2>{{ item.description }}</h2>
+    </div>
+
+
+    <div class="features-Product">
+        <h1 class="sub-Title" style="margin-top: 3rem !important;">مشخصات محصول :</h1>
+        <hr style="margin: 10px 17%;"/>
+        <div class="features">
+            <div class="feature-right">
+
+                {% for item in item.features.all %}
+
+                    <div class="featur">
+                        <h3>{{ item.name }}</h3>
+                        <h2>{{ item.description }}</h2>
+                    </div>
+
+                {% endfor %}
+                </div>
+
+
+<!--            <hr style="width: 1px; background-color: black;"/>-->
+<!--            <div class="feature-left">-->
+<!--                <div class="featur">-->
+<!--                    <h3>ضد اب بودن</h1>-->
+<!--                    <h2>۵ کیلوگرم</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+
+        </div>
+    </div>
+    <!-- <hr style="margin: 10px 17%;"/> -->
+
+
+    <div class="Comments-Customer">
+        <h1 class="sub-Title">نظرات مشتریان :</h1>
+        <hr style="margin: 10px;opacity: 1;"/>
+
+        <div class="Comments">
+            {% for item in comment %}
+
+            <div class="Comment">
+
+                <div class="Comment-right">
+                    <div class="Profile-img">
+                        <img src="{{ item.image.url }}" alt="Profile-img">
+                    </div>
+                    <h1>{{ item.user }} :</h1>
+                </div>
+                <div class="Comment-center">
+                    {{ item.star }}
+                    <p>{{ item.description }}</p>
+
+                </div>
+                <div class="Comment-left">
+                    <div class="Like-Comments">
+                        <img src="{% static 'img/like.png' %}" alt="like-img">
+                        <br/>
+                        <h1>{{ item.likes }}</h1>
+                    </div>
+                    <div class="Like-Comments">
+                        <img src="{% static 'img/dislike_health_medical_icon_206864.png' %}" alt="dislike-img">
+                        <br/>
+                        <h1>{{ item.dislikes }}</h1>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            </div>
+        <i class='bx bx-down-arrow-alt i-Comments'></i>
+    </div>
+
+
+
+ <h1 class="sub-Title" style="margin: 1rem 14rem;">محصولات مشابه :</h1>
+ <hr style="margin: 10px 10rem;opacity: 1;"/>
+ <div class="Cards row Mahsolat-Moshabe">
+    <div class="card col-md-2 mahsol" >
+        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">22,000,000</h4>
+            <div style="float: left;">                  <a href="Home.html" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+        </div>
+      </div>
+    <div class="card col-md-2 mahsol">
+        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">22,000,000</h4>
+            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+        </div>
+      </div>
+    <div class="card col-md-2 mahsol">
+        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">22,000,000</h4>
+            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+        </div>
+      </div>
+    <div class="card col-md-2 mahsol">
+        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">22,000,000</h4>
+            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+        </div>
+      </div>
+
+
+    <div class="card col-md-2 mahsol">
+        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">22,000,000</h4>
+            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+        </div>
+      </div>
+    <div class="card col-md-2 mahsol">
+        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title " style="text-decoration: line-through;">22,000,000</h4>
+          <!-- <span class="card-title ">22,000,000</span> -->
+            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+        </div>
+      </div>
+
+</div>
+
+{% endfor %}
+
+
+{% endblock %}
+
+{% block js %}
+    {% for item in product %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script>
+
+        function changeImage(imageSrc) {
+            const largeImage = $('#large-image')
+            largeImage.attr('src', imageSrc);
+        }
+
+
+        const color = $('.Colors').children('span');
+        let activeBox = null; // متغیر برای ذخیره المان فعال
+
+        color.on('click', function () {
+            // اگر المان قبلی وجود دارد، به حالت اولیه برمی‌گردد
+            if (activeBox) {
+                $(activeBox).css({
+                    width: '30px',
+                    height: '30px'
+                });
+            }
+
+            // تنظیم المان کلیک شده به اندازه جدید
+            $(this).css({
+                width: '40px',
+                height: '40px'
+            });
+
+            // ذخیره المان فعلی به عنوان activeBox
+            activeBox = this;
+        });
+
+        $('.img-product').click(function () {
+            $(".active").removeClass('active');
+            $(this).addClass('active');
+        })
+
+        let isExpanded = false; // وضعیت اولیه
+
+        $('.Owner-i').click(function () {
+            if (isExpanded) {
+                $('.smal-images').css({
+                    height: '6rem' // یا ارتفاع اولیه مورد نظر خود را مشخص کنید
+                });
+            } else {
+                $('.smal-images').css({
+                    height: 'auto'
+                });
+            }
+            isExpanded = !isExpanded; // تغییر وضعیت
+        });
+
+        let AllComments = false; // وضعیت اولیه
+
+        $('.i-Comments').click(function () {
+            if (AllComments) {
+                $('.Comments').css({
+                    height: '25rem', // یا ارتفاع اولیه مورد نظر خود را مشخص کنید
+                });
+                $('.i-Comments').css({
+                    transform: 'rotateY(-180deg)'
+                });
+            } else {
+                $('.Comments').css({
+                    height: 'auto',
+                });
+                $('.i-Comments').css({
+                    transform: 'rotateX(180deg)'
+                });
+            }
+            AllComments = !AllComments; // تغییر وضعیت
+        });
+
+        var sale = {{ item.Discountـpercentage }} / 100 ;
+        var Gheimat = {{ item.price }};
+        var pardakht = 0;
+
+        function Hesab() {
+            pardakht = Gheimat - (Gheimat * sale); // محاسبه مقدار پرداخت
+            var pardakht2 = pardakht.toLocaleString();
+            $('.Pardakht').html(pardakht2);
+        }
+
+
+        Hesab(); // فراخوانی تابع
+
+    </script>
+
+{% endfor %}
+{% endblock %}
+

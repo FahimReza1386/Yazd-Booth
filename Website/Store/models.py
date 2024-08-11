@@ -17,6 +17,15 @@ class Color(models.Model):
     def __str__(self):
         return self.name
 
+class Feature(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(null=True)
+
+    def __str__(self):
+        return self.name
+
+
+
 class Booth(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
@@ -45,6 +54,7 @@ class Customer(models.Model):
         return f'{self.last_name} {self.meli_code}'
 
 
+
 class Product(models.Model):
     name = models.CharField(max_length=100 , null=False , blank=False)
     price = models.DecimalField(max_digits=12, decimal_places=0 , default=0 , null=False , blank=False)
@@ -53,13 +63,14 @@ class Product(models.Model):
     image = models.ImageField(upload_to='uploads/product/')
     is_active = models.BooleanField(default=False)
     is_sale = models.BooleanField(default=False)
-    sale_price = models.IntegerField(default=0)
+    Discountـpercentage = models.IntegerField(default=0)
     colors = models.ManyToManyField(Color) # انتخاب به صورت چند به چند
+    features = models.ManyToManyField(Feature , default='')
+    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , blank=False , default='' )
 
 
     def __str__(self):
         return self.name
-
 
 
 
@@ -80,7 +91,7 @@ class Order(models.Model):
 
 class Comments(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE , default=None , null=False , blank=False)
-    user = models.ForeignKey(Customer, on_delete=models.CASCADE , default=None , null=False , blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE , default=None , null=False , blank=False)
     image = models.ImageField(upload_to='uploads/comments/')
     star = models.IntegerField(default=0)
     description = models.TextField(max_length=300 , default='' , null=True , blank=True)
@@ -90,3 +101,5 @@ class Comments(models.Model):
 
     def __str__(self):
         return f'{self.product}'
+
+
