@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -76,7 +76,6 @@ def Register(request):
 def Product_Page(request , id):
     product= Product.objects.filter(id=id).all()
     comment=Comments.objects.filter(product=id).all()
-
     return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment})
 
 

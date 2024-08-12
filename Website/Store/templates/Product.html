@@ -128,7 +128,17 @@
                     <h1>{{ item.user }} :</h1>
                 </div>
                 <div class="Comment-center">
-                    {{ item.star }}
+<!--                        <img src="{% static 'img/star.ico' %}" alt="star-img">-->
+
+<!--                        <div class="star">-->
+<!--                            <h1 class="star-txt">{{ item.star }}</h1>-->
+<!--                            <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px;">-->
+<!--                        </div>-->
+
+                      {% for star in stars %}
+                            <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px;">
+                        {% endfor %}
+
                     <p>{{ item.description }}</p>
 
                 </div>
@@ -288,6 +298,7 @@
         var Gheimat = {{ item.price }};
         var pardakht = 0;
 
+
         function Hesab() {
             pardakht = Gheimat - (Gheimat * sale); // محاسبه مقدار پرداخت
             var pardakht2 = pardakht.toLocaleString();
@@ -299,6 +310,7 @@
 
     </script>
 
-{% endfor %}
+
+ {% endfor %}
 {% endblock %}
 

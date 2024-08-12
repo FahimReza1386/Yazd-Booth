@@ -34,13 +34,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: #ffffff;  margin-right: 20px;">ثبت غرفه</a>
                 </li>
-                <li class="nav-item">
                     {% if user.is_authenticated %}
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'Logout' %}" style="color: #ffffff;  margin-right: 20px;">خروج</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Cart_Summary' %}" style="color: #ffffff;  margin-right: 20px;">سبد خرید</a>
+                </li>
                     {% else %}
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'Login' %}" style="color: #ffffff;  margin-right: 20px;">ورود / ثبت نام</a>
                     {% endif %}
                 </li>
+
             </ul>
             <h5 style="font-weight: bold; color: #ffffff !important; margin-top: 10px;">YazdBooth</h5>
         </div>
