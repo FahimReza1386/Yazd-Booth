@@ -66,7 +66,7 @@
                     <h3>قابل پرداخت :</h3>
                      <h2><span class="Pardakht"></span> تومان</h2>
                 </div>
-                <a href="#" class="btn">افزودن به سبد خرید</a>
+                <button class="btn" value="{{ item.id }}" id="add-cart"  onclick="" >افزودن به سبد خرید</button>
 
             </div>
         </div>
@@ -97,16 +97,6 @@
 
                 {% endfor %}
                 </div>
-
-
-<!--            <hr style="width: 1px; background-color: black;"/>-->
-<!--            <div class="feature-left">-->
-<!--                <div class="featur">-->
-<!--                    <h3>ضد اب بودن</h1>-->
-<!--                    <h2>۵ کیلوگرم</h2>-->
-<!--                </div>-->
-<!--            </div>-->
-
         </div>
     </div>
     <!-- <hr style="margin: 10px 17%;"/> -->
@@ -135,23 +125,24 @@
 <!--                            <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px;">-->
 <!--                        </div>-->
 
-                      {% for star in stars %}
-                            <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px;">
-                        {% endfor %}
+                    <span >{{ item.star }}</span>
+                    <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px; margin-bottom: 20px">
 
                     <p>{{ item.description }}</p>
 
                 </div>
                 <div class="Comment-left">
                     <div class="Like-Comments">
-                        <img src="{% static 'img/like.png' %}" alt="like-img">
+<!--                        <img src="{% static 'img/like.png' %}" alt="like-img" class="likes-commnet">-->
+                        <i class='bx bxs-like like-icon' style="margin: 0px 0 0 40px !important;"></i>
                         <br/>
-                        <h1>{{ item.likes }}</h1>
+                        <h1 style="margin: 30px auto !important;">{{ item.likes }}</h1>
                     </div>
                     <div class="Like-Comments">
-                        <img src="{% static 'img/dislike_health_medical_icon_206864.png' %}" alt="dislike-img">
+<!--                        <img src="{% static 'img/dislike_health_medical_icon_206864.png' %}" alt="dislike-img" class="dislike-comment">-->
+                        <i class='bx bxs-dislike like-icon' style="margin: 0px 0 0 40px !important;"></i>
                         <br/>
-                        <h1>{{ item.dislikes }}</h1>
+                        <h1 style="margin: 30px auto !important;">{{ item.dislikes }}</h1>
                     </div>
                 </div>
             </div>
@@ -308,6 +299,33 @@
 
         Hesab(); // فراخوانی تابع
 
+        $('.like-icon').click(function (){
+            $(this).css({
+             color:'red'
+        })
+
+    })
+    </script>
+    <script>
+        $(document).on('click' , '#add-cart' , function (e){
+            e.preventDefault();
+            $.ajax({
+                type : 'POST',
+                url : "{% url 'Cart_Add' %}",
+                data: {
+                    product_id:$('#add-cart').val(),
+                    csrfmiddlewaretoken : '{{ csrf_token }}',
+                    action : 'post',
+                },
+                success : function (json){
+                    location.reload()
+
+                },
+                error : function (err , errmsg , xhr){
+                    console.log(err)
+                },
+            });
+        });
     </script>
 
 

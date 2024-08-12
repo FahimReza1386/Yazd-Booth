@@ -41,6 +41,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'Cart_Summary' %}" style="color: #ffffff;  margin-right: 20px;">سبد خرید</a>
                 </li>
+                <li class="nav-item">
+                    <span class="Circle" style="background-color: #ffffff ; margin-top: 0.5rem ; text-align: center ; padding: 5px auto">{{ cart|length }}</span>
+                </li>
                     {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'Login' %}" style="color: #ffffff;  margin-right: 20px;">ورود / ثبت نام</a>
