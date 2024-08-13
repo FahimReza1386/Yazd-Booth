@@ -855,7 +855,8 @@
     }
 
     .Mahsol-Sabad{
-        height: 30rem;
+        height: auto;
+        flex-wrap: wrap;
     }
 
     .Mahsol-Information h1{

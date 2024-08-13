@@ -1,20 +1,155 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load humanize %}
 
 {% block content %}
 
-        <div class="WellCome-Sabad">
-        <h2>سلام به سبد خریدتون خوش آمدید</h2>
+
+<!--        <div class="WellCome-Sabad">-->
+<!--        <h2>سلام به سبد خریدتون خوش آمدید</h2>-->
+<!--    </div>-->
+
+<!--    <div class="Empty">-->
+<!--        <img src="{% static 'img/sabad.jpeg' %}" alt="basketEmpty">-->
+<!--        <h2>درحال حاظر سبد خرید شما خالی میباشد ..</h2>-->
+<!--        <a href="{% url 'Home' %}" class="btn">برو به محصولات</a>-->
+<!--    </div>-->
+<!--<br/>-->
+<!--<br/>-->
+<!--<br/>-->
+
+
+
+
+    <h2 class="sub-Title">سبد خرید شما ...</h2>
+    <hr style="color: black; opacity: 1;"/>
+
+
+    <div class="Shipping-Cart">
+
+        <div class="Mahsolat-Sabad">
+                            {% for item in products %}
+
+            <div class="Mahsol-Sabad" style="margin-top: 20px;">
+
+                <div class="Mahsol-img">
+                    <img src="{{ item.image.url }}" alt="">
+                </div>
+                <div class="Mahsol-Information" style="padding: 10px;">
+                    <h1>{{ item.name }}</h1>
+                    <div>
+                        <div class="Mahsol-Caption Caption-1" style="margin: 20px 10px; ">
+                            {% for item in item.colors.all %}
+                            <span class="Circle" style="background-color: {{ item.name }};"></span>
+                            {% endfor %}
+                        </div>
+                        <div class="Mahsol-Caption" style="margin: -10px 25px;">
+                            <img src="{% static 'img/ecommerce.png' %}" alt="فروشگاه ایکون">
+                            <h2 style="margin-top: 10%;">{{ item.booth }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="Quantity">
+                        <i class='bx bx-plus' style="cursor: pointer"></i>
+                            {% for key , value in  quants.items %}
+                            {% if key == item.id|slugify %}
+                                <h3 class="Quantity-Number">{{ value }}</h3>
+                            {% endif %}
+                            {% endfor %}
+                        <i class='bx bx-minus' style="cursor: pointer"></i>
+                    </div>
+                        <h6>مبلغ پرداختی :</h6>
+                        <h5><span class="Pardakht"></span> تومان</h5>
+                </div>
+                                        <button type="submit" style="margin: 25rem auto 2rem auto;width: 15% !important;height: 15% !important;background-color:
+                                         #FF9F1C;border: none;font-weight: bold;" class=" btn btn-dark update-cart" value="{{ item.id }}">Update</button>
+
+            </div>
+                        {% endfor %}
+     </div>
+        <div class="SideBar">
+                                {% for item in products %}
+
+            <h2>بخش پرداخت و ادامه روند خرید :</h2>
+            <hr style="opacity: 1;"/>
+            <h2>محصولات انتخابی شما :</h2>
+
+            <div class="images-Shipping">
+                <img src="{{ item.image.url }}" alt="تصویر محصول انتخاب شده .">
+            </div>
+            <hr style="opacity: 1;"/>
+            <h4> کل‌ :</h4><h5>{{ item.price|intcomma }} تومان</h5>
+            <h4>سود شما :</h4><h5><span class="sood"></span> تومان</h5>
+            <hr/>
+            <h4>مبلغ قابل پرداخت :</h4><h5><span class="Pardakht"></span> تومان</h5>
+
+            <a href="#" class="btn btn-dark">ادامه روند پرداخت</a>
+                                {% endfor %}
+
+        </div>
+
     </div>
 
-    <div class="Empty">
-        <img src="{% static 'img/sabad.jpeg' %}" alt="basketEmpty">
-        <h2>درحال حاظر سبد خرید شما خالی میباشد ..</h2>
-        <a href="{% url 'Home' %}" class="btn">برو به محصولات</a>
-    </div>
-<br/>
-<br/>
-<br/>
+{% endblock %}
 
+{% block js %}
+{% for item in products %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script>
+        var qty = parseInt($('.Quantity-Number').html())
+        $(document).on('click' , '.bx-plus' , function (){
+            qty = qty + 1
+            $('.Quantity-Number').html(qty)
+        })
+        $(document).on('click' , '.bx-minus' , function (){
+            qty = qty - 1
+            $('.Quantity-Number').html(qty)
+            })
+
+        var sale = {{ item.Discountـpercentage }} / 100 ;
+        var Gheimat = {{ item.price }} ;
+        var pardakht = 0 ;
+        var sood = 0;
+
+
+        function Hesab() {
+            pardakht = (Gheimat - (Gheimat * sale)) * qty; // محاسبه مقدار پرداخت
+            console.log(pardakht)
+            var pardakht2 = pardakht.toLocaleString();
+            $('.Pardakht').html(pardakht2);
+            sood = Gheimat - pardakht
+            var sood2=sood.toLocaleString()
+            $('.sood').html(sood2);
+            console.log(sood)
+        }
+
+
+        Hesab(); // فراخوانی تابع
+    </script>
+
+<script>
+    $(document).on('click' , '.update-cart' , function (e){
+        e.preventDefault();
+        $.ajax({
+            type:'POST',
+            url: "{% url 'Cart_Update' %}" ,
+            data:{
+                product_id: $(this).val(),
+                product_qty: parseInt($('.Quantity-Number').html()),
+                csrfmiddlewaretoken : '{{ csrf_token }}',
+                action:'post'
+            },
+            success : function (json){
+                location.reload()
+
+            },
+            error:function(err , errmsg , xhr){
+                console.log(err)
+            }
+
+        })
+    })
+</script>
+
+{% endfor %}
 {% endblock %}

@@ -314,6 +314,7 @@
                 url : "{% url 'Cart_Add' %}",
                 data: {
                     product_id:$('#add-cart').val(),
+                    product_qty:1,
                     csrfmiddlewaretoken : '{{ csrf_token }}',
                     action : 'post',
                 },
