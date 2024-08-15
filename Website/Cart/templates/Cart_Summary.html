@@ -35,12 +35,12 @@
                 <div class="Mahsol-img">
                     <img src="{{ item.image.url }}" alt="">
                 </div>
-                <div class="Mahsol-Information" style="padding: 10px;">
+                <div class="Mahsol-Information" style="padding: 10px;width: 60%;">
                     <h1>{{ item.name }}</h1>
                     <div>
                         <div class="Mahsol-Caption Caption-1" style="margin: 20px 10px; ">
                             {% for item in item.colors.all %}
-                            <span class="Circle" style="background-color: {{ item.name }};"></span>
+                            <span class="Circle" style="background-color:{{ item.name }};"></span>
                             {% endfor %}
                         </div>
                         <div class="Mahsol-Caption" style="margin: -10px 25px;">
@@ -52,9 +52,9 @@
                     <div class="Quantity">
                         <i class='bx bx-plus' style="cursor: pointer"></i>
                             {% for key , value in  quants.items %}
-                            {% if key == item.id|slugify %}
-                                <h3 class="Quantity-Number qty">{{ value }}</h3>
-                            {% endif %}
+                                {% if key == item.id|slugify %}
+                                    <h3 class="Quantity-Number qty">{{ value }}</h3>
+                                {% endif %}
                             {% endfor %}
                         <i class='bx bx-minus' style="cursor: pointer"></i>
                     </div>
@@ -143,6 +143,27 @@
         })
         }
     })
+</script>
+
+<script>
+
+var qty = parseInt($('.Quantity-Number').html())
+        console.log(qty)
+$(document).on('click' , '.bx-plus' , function (){
+        if(qty < 10 ){
+            qty = qty + 1
+            $('.Quantity-Number').html(qty)
+        }
+
+})
+
+$(document).on('click' , '.bx-minus' , function (){
+        if(qty > 0 ){
+            qty = qty - 1
+            $('.Quantity-Number').html(qty)
+        }
+    })
+
 </script>
 
 {% endfor %}

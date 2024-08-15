@@ -48,22 +48,6 @@ Hesab();
 
 
 
-var qty = parseInt($('.Quantity-Number').html())
-$(document).on('click' , '.bx-plus' , function (){
-        if(qty < 10 ){
-            qty = qty + 1
-            $('.Quantity-Number').html(qty)
-        }
-
-})
-
-$(document).on('click' , '.bx-minus' , function (){
-        if(qty > 0 ){
-            qty = qty - 1
-            $('.Quantity-Number').html(qty)
-        }
-    })
-
 
 
 

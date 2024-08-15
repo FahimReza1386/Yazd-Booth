@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm , UpdateUserProfile
+from .forms import RegisterForm , UpdateUserProfile ,UpdatePasswordForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -48,21 +48,25 @@ def Register(request):
         users = User.objects.filter(username=forms.data['username']).all()
         if len(users)<=0:
             if forms.is_valid():
-                if forms.data['password1'] == forms.data['password2']:
-                    forms.save()
-                    username = forms.data['username']
-                    password2 = forms.data['password2']
-                    user = authenticate(username=username, password=password2)
-                    if user is not None:
-                        login(request, user)
-                        messages.success(request , 'حساب کاربری شما با موفقیت ساخته شد ...')
-                        return redirect('/')
-                else:
-                    messages.success(request , "اختطار ! رمز عبور ها با یکدیگر متفاوت اند ..")
-                    return redirect('Register')
+                forms.save()
+                username = forms.data['username']
+                password2 = forms.data['password2']
+                user = authenticate(username=username, password=password2)
+                if user is not None:
+                    login(request, user)
+                    messages.success(request , 'حساب کاربری شما با موفقیت ساخته شد ...')
+                    return redirect('/')
             else:
-                messages.error(request, 'فیلد های وارد شده اشتباه میباشد ...')
-                return redirect('/')
+                for error in list(forms.errors.values()):
+                    if error[0] == 'The password is too similar to the username.':
+                        messages.error(request, "رمز عبور بسیار شبیه به نام کاربری میباشد ...")
+                        return redirect('Register')
+                    elif error[0] == 'This password is too short. It must contain at least 8 characters.':
+                        messages.error(request, "طول رمز عبور کوتاه میباشد . حداقل ۸ کاراکتر ...")
+                        return redirect('Register')
+                    elif error[0] == 'The two password fields didn’t match.':
+                        messages.error(request, "رمز عبور و تکرار رمز عبور باید یکسان باشد ...")
+                        return redirect('Register')
         else:
             messages.success(request, 'نام کاربری وجود دارد ...')
             return redirect('Register')
@@ -86,6 +90,39 @@ def Update_User(request):
         return render(request=request , template_name='Update_Profile.html' , context={'user_form':user_form})
     else:
         messages.success(request , 'لطفا قبل از تغییر پروفایل با حساب کاربری خود وارد شوید ...')
+        return redirect('/')
+
+
+
+def Update_Password(request):
+    if request.user.is_authenticated:
+        current_user=User.objects.get(id=request.user.id)
+
+        if request.method == 'POST':
+            form = UpdatePasswordForm(current_user , request.POST)
+
+            if form.is_valid():
+                form.save()
+                messages.success(request , 'رمزعبور شما با موفقیت تغییر کرد ...')
+                login(request, current_user)
+                return redirect('Login')
+
+            else:
+                for error in list(form.errors.values()):
+                    if error[0] == 'The password is too similar to the username.':
+                        messages.error(request , "رمز عبور بسیار شبیه به نام کاربری میباشد ...")
+                        return redirect('Update_Password')
+                    elif error[0] == 'This password is too short. It must contain at least 8 characters.':
+                        messages.error(request, "طول رمز عبور کوتاه میباشد . حداقل ۸ کاراکتر ...")
+                        return redirect('Update_Password')
+                    elif error[0] == 'The two password fields didn’t match.':
+                        messages.error(request, "رمز عبور و تکرار رمز عبور باید یکسان باشد ...")
+                        return redirect('Update_Password')
+        else:
+            form =UpdatePasswordForm(current_user)
+            return render(request=request , template_name='Update_Password.html' , context={'form':form})
+    else:
+        messages.error(request , 'لطفا قبل از درخواست تغییر رمز ورود با حساب خود وارد شوید ...')
         return redirect('/')
 
 def Product_Page(request , id):
