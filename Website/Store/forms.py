@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm , UserChangeForm
 from django import forms
 
 class RegisterForm(UserCreationForm):
@@ -15,3 +15,17 @@ class RegisterForm(UserCreationForm):
         fields = ('first_name', 'last_name', 'username' , 'password1' , 'password2')
 
 
+
+
+class UpdateUserProfile(UserChangeForm):
+    # Password is Stuff
+    password = None
+    # Get Other Field
+    username = forms.CharField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'نام کاربری :'}), max_length=100)
+    first_name = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'نام :'}), max_length=100)
+    last_name = forms.CharField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'نام خانوادگی :'}), max_length=100)
+    email = forms.EmailField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'نام خانوادگی :'}), max_length=100)
+
+    class Meta:
+        model = User
+        fields = ('username' , 'first_name' , 'last_name' , 'email')

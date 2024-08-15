@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm , UpdateUserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -71,6 +71,22 @@ def Register(request):
         forms = RegisterForm()
         return render(request=request , template_name='Register.html' , context={'form':forms})
 
+
+def Update_User(request):
+    if request.user.is_authenticated:
+        current_user = User.objects.get(id=request.user.id)
+        user_form = UpdateUserProfile(request.POST or None, instance=current_user)
+
+        if user_form.is_valid():
+            user_form.save()
+            login(request, current_user)
+            messages.success(request , 'تبریک ! پروفایل شما با موفقیت تغییر کرد ...')
+            return redirect('/')
+
+        return render(request=request , template_name='Update_Profile.html' , context={'user_form':user_form})
+    else:
+        messages.success(request , 'لطفا قبل از تغییر پروفایل با حساب کاربری خود وارد شوید ...')
+        return redirect('/')
 
 def Product_Page(request , id):
     product= Product.objects.filter(id=id).all()

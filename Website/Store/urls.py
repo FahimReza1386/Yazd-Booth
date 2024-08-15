@@ -8,6 +8,7 @@ urlpatterns = [
     path('login/', views.Login, name='Login'),
     path('logout/', views.Logout, name='Logout'),
     path('register/', views.Register, name='Register'),
+    path('update_user/', views.Update_User, name='Update_User'),
     path('product/<int:id>', views.Product_Page, name='Product'),
     path('category/<str:foo>', views.Category_Page, name='Category'),
 ]
