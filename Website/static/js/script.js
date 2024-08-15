@@ -73,12 +73,8 @@ Hesab();
 
 
 
-        //
-// var qty = parseInt($('.Quantity-Number').html());
-// var price = parseFloat($('.price-product').html()); // قیمت محصول را از HTML بگیرید
-// var totalPrice = qty * price;
-// $('.Pardakht').html(totalPrice); // قیمت کل را در عنصر total-price نمایش دهید
-// console.log(qty);
+
+
 //
 // $(document).on('click', '.bx-plus', function() {
 //     if (qty < 10) {

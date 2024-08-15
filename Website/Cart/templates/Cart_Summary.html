@@ -49,11 +49,11 @@
                         </div>
                     </div>
 
-                    <div class="Quantity">
-                        <i class='bx bx-plus' style="cursor: pointer"></i>
+                    <div class="Quantity" data-id="{{ item.id }}">
+                        <i class='bx bx-plus' style="cursor: pointer" data-id="{{ item.id }}"></i>
                             {% for key , value in  quants.items %}
                                 {% if key == item.id|slugify %}
-                                    <h3 class="Quantity-Number qty">{{ value }}</h3>
+                                    <h3 class="qty">{{ value }}</h3>
                                 {% endif %}
                             {% endfor %}
                         <i class='bx bx-minus' style="cursor: pointer"></i>
@@ -95,14 +95,13 @@
 {% endblock %}
 
 {% block js %}
-{% for item in products %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
 
 <script>
     $(document).on('click' , '.update-cart' , function (e){
         e.preventDefault();
-        var qty = parseInt($('.Quantity-Number').html()) ;
+        var qty = parseInt($('.qty').html()) ;
         if (qty <= 0 ){
             $.ajax({
             type:'POST',
@@ -128,7 +127,7 @@
             url: "{% url 'Cart_Update' %}" ,
             data:{
                 product_id: $(this).val(),
-                product_qty: parseInt($('.Quantity-Number').html()),
+                product_qty: parseInt($('.qty').html()),
                 csrfmiddlewaretoken : '{{ csrf_token }}',
                 action:'post'
             },
@@ -147,24 +146,41 @@
 
 <script>
 
-var qty = parseInt($('.Quantity-Number').html())
-        console.log(qty)
-$(document).on('click' , '.bx-plus' , function (){
-        if(qty < 10 ){
-            qty = qty + 1
-            $('.Quantity-Number').html(qty)
+$(document).ready(function() {
+
+    // افزایش تعداد محصول
+    $('.bx-plus').click(function() {
+        var price = parseFloat($('.product').data('price')); // قیمت محصول را از HTML بگیرید
+        var discount = parseFloat($('.product').data('discount')) / 100; // قیمت محصول را از HTML بگیرید
+        var qtyElement = $(this).siblings('.qty');
+        var qty = parseInt(qtyElement.text()); // گرفتن مقدار فعلی        console.log(qty)
+        var totalPrice = (price - (price * discount)) * qty;
+        var total = totalPrice.toLocaleString()
+
+        if(qty < 10){
+            qty=qty + 1
+            qtyElement.text(qty)
         }
+        $('.Pardakht').html(total); // قیمت کل را در عنصر total-price نمایش دهید
+    });
 
-})
+    $('.bx-minus').click(function() {
+        var price = parseFloat($('.product').data('price')); // قیمت محصول را از HTML بگیرید
+        var discount = parseFloat($('.product').data('discount')) / 100; // قیمت محصول را از HTML بگیرید
+        var qtyElement = $(this).siblings('.qty');
+        var qty = parseInt(qtyElement.text()); // گرفتن مقدار فعلی        console.log(qty)
+        var totalPrice = (price - (price * discount)) * qty;
+        var total = totalPrice.toLocaleString()
 
-$(document).on('click' , '.bx-minus' , function (){
-        if(qty > 0 ){
+        if (qty >= 1){
             qty = qty - 1
-            $('.Quantity-Number').html(qty)
+            qtyElement.text(qty); // به روز کردن مقدار
         }
-    })
+        $('.Pardakht').html(total); // قیمت کل را در عنصر total-price نمایش دهید
+
+    });
+});
 
 </script>
 
-{% endfor %}
 {% endblock %}
