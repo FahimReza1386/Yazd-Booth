@@ -53,7 +53,7 @@
                         <i class='bx bx-plus' style="cursor: pointer" data-id="{{ item.id }}"></i>
                             {% for key , value in  quants.items %}
                                 {% if key == item.id|slugify %}
-                                    <h3 class="qty">{{ value }}</h3>
+                                    <h3 class="Quantity-Number qty">{{ value }}</h3>
                                 {% endif %}
                             {% endfor %}
                         <i class='bx bx-minus' style="cursor: pointer"></i>
@@ -98,88 +98,90 @@
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
 
-<script>
-    $(document).on('click' , '.update-cart' , function (e){
-        e.preventDefault();
-        var qty = parseInt($('.qty').html()) ;
-        if (qty <= 0 ){
-            $.ajax({
-            type:'POST',
-            url: "{% url 'Cart_Delete' %}" ,
-            data:{
-                product_id: $(this).val(),
-                csrfmiddlewaretoken : '{{ csrf_token }}',
-                action:'post'
-            },
-            success : function (json){
-                location.reload()
-
-            },
-            error:function(err , errmsg , xhr){
-                console.log(err)
-            }
-
-        })
-        }
-        else {
-            $.ajax({
-            type:'POST',
-            url: "{% url 'Cart_Update' %}" ,
-            data:{
-                product_id: $(this).val(),
-                product_qty: parseInt($('.qty').html()),
-                csrfmiddlewaretoken : '{{ csrf_token }}',
-                action:'post'
-            },
-            success : function (json){
-                location.reload()
-
-            },
-            error:function(err , errmsg , xhr){
-                console.log(err)
-            }
-
-        })
-        }
-    })
-</script>
 
 <script>
+    $(document).on('click', '.update-cart', function(e) {
+    e.preventDefault();
 
-$(document).ready(function() {
+    // پیدا کردن مقدار مربوط به `.Quantity-Number` برای محصول خاص
+    var productDiv = $(this).closest('.product');
+    var qty = parseInt(productDiv.find('.Quantity-Number').html());
 
-    // افزایش تعداد محصول
-    $('.bx-plus').click(function() {
-        var price = parseFloat($('.product').data('price')); // قیمت محصول را از HTML بگیرید
-        var discount = parseFloat($('.product').data('discount')) / 100; // قیمت محصول را از HTML بگیرید
-        var qtyElement = $(this).siblings('.qty');
-        var qty = parseInt(qtyElement.text()); // گرفتن مقدار فعلی        console.log(qty)
-        var totalPrice = (price - (price * discount)) * qty;
-        var total = totalPrice.toLocaleString()
-
-        if(qty < 10){
-            qty=qty + 1
-            qtyElement.text(qty)
-        }
-        $('.Pardakht').html(total); // قیمت کل را در عنصر total-price نمایش دهید
-    });
-
-    $('.bx-minus').click(function() {
-        var price = parseFloat($('.product').data('price')); // قیمت محصول را از HTML بگیرید
-        var discount = parseFloat($('.product').data('discount')) / 100; // قیمت محصول را از HTML بگیرید
-        var qtyElement = $(this).siblings('.qty');
-        var qty = parseInt(qtyElement.text()); // گرفتن مقدار فعلی        console.log(qty)
-        var totalPrice = (price - (price * discount)) * qty;
-        var total = totalPrice.toLocaleString()
-
-        if (qty >= 1){
-            qty = qty - 1
-            qtyElement.text(qty); // به روز کردن مقدار
-        }
-        $('.Pardakht').html(total); // قیمت کل را در عنصر total-price نمایش دهید
-
-    });
+    if (qty <= 0) {
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'Cart_Delete' %}",
+            data: {
+                product_id: $(this).val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(json) {
+                location.reload();
+            },
+            error: function(err, errmsg, xhr) {
+                console.log(err);
+            }
+        });
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'Cart_Update' %}",
+            data: {
+                product_id: $(this).val(),
+                product_qty: qty, // استفاده از qty مربوط به محصول خاص
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(json) {
+                location.reload();
+            },
+            error: function(err, errmsg, xhr) {
+                console.log(err);
+            }
+        });
+    }
 });
+
+
+    $(document).on('click', '.bx-plus', function() {
+    // پیدا کردن مقدار مربوط به `.Quantity-Number` در کنار دکمه‌ای که کلیک شده است
+    var qtyElement = $(this).siblings('.Quantity-Number');
+    var qty = parseInt(qtyElement.html());
+
+    if (qty < 10) {
+        qty = qty + 1;
+        qtyElement.html(qty);
+        updateTotal(this)
+    }
+});
+
+$(document).on('click', '.bx-minus', function() {
+    // پیدا کردن مقدار مربوط به `.Quantity-Number` در کنار دکمه‌ای که کلیک شده است
+    var qtyElement = $(this).siblings('.Quantity-Number');
+    var qty = parseInt(qtyElement.html());
+
+    if (qty > 0) {
+        qty = qty - 1;
+        qtyElement.html(qty);
+        updateTotal(this)
+    }
+
+
+});
+
+    function updateTotal(element) {
+        var productDiv = $(element).closest('.product');
+        var price = parseFloat(productDiv.data('price'));
+        var discount = parseFloat(productDiv.data('discount'));
+        var quantity = parseInt(productDiv.find('.Quantity-Number').text());
+
+        // محاسبه مبلغ پرداختی با احتساب تخفیف
+        var discountedPrice = price - (price * (discount / 100));
+        var totalPrice = discountedPrice * quantity;
+
+        productDiv.find('.Pardakht').html(totalPrice.toLocaleString());
+    }
 
 </script>
 
