@@ -736,7 +736,8 @@
 
 .Mahsol-img{
     width: 40%;
-    margin: 2rem auto;
+    margin: 4rem auto;
+    padding: 0 30px 0 0;
 }
 
 .Mahsol-img img{

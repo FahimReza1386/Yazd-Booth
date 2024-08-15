@@ -30,7 +30,7 @@
         <div class="Mahsolat-Sabad">
                             {% for item in products %}
 
-            <div class="Mahsol-Sabad" style="margin-top: 20px;">
+            <div class="Mahsol-Sabad product" data-id="{{ item.id }}" data-price ='{{ item.price }}' data-discount="{{ item.Discountـpercentage }}" style="margin-top: 20px;">
 
                 <div class="Mahsol-img">
                     <img src="{{ item.image.url }}" alt="">
@@ -53,7 +53,7 @@
                         <i class='bx bx-plus' style="cursor: pointer"></i>
                             {% for key , value in  quants.items %}
                             {% if key == item.id|slugify %}
-                                <h3 class="Quantity-Number">{{ value }}</h3>
+                                <h3 class="Quantity-Number qty">{{ value }}</h3>
                             {% endif %}
                             {% endfor %}
                         <i class='bx bx-minus' style="cursor: pointer"></i>
@@ -61,30 +61,32 @@
                         <h6>مبلغ پرداختی :</h6>
                         <h5><span class="Pardakht"></span> تومان</h5>
                 </div>
-                                        <button type="submit" style="margin: 25rem auto 2rem auto;width: 15% !important;height: 15% !important;background-color:
-                                         #FF9F1C;border: none;font-weight: bold;" class=" btn btn-dark update-cart" value="{{ item.id }}">Update</button>
+                <button type="submit" style="margin: 25rem auto 2rem auto;width: 15% !important;height: 15% !important;background-color:
+                   #FF9F1C;border: none;font-weight: bold;margin: 25rem auto 2rem 1rem;" class=" btn btn-dark update-cart" value="{{ item.id }}">Update</button>
 
             </div>
                         {% endfor %}
      </div>
         <div class="SideBar">
-                                {% for item in products %}
 
             <h2>بخش پرداخت و ادامه روند خرید :</h2>
             <hr style="opacity: 1;"/>
             <h2>محصولات انتخابی شما :</h2>
-
             <div class="images-Shipping">
+                {% for item in products %}
                 <img src="{{ item.image.url }}" alt="تصویر محصول انتخاب شده .">
+                {% endfor %}
+
             </div>
             <hr style="opacity: 1;"/>
-            <h4> کل‌ :</h4><h5>{{ item.price|intcomma }} تومان</h5>
+            <h4> کل‌ :</h4>
+                <h5><span class="total">{{ total|intcomma }}</span> تومان</h5>
             <h4>سود شما :</h4><h5><span class="sood"></span> تومان</h5>
             <hr/>
-            <h4>مبلغ قابل پرداخت :</h4><h5><span class="Pardakht"></span> تومان</h5>
+            <h4>مبلغ قابل پرداخت :</h4><h5><span class="Col-Pardakht"></span> تومان</h5>
 
             <a href="#" class="btn btn-dark">ادامه روند پرداخت</a>
-                                {% endfor %}
+
 
         </div>
 
@@ -95,42 +97,33 @@
 {% block js %}
 {% for item in products %}
     <script src="{% static 'js/jquery.js' %}"></script>
-    <script>
-        var qty = parseInt($('.Quantity-Number').html())
-        $(document).on('click' , '.bx-plus' , function (){
-            qty = qty + 1
-            $('.Quantity-Number').html(qty)
-        })
-        $(document).on('click' , '.bx-minus' , function (){
-            qty = qty - 1
-            $('.Quantity-Number').html(qty)
-            })
-
-        var sale = {{ item.Discountـpercentage }} / 100 ;
-        var Gheimat = {{ item.price }} ;
-        var pardakht = 0 ;
-        var sood = 0;
-
-
-        function Hesab() {
-            pardakht = (Gheimat - (Gheimat * sale)) * qty; // محاسبه مقدار پرداخت
-            console.log(pardakht)
-            var pardakht2 = pardakht.toLocaleString();
-            $('.Pardakht').html(pardakht2);
-            sood = Gheimat - pardakht
-            var sood2=sood.toLocaleString()
-            $('.sood').html(sood2);
-            console.log(sood)
-        }
-
-
-        Hesab(); // فراخوانی تابع
-    </script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 <script>
     $(document).on('click' , '.update-cart' , function (e){
         e.preventDefault();
-        $.ajax({
+        var qty = parseInt($('.Quantity-Number').html()) ;
+        if (qty <= 0 ){
+            $.ajax({
+            type:'POST',
+            url: "{% url 'Cart_Delete' %}" ,
+            data:{
+                product_id: $(this).val(),
+                csrfmiddlewaretoken : '{{ csrf_token }}',
+                action:'post'
+            },
+            success : function (json){
+                location.reload()
+
+            },
+            error:function(err , errmsg , xhr){
+                console.log(err)
+            }
+
+        })
+        }
+        else {
+            $.ajax({
             type:'POST',
             url: "{% url 'Cart_Update' %}" ,
             data:{
@@ -148,6 +141,7 @@
             }
 
         })
+        }
     })
 </script>
 

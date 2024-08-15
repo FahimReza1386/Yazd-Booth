@@ -91,7 +91,7 @@
       <div class="card col-md-2 Category" >
           <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
           <div class="card-body" style="text-align: center;">
-            <a href="#" class="Onvan-Category">{{ item.name }}</a>
+            <a href="{% url 'Category' '{{ item.name }}'  %}" class="Onvan-Category">{{ item.name }}</a>
           </div>
         </div>
         {% endfor %}
@@ -126,5 +126,6 @@
         })
 
     })
+
 </script>
 {% endblock %}

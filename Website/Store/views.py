@@ -72,7 +72,6 @@ def Register(request):
         return render(request=request , template_name='Register.html' , context={'form':forms})
 
 
-
 def Product_Page(request , id):
     product= Product.objects.filter(id=id).all()
     comment=Comments.objects.filter(product=id).all()
