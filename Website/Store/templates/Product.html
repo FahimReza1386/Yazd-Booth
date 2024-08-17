@@ -23,9 +23,6 @@
             <h5>رنگ های محصول انتخابی :</h5>
 
             <div class="Colors">
-
-
-                <span class="clr"></span>
                 {% for item in item.colors.all %}
                         <span class="clr" style="background-color: {{ item.name }}"></span>
                 {% endfor %}

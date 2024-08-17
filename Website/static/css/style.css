@@ -1306,10 +1306,12 @@ label{
     margin: 10px;
 }
 
-.PanelBody-right .PanelMenu h1{
+.PanelBody-right .PanelMenu a{
     font-size: 20px;
     font-weight: 500;
-    margin: 25px 2rem; 
+    margin: 25px 2rem;
+    text-decoration: none;
+    color: black;
 }
 
 
@@ -1855,4 +1857,17 @@ label{
     font-weight: 500;
     margin: 0 auto;
 
+}
+
+.Change-password{
+    width: 40%;
+    background-color: #ffa11e !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding-top: 10px !important;
+    margin: 1% 55% 4% 0%;
+    height: 50px;
+    border-radius: 5px !important;
+    font-family: 'Vazir', sans-serif !important;
 }

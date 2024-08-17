@@ -1,0 +1,369 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+    {% for item in profile %}
+
+        {% if item.role == 'Customer' %}
+
+                  <div class="Panel-Header">
+                <div class="Panel-right">
+                  <div class="img">
+                    <img src="{{ item.image.url }}" alt="">
+                  </div>
+                  <h1>{{ item.user.first_name }} {{ item.user.last_name }}</h1>
+                </div>
+                <div class="Panel-left">
+                  <a href="{% url 'Cart_Summary' %}"><img src="{% static 'img/basket2.png' %}" alt="basket-icon"></a>
+                </div>
+              </div>
+
+
+              <div class="Panel-Body">
+                <div class="PanelBody-right">
+                  <h1>{{ item.user.first_name }} جان به پنل خودت خوش آمدی!</h1>
+
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/bagMoney.png' %}" alt="bagMoney-icon">
+                      <h1>کیف پول:</h1>
+                    </div>
+                    <a>0 تومان</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                  <hr />
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/tasks_113292.png' %}" alt="task-icon">
+                    </div>
+                    <a>سفارشات</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+                  </div>
+
+
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
+                    </div>
+                    <a>تاریخچه خرید</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/like.png' %}" alt="Like-icon">
+                    </div>
+                    <a>غرفه های لایک شده</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/ecommerce.png' %}" alt="Booth-icon">
+                    </div>
+                    <a>افتتاح غرفه</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                        <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/circle_down_arrow_arrow_icon_253893.png' %}" alt="Save-icon">
+                    </div>
+                    <a href="{% url 'Update_Password' %}">ویراش امنیتی حساب کاربری</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="{% url 'Update_Password' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/open_icon-icons.com_72303.png' %}" alt="Change-icon">
+                    </div>
+                    <a href="{% url 'Update_User' %}">ویرایش اطلاعات</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="{% url 'Update_User' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                  <hr />
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/power_icon-icons.com_72293.png' %}" alt="Logout-icon">
+                    </div>
+                    <a href="{% url 'Logout' %}">خروج</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="{% url 'Logout' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <div class="PanelBody-left">
+                  <h1 class="sub-Title">پروفایل کاربری :</h1>
+                  <hr />
+                  <div style="display: flex;justify-content: center;">
+                    <div class="Profile">
+                      <img src="{{ item.image.url }}" alt="Profile-img">
+                    </div>
+                  </div>
+                  <div class="Information">
+                    <h1 class="Question">نام :</h1>
+                    <span class="answer">{{ item.user.first_name }}</span>
+                    <h1 class="Question">نام خانوادگی :</h1>
+                    <span class="answer">{{ item.user.last_name }}</span>
+                    <h1 class="Question">نقش :</h1>
+                      <span class="answer">مشتری</span>
+                    <h1 class="Question">تاریخ عضویت :</h1>
+                    <span class="answer">۱۴۰۳/۰۲/۱۰</span>
+                    <h1 class="Question">ایمیل :</h1>
+                    <span class="answer">{{ item.user.email }}</span>
+                  </div>
+
+                  <a href="#" class="btn">تغییر اطلاعات</a>
+                </div>
+              </div>
+              </div>
+
+        {% elif item.role == 'Boother' %}
+
+    <h1 class="sub-Title" style="margin: 2rem 2rem;">پروفایل کاربری :</h1>
+    <div class="Profile-Owner">
+        <div class="Profile">
+            <div class="Owner-img">
+                <img src="{{ item.image.url }}" alt="Profile-Owner-img">
+            </div>
+        </div>
+        <div class="Owner-Information">
+            <div class="Owner-Information-right">
+                <h1 class='Qus'>نام :</h1>
+                <h1 class='ans'>{{ item.user.first_name }}</h1>
+                <h1 class='Qus'>نام خانوادگی :</h1>
+                <h1 class='ans'>{{ item.user.last_name }}</h1>
+                <h1 class='Qus'>نقش :</h1>
+                <h1 class='ans'>غرفه دار</h1>
+            </div>
+            <div class="Owner-Information-left">
+                <h1 class='Qus'>اخرین بروزرسانی کاربر :</h1>
+                <h1 class='ans'>{{ date_modified }}</h1>
+                <h1 class='Qus'>ایمیل :</h1>
+                <h1 class='ans'>{{ item.user.email }}</h1>
+                <h1 class='Qus'>تاریخ ثبت غرفه :</h1>
+                <h1 class='ans'>{{ create_booth }}</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h1 class="sub-Title" style="margin: 4rem 2rem;">غرفه های ثبت شده :</h1>
+    <div class="Booth-Sabt">
+        <div class="Owner-img">
+            <img src="{{ item.booth.image.url }}" alt="Profile-Owner-img">
+        </div>
+        <div class="Booth-Sabt-Information">
+            <h1 class="Qus">نام غرفه :</h1>
+            <h1 class="ans">{{ item.booth.name}}</h1>
+            <h1 class="Qus">تعداد محصولات غرفه :</h1>
+            <h1 class="ans">{{ item.booth.products.count }} محصول</h1>
+            <h1 class="Qus">تعداد محصولات فروش رفته :</h1>
+            <h1 class="ans">{{ item.booth.products.count }} محصول</h1>
+            <h1 class="Qus">درصد محبوبیت :</h1>
+            <h1 class="ans">35%</h1>
+        </div>
+    </div>
+
+
+    <h1 class="sub-Title">محصولات غرفه :</h1>
+<!--    <div class="Mahsolat-OwnerBooth">-->
+        <div class="Mahsolat">
+            {% for item in item.booth.products.all %}
+         <div class="Mahsol Mahsolat-Page">
+                <div class="Layer">
+                    <h6>{{ item.name }}</h6>
+                    {% if item.is_sale %}
+                    <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
+                        <h2><span class="Pardakht"></span> تومان</h2>
+                    {% else %}
+
+                    {% endif %}
+                    <a href="/product/{{ item.id }}" class="btn product-btn"
+                        style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
+                </div>
+                <img src="{{ item.image.url }}" alt="image-product">
+            </div>
+            {% endfor %}
+            </div>
+
+
+<!--    </div>-->
+    <i class='bx bx-down-arrow-alt Owner-i'></i>
+
+
+    <div class="Panel-Body">
+              <div class="Panel-Body">
+                <div class="PanelBody-right">
+                  <h1>{{ item.user.first_name }} جان به پنل خودت خوش آمدی!</h1>
+
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/bagMoney.png' %}" alt="bagMoney-icon">
+                      <h1>کیف پول:</h1>
+                    </div>
+                    <a>0 تومان</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                  <hr />
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/tasks_113292.png' %}" alt="task-icon">
+                    </div>
+                    <a>سفارشات</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+                  </div>
+
+
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
+                    </div>
+                    <a>تاریخچه خرید</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/like.png' %}" alt="Like-icon">
+                    </div>
+                    <a>غرفه های لایک شده</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/ecommerce.png' %}" alt="Booth-icon">
+                    </div>
+                    <a>افتتاح غرفه</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
+                        <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/circle_down_arrow_arrow_icon_253893.png' %}" alt="Save-icon">
+                    </div>
+                    <a href="{% url 'Update_Password' %}">ویراش امنیتی حساب کاربری</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="{% url 'Update_Password' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/open_icon-icons.com_72303.png' %}" alt="Change-icon">
+                    </div>
+                    <a href="{% url 'Update_User' %}">ویرایش اطلاعات</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="{% url 'Update_User' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                  <hr />
+
+                  <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/power_icon-icons.com_72293.png' %}" alt="Logout-icon">
+                    </div>
+                    <a href="{% url 'Logout' %}">خروج</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="{% url 'Logout' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                </div>
+          <div class="PanelBody-left">
+            <div class="Poshtiban-Top">
+                <div class="Poshtiban-img">
+                    <img src="{% static 'img/user_person_profile_avatar_icon_190943.png' %}" alt="Picture-Poshtiban">
+                </div>
+                <h1>ادمین یزد غرفه</h1>
+                <h3>ایا مشکلی شما را درگیر کرده است ؟ مطرح کنید تا حلش کنیم</h3>
+            </div>
+            <div class="Poshtiban-Body">
+                <textarea class="Poshtiban-inp"></textarea>
+                <a href="#" class="btn">ارسال پیام</a>
+            </div>
+          </div>
+
+
+
+    </div>
+
+
+        {% endif %}
+
+{% endfor %}
+{% endblock %}
+
+
+
+{% block js %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+
+        let isExpanded = false; // وضعیت را پیگیری می‌کند
+
+        $('.Owner-i').on('click', function () {
+            if (!isExpanded) {
+                $('.Mahsolat').css('height', 'auto'); // باز کردن
+            } else {
+                $('.Mahsolat').css('height', '25rem'); // برگرداندن به حالت پیش‌فرض
+            }
+            isExpanded = !isExpanded; // تغییر وضعیت
+        });
+
+    </script>
+
+{% endblock %}

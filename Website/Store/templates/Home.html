@@ -9,8 +9,10 @@
             <img src="{% static 'img/logo-asli.png'%}" alt="">
         </div>
         <div class="header-left">
-            <img src="{% static 'img/user_person_profile_avatar_icon_190943.png'%}" alt="">
-            <img src="{% static 'img/shoppingbasket3_114870.png'%}" alt="">
+            <a href="{% url 'Customer_UserPanel' %}"><img src="{% static 'img/user_person_profile_avatar_icon_190943.png'%}" style="cursor: pointer"  alt=""></a>
+            <a href="{% url 'Cart_Summary' %}"><img src="{% static 'img/shoppingbasket3_114870.png'%}" alt="">
+                                <span class="Circle" style="background-color: #ffffff ; margin-top: 0.5rem ; text-align: center ; padding: 5px auto">{{ cart|length }}</span>
+</a>
         </div>
         <!-- <img style="width: 11%; display: none;"  class="img-mnu" src="{% static 'img/icon-menubar.ico" alt=""> -->
         <div class="search">
@@ -74,7 +76,7 @@
               <h4 class="Booth-p">{{ item.description }}</h4>
 <!--                <img id="Booth-heart" src="{% static 'img/like.png'%}" alt="">-->
                 <i class='bx bxs-like like-icon'></i>
-                <span class="number-heart">{{ item.likes }}</span>
+                <span class="number-heart">{{ item.likes.count }}</span>
               </div>
             </div>
         {% endfor %}
@@ -128,4 +130,5 @@
     })
 
 </script>
+
 {% endblock %}

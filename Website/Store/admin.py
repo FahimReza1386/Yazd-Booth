@@ -13,6 +13,7 @@ admin.site.register(Order)
 admin.site.register(Color)
 admin.site.register(Feature)
 admin.site.register(Profile)
+admin.site.register(Like)
 
 
 # Mix profile info and user info

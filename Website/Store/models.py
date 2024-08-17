@@ -26,19 +26,29 @@ class Feature(models.Model):
         return self.name
 
 
-
 class Booth(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='uploads/booth/' , null=True)
-    likes = models.IntegerField(default=0)
-    Owner=models.ForeignKey(User,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='uploads/booth/', null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_created = models.DateTimeField(auto_now_add=True , null=True)
 
+    def like_count(self):
+        return self.likes.count()
+
+    def products(self):
+        return self.product_set.all()
 
     def __str__(self):
         return self.name
 
+class Like(models.Model):
+    booth = models.ForeignKey(Booth, related_name='likes', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('booth', 'user')
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=100 , null=False , blank=False)
@@ -67,7 +77,8 @@ class Product(models.Model):
     Discountـpercentage = models.IntegerField(default=0)
     colors = models.ManyToManyField(Color) # انتخاب به صورت چند به چند
     features = models.ManyToManyField(Feature , default='')
-    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , blank=False , default='' )
+    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , related_name='products' , blank=False , default='' )
+
 
 
     def __str__(self):
@@ -116,6 +127,8 @@ class Profile(models.Model):
     zipcode = models.CharField(max_length=200 , blank=True)
     country = models.CharField(max_length=200 , blank=True)
     melicode = models.CharField(max_length=200 , blank=True)
+    role = models.CharField(max_length=200 , blank=True , default='Customer')
+    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , blank=False , default=None)
 
     def __str__(self):
         return self.user.username

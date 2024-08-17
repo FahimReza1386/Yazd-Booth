@@ -6,7 +6,8 @@ from .forms import RegisterForm , UpdateUserProfile ,UpdatePasswordForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-
+import jdatetime
+from datetime import datetime
 
 # Create your views here.
 
@@ -140,3 +141,32 @@ def Category_Page(request , foo):
     except:
         messages.success(request , "این دسته بندی وجود ندارد ...")
         return redirect('/')
+
+
+def Customer_UserPanel(request):
+    if request.user.is_authenticated:
+        profile = Profile.objects.filter(user=request.user)
+        for item in profile:
+
+            # تاریخ ساخت غرفه
+            if item.booth.date_created:
+                g_date = item.booth.date_created  # تاریخ میلادی از نمونه
+                j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
+                formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+
+            # تغییر در حساب کاربری
+            if item.date_modified:
+                h_date = item.date_modified # تاریخ میلادی از نمونه
+                f_date = jdatetime.datetime.fromgregorian(datetime=h_date)  # تبدیل به تاریخ شمسی
+
+                # فرمت تاریخ شمسی
+                # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
+
+                formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
+
+
+
+    else:
+        messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
+        return redirect('Login')
+    return render(request=request , template_name='Customer_UserPanel.html' , context={'profile':profile , 'create_booth':formatted_date , 'date_modified':formatted_date2 })
