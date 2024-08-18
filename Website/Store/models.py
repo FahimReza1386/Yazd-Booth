@@ -133,6 +133,7 @@ class Profile(models.Model):
     melicode = models.CharField(max_length=200 , blank=True)
     role = models.CharField(max_length=200 , blank=True , default='Customer')
     booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , blank=False , default=None)
+    old_cart = models.CharField(max_length=200 , null=True , blank=True)
 
     def __str__(self):
         return self.user.username

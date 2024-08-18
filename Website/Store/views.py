@@ -9,8 +9,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 import jdatetime
 from django.db.models import Count , Q
+from    Cart.cart import Cart
 from datetime import datetime
-
+import json
 # Create your views here.
 
 
@@ -109,6 +110,22 @@ def Login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+
+            # Do Some Shipping cart stuff
+            current_user = Profile.objects.get(user__id=request.user.id)
+            # Get Their Saved Cart From DataBase
+            saved_cart = current_user.old_cart
+            #Convert DataBase String To Python Dictionary
+            if saved_cart:
+                # Convert To Dictionary Using Json
+                convert_cart = json.loads(saved_cart)
+                # Add the loaded cart dictionary to our session
+                # Get the cart
+                cart = Cart(request)
+                # Loop Thru The Cart And Add The Items From The DataBase
+                for key,value in convert_cart.items():
+                    cart.db_add(product=key , quantity=value)
+
             messages.success(request, 'تبریک ! با موفقیت به حساب خود وارد شدید ...')
             return redirect('/')
         else:
