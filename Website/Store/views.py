@@ -246,10 +246,14 @@ def Customer_UserPanel(request):
         for item in profile:
 
             # تاریخ ساخت غرفه
-            if item.booth.date_created:
-                g_date = item.booth.date_created  # تاریخ میلادی از نمونه
-                j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
-                formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+            if item.role == 'Boother':
+                if item.booth.date_created:
+                    g_date = item.booth.date_created  # تاریخ میلادی از نمونه
+                    j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
+                    formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+
+            else:
+                formatted_date = 'None'
 
             # تغییر در حساب کاربری
             if item.date_modified:
