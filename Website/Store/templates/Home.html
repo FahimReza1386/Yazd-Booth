@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load custom_filters %}
 
 {% block header %}
         <div class="header text-white" style="background-color: #2EC4B6; padding: 10px 5px; height: 7rem;">
@@ -120,7 +121,7 @@
       <div class="card col-md-2 Category" >
           <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
           <div class="card-body" style="text-align: center;">
-            <a href="{% url 'Category' '{{ item.name }}'  %}" class="Onvan-Category">{{ item.name }}</a>
+            <a href="category/{{ item.name|replace:' ,-' }}  " class="Onvan-Category">{{ item.name }}</a>
           </div>
         </div>
         {% endfor %}

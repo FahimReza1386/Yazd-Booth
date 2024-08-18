@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 import jdatetime
 from django.db.models import Count , Q
-from    Cart.cart import Cart
+from Cart.cart import Cart
 from datetime import datetime
 import json
 # Create your views here.
@@ -19,6 +19,11 @@ def Home(request):
     products=Product.objects.all()
     booth= Booth.objects.all()
     category = Category.objects.all()
+    cat = ''
+    for item in category:
+        cat_replace = item.name.replace(' ' , '-')
+        cat = list(cat_replace)
+
     if request.user.is_authenticated:
         user=User.objects.get(id=request.user.id)
     else:
@@ -33,9 +38,9 @@ def Home(request):
             messages.error(request , 'متاسفانه محصولی با این نام وحود ندارد ...')
             return render(request=request , template_name='Home.html' , context={})
         else:
-            return render(request=request, template_name='Home.html',context={'Product': products, 'Booth': booth, 'category': category, 'user': user,'search': searched})
+            return render(request=request, template_name='Home.html',context={'Product': products, 'Booth': booth, 'category': category, 'user': user,'search': searched })
     else:
-        return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user})
+        return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user , 'cat_replace':cat})
 
 def Like_Booth(request):
     if request.method == 'POST':
