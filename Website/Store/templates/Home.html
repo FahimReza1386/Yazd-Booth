@@ -16,14 +16,41 @@
         </div>
         <!-- <img style="width: 11%; display: none;"  class="img-mnu" src="{% static 'img/icon-menubar.ico" alt=""> -->
         <div class="search">
-            <img src="{% static 'img/search.png'%}">
-            <input type="text" name="search" class="inp-search" placeholder="محصول دلخواهتان را جستجو کنید ...">
+             <form action="{% url 'Search' %}" method="POST" style="height: 100%">
+                 {% csrf_token %}
+                 <button style="width: 60px;background-color: #ffffff;border-radius: 5px 0 0px 5px;float: left;cursor: pointer;border: 0;"><img src="{% static 'img/search.png'%}" ></button>
+                    <input type="text" name="search" class="inp-search" placeholder="محصول دلخواهتان را جستجو کنید ...">
+                 </form>
         </div>
     </div>
 {% endblock %}
 
 
 {% block content %}
+
+{% if search %}
+
+<div class="Mahsolat">
+    {% for item in search %}
+    <div class="Mahsol Mahsolat-Page">
+        <div class="Layer">
+            <h6>{{ item.name }}</h6>
+            {% if item.is_sale %}
+            <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
+                <h2><span class="Pardakht"></span> تومان</h2>
+            {% else %}
+
+            {% endif %}
+            <a href="/product/{{ item.id }}" class="btn product-btn"
+                style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
+        </div>
+        <img src="{{ item.image.url }}" alt="image-product">
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+
 
     <div class="mt-2 p-5 text-white" style='background-color: #FFBF69 !important;'>
         <h1 class="close-tabliq">&times;</h1>
@@ -61,7 +88,6 @@
 
 
     <h2 class="sub-Title">غرفه های پر بازدید :</h2>
-
 
     <div class="Cards row">
         {% for item in Booth %}
@@ -116,6 +142,7 @@
         <h2>پشتیبانی یزد غرفه</h2>
       </div>
     </div>
+{% endif %}
       {% endblock %}
 {% block js %}
     <script src="{% static 'js/jquery.js' %}"></script>

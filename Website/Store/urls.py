@@ -15,4 +15,5 @@ urlpatterns = [
     path('product/<int:id>', views.Product_Page, name='Product'),
     path('category/<str:foo>', views.Category_Page, name='Category'),
     path('Customer_userPanel/', views.Customer_UserPanel, name='Customer_UserPanel'),
+    path('search/', views.Home, name='Search'),
 ]

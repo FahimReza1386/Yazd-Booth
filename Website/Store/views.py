@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 import jdatetime
-from django.db.models import Count
+from django.db.models import Count , Q
 from datetime import datetime
 
 # Create your views here.
@@ -22,7 +22,19 @@ def Home(request):
         user=User.objects.get(id=request.user.id)
     else:
         user=None
-    return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user})
+
+    if request.method == 'POST':
+        searched = request.POST['search']
+        # Query The Product DB Model
+        searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
+        # Test For NUll
+        if not searched:
+            messages.error(request , 'متاسفانه محصولی با این نام وحود ندارد ...')
+            return render(request=request , template_name='Home.html' , context={})
+        else:
+            return render(request=request, template_name='Home.html',context={'Product': products, 'Booth': booth, 'category': category, 'user': user,'search': searched})
+    else:
+        return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user})
 
 def Like_Booth(request):
     if request.method == 'POST':
@@ -238,11 +250,3 @@ def Customer_UserPanel(request):
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
         return redirect('Login')
     return render(request=request , template_name='Customer_UserPanel.html' , context={'profile':profile , 'create_booth':formatted_date , 'date_modified':formatted_date2 })
-
-
-
-
-def booth_popularity(request):
-
-    return render(request=request, template_name='Home.html', context={'popular':popularity_percentages})
-
