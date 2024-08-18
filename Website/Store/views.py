@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.http import JsonResponse
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -7,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 import jdatetime
+from django.db.models import Count
 from datetime import datetime
 
 # Create your views here.
@@ -16,8 +18,74 @@ def Home(request):
     products=Product.objects.all()
     booth= Booth.objects.all()
     category = Category.objects.all()
-    return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category})
+    if request.user.is_authenticated:
+        user=User.objects.get(id=request.user.id)
+    else:
+        user=None
+    return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user})
 
+def Like_Booth(request):
+    if request.method == 'POST':
+        user=User.objects.get(username=request.POST['user'])
+        booth=Booth.objects.get(id=request.POST['booth'])
+        like, created = Like.objects.get_or_create(user=user, booth=booth)
+        if created:
+            like.save()
+
+            booths = Booth.objects.annotate(likes_count=Count('likes'))
+            total_likes = sum(booth.likes_count for booth in booths)
+            if total_likes > 0:
+                for booth in booths:
+                    percentage = (booth.likes_count / total_likes) * 100
+                    booth.popularity_percentage = round(percentage, 2)  # ذخیره درصد محبوبیت
+                    booth.save()  # ذخیره تغییرات در دیتابیس
+
+                # مرتب‌سازی بر اساس درصد محبوبیت
+                popularity_percentages = sorted(
+                    [(booth.name, booth.popularity_percentage) for booth in booths],
+                    key=lambda x: x[1],
+                    reverse=True
+                )
+
+            else:
+                return JsonResponse('هیچ لایکی ثبت نشده')
+
+
+            return redirect('Home')
+        else:
+            like.delete()
+
+            booths = Booth.objects.annotate(likes_count=Count('likes'))
+            total_likes = sum(booth.likes_count for booth in booths)
+            if total_likes > 0:
+                for booth in booths:
+                    percentage = (booth.likes_count / total_likes) * 100
+                    booth.popularity_percentage = round(percentage, 2)  # ذخیره درصد محبوبیت
+                    booth.save()  # ذخیره تغییرات در دیتابیس
+
+                # مرتب‌سازی بر اساس درصد محبوبیت
+                popularity_percentages = sorted(
+                    [(booth.name, booth.popularity_percentage) for booth in booths],
+                    key=lambda x: x[1],
+                    reverse=True
+                )
+
+            else:
+                return JsonResponse('هیچ لایکی ثبت نشده')
+
+
+            return redirect('Home')
+
+    else:
+        return redirect('Home')
+
+def Check_Like(request):
+    if request.method == 'GET':
+        user = request.user
+        liked_booths = Like.objects.filter(user=user).values_list('booth_id', flat=True)
+        return JsonResponse({'likedBooths': list(liked_booths)})
+    else:
+        return redirect('Home')
 
 def About(request):
     return render(request=request , template_name='About.html' , context={})
@@ -170,3 +238,11 @@ def Customer_UserPanel(request):
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
         return redirect('Login')
     return render(request=request , template_name='Customer_UserPanel.html' , context={'profile':profile , 'create_booth':formatted_date , 'date_modified':formatted_date2 })
+
+
+
+
+def booth_popularity(request):
+
+    return render(request=request, template_name='Home.html', context={'popular':popularity_percentages})
+

@@ -33,6 +33,7 @@ class Booth(models.Model):
     image = models.ImageField(upload_to='uploads/booth/', null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True , null=True)
+    popularity_percentage = models.FloatField(default=0)  # فیلد جدید برای نگهداری درصد محبوبیت
 
     def like_count(self):
         return self.likes.count()
@@ -49,6 +50,9 @@ class Like(models.Model):
 
     class Meta:
         unique_together = ('booth', 'user')
+
+    def __str__(self):
+        return self.booth.name
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=100 , null=False , blank=False)
