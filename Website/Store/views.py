@@ -19,10 +19,6 @@ def Home(request):
     products=Product.objects.all()
     booth= Booth.objects.all()
     category = Category.objects.all()
-    cat = ''
-    for item in category:
-        cat_replace = item.name.replace(' ' , '-')
-        cat = list(cat_replace)
 
     if request.user.is_authenticated:
         user=User.objects.get(id=request.user.id)
@@ -40,7 +36,7 @@ def Home(request):
         else:
             return render(request=request, template_name='Home.html',context={'Product': products, 'Booth': booth, 'category': category, 'user': user,'search': searched })
     else:
-        return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user , 'cat_replace':cat})
+        return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user })
 
 def Like_Booth(request):
     if request.method == 'POST':
