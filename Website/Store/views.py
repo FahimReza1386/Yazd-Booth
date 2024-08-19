@@ -3,15 +3,21 @@ from django.http import JsonResponse
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm , UpdateUserProfile ,UpdatePasswordForm
+from .forms import RegisterForm , UpdateUserProfile ,UpdatePasswordForm , UpdateInfo
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 import jdatetime
 from django.db.models import Count , Q
 from Cart.cart import Cart
+from Payment.forms import ShippingForm
+from Payment.models import ShippingAddress
 from datetime import datetime
 import json
+from django.contrib import messages
+
+
+
 # Create your views here.
 
 
@@ -223,6 +229,37 @@ def Update_Password(request):
     else:
         messages.error(request , 'لطفا قبل از درخواست تغییر رمز ورود با حساب خود وارد شوید ...')
         return redirect('/')
+
+
+def Update_Info(request):
+    if request.user.is_authenticated:
+        # Get Current User
+        current_user=Profile.objects.get(user__id=request.user.id)
+        # Get Current User's Shipping Info
+        shipping_user = ShippingAddress.objects.get(user__id=request.user.id)
+        # Get original User Form
+        forms = UpdateInfo(request.POST or None , request.FILES or None , instance=current_user)
+        # Get User's Shipping Form
+        shipping_form = ShippingForm(request.POST or None , instance=shipping_user)
+
+        if forms.is_valid() or shipping_form.is_valid():
+            # Save original Form
+            forms.save()
+            # Save Shipping Form
+            shipping_form.save()
+
+            messages.success(request , 'اطلاعات شما با موفقیت تغییر کرد ...')
+            return redirect('/')
+        else:
+            for error in list(forms.errors.values()) and list(shipping_form.errors.values()):
+                messages.error(request , error)
+                return redirect('Update_Info')
+
+        return render(request=request , template_name='Update_Info.html' , context={'forms':forms , 'shipping_form' : shipping_form})
+
+    else:
+        messages.error(request , 'لطفا قبل از هر اقدامی با حساب کاربری خود وارد شوید ...')
+        return redirect('/Login')
 
 def Product_Page(request , id):
     product= Product.objects.filter(id=id).all()

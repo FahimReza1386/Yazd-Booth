@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm , UserChangeForm , SetPasswordForm
 from django import forms
+from .models import Profile
 
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'نام :'}), max_length=100)
@@ -40,3 +41,21 @@ class UpdatePasswordForm(SetPasswordForm):
     class Meta:
         model = User
         fields = ('new_password1', 'new_password2')
+
+
+
+class UpdateInfo(forms.ModelForm):
+    phone = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'تلفن همراه :'}), max_length=100)
+    address1 = forms.CharField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'ادرس اول :'}), max_length=100)
+    address2 = forms.CharField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'ادرس دوم (اختیاری) :'}), max_length=100)
+    city = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'شهر :'}))
+    country = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'کشور :'}))
+    zipcode = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'کدپستی :'}))
+    melicode = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'کدملی :'}))
+
+    class Meta:
+        model = Profile
+        fields = ('phone' , 'address1', 'address2', 'city', 'country', 'zipcode', 'melicode' , 'image')
+
+    def __str__(self):
+        return self.phone

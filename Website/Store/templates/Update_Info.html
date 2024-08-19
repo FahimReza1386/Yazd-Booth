@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+                <form method="POST" action="{% url 'Update_Info' %}" enctype="multipart/form-data">
+
+    <h1 class="sub-Title" style="text-align: center;">اطلاعات پروفایل</h1>
+                    <hr/>
+    <div class="Register" style="height: 55rem;">
+
+            <div class="Register-left" style="width: 100%;">
+                    {% csrf_token %}
+
+                <div class="inputs" style="height: auto; margin: 1rem auto;" >
+                    {% for item in forms %}
+                        {{ item }}
+                    {% endfor %}
+
+
+                </div>
+                <button type="submit" style="margin: 1rem 10%;;width: 80%;height: 7%;">ذخیره اطلاعات پروفایل</button>
+
+            </div>
+    </div>
+ <h1 class="sub-Title" style="text-align: center; margin-top: 6rem">اطلاعات حمل و نقل</h1>
+                    <hr/>
+    <div class="Register" style="height: 50rem;">
+
+            <div class="Register-left" style="width: 100%;">
+
+                <div class="inputs" style="height: auto; margin: 1rem auto;" >
+                    {% for item in shipping_form %}
+                        {{ item }}
+                    {% endfor %}
+
+                </div>
+                                        <button type="submit" style="margin: 1rem 10%;;width: 80%;height: 7%;">ذخیره اطلاعات حمل و نقل</button>
+
+            </div>
+
+    </div>
+
+</form>
+
+
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}
