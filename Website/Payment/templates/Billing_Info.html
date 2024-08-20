@@ -2,37 +2,46 @@
 {% load static %}
 {% load humanize %}
 
-
-
-
-
 {% block content %}
 
-<div class="Shipping-Cart">
+<div class="Shipping-Cart" style="float: right ;width: 60%;display: inline-block">
+        <h2 class="sub-Title" style="text-align: center;margin-top: 4rem;">اطلاعات حمل و نقل</h2>
 
                     <hr/>
-            <div class="Register" style="height: 50rem; width: 50%;margin-right: 5rem">
+        <div class="Register" style="height: 50rem; width: 80%;margin: 0 auto;">
             <div class="Register-left" style="width: 100%;">
                 <div class="inputs" style="height: auto; margin: 1rem auto;" >
-                   <div class="readonly">
-                        <form method="POST" action="{% url 'Billing_Info' %}">
-                        {% csrf_token %}
 
-                        {% for item in shipping_form %}
-                            {{ item }}
-                        {% endfor %}
+                    <input type="text" value="{{ shipping_info.shipping_full_name }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_email }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_address1 }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_address2 }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_city }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_country }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_zipcode }}" readonly>
 
 
-                        <button style="margin: 1rem 10%;width: 80%;height: 7%;">برو به صفحه پرداخت</button>
-
-                    </form>
-                   </div>
                 </div>
+            </div>
+            </div>
+            <h2 class="sub-Title" style="text-align: center;margin-top: 4rem;">اطلاعات پرداخت</h2>
 
+                    <hr/>
+    <div class="Register" style="height: 50rem; width: 80%;margin: 0 auto;">
+            <div class="Register-left" style="width: 100%;">
+                <div class="inputs" style="height: auto; margin: 1rem auto;" >
+
+                    {% for item in billing_form %}
+                        {{ item }}
+                    {% endfor %}
+
+                </div>
             </div>
 
     </div>
-        <div class="SideBar" style="float: left;">
+    </div>
+
+        <div class="SideBar" style="float: left;margin-top: 10rem;">
 
             <h2>بخش پرداخت و ادامه روند خرید :</h2>
             <hr style="opacity: 1;"/>
@@ -59,12 +68,10 @@
             <hr/>
             <h4>مبلغ قابل پرداخت :</h4><h5><span class="Col-Pardakht"></span> تومان</h5>
 
-<!--            <a href="{% url 'CheckOut_Order' %}" class="btn btn-dark">ادامه روند پرداخت</a>-->
+            <a href="{% url 'CheckOut_Order' %}" class="btn btn-dark">ادامه روند پرداخت</a>
 
 
         </div>
-
-    </div>
 
 {% endblock %}
 

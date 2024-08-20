@@ -1907,3 +1907,7 @@ label{
     right: 0;
     margin: 0 5px;
 }
+
+.readonly input[readonly]{
+    cursor: not-allowed;
+}
