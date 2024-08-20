@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+
+
+
+{% block content %}
+
+<div class="Shipping-Cart">
+
+                    <hr/>
+            <div class="Register" style="height: 50rem; width: 50%;margin-right: 5rem">
+            <div class="Register-left" style="width: 100%;">
+                <div class="inputs" style="height: auto; margin: 1rem auto;" >
+                    {% for item in shipping_form %}
+                        {{ item }}
+                    {% endfor %}
+
+                </div>
+                <button style="margin: 1rem 10%;width: 80%;height: 7%;"><a style="text-decoration: none ; color: black" href="#" >برو به صفحه پرداخت</a></button>
+
+            </div>
+
+    </div>
+        <div class="SideBar" style="float: left;">
+
+            <h2>بخش پرداخت و ادامه روند خرید :</h2>
+            <hr style="opacity: 1;"/>
+            <h2>محصولات انتخابی شما :</h2>
+            <div class="images-Shipping">
+                {% for item in products %}
+                   <div class="Mahsol Mahsolat-Page">
+        <div class="Layer product" id="layer-checkout" data-id="{{ item.id }}" data-price ='{{ item.price }}' data-discount="{{ item.Discountـpercentage }}">
+            {% for key , value in  quants.items %}
+                {% if key == item.id|slugify %}
+                    <a href="{% url 'Cart_Summary' %}" id="a-quantity" class="Quantity-Number qty">{{ value }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <img src="{{ item.image.url }}" style=" width: 35%;" alt="image-product">
+    </div>
+                {% endfor %}
+
+            </div>
+            <hr style="opacity: 1;"/>
+            <h4> کل‌ :</h4>
+                <h5><span class="total">{{ total|intcomma }}</span> تومان</h5>
+            <h4>سود شما :</h4><h5><span class="sood"></span> تومان</h5>
+            <hr/>
+            <h4>مبلغ قابل پرداخت :</h4><h5><span class="Col-Pardakht"></span> تومان</h5>
+
+            <a href="{% url 'CheckOut_Order' %}" class="btn btn-dark">ادامه روند پرداخت</a>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+{% block js %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

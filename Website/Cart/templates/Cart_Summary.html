@@ -62,7 +62,7 @@
                         <h5><span class="Pardakht"></span> تومان</h5>
                 </div>
                 <button type="submit" style="margin: 25rem auto 2rem auto;width: 15% !important;height: 15% !important;background-color:
-                   #FF9F1C;border: none;font-weight: bold;margin: 25rem auto 2rem 1rem;" class=" btn btn-dark update-cart" value="{{ item.id }}">Update</button>
+                   #FF9F1C;border: none;font-weight: bold;margin: 25rem auto 2rem 1rem;" class="btn btn-dark update-cart" value="{{ item.id }}">Update</button>
 
             </div>
                         {% endfor %}
@@ -85,7 +85,7 @@
             <hr/>
             <h4>مبلغ قابل پرداخت :</h4><h5><span class="Col-Pardakht"></span> تومان</h5>
 
-            <a href="#" class="btn btn-dark">ادامه روند پرداخت</a>
+            <a href="{% url 'CheckOut_Order' %}" class="btn btn-dark">ادامه روند پرداخت</a>
 
 
         </div>
@@ -142,46 +142,6 @@
         });
     }
 });
-
-
-    $(document).on('click', '.bx-plus', function() {
-    // پیدا کردن مقدار مربوط به `.Quantity-Number` در کنار دکمه‌ای که کلیک شده است
-    var qtyElement = $(this).siblings('.Quantity-Number');
-    var qty = parseInt(qtyElement.html());
-
-    if (qty < 10) {
-        qty = qty + 1;
-        qtyElement.html(qty);
-        updateTotal(this)
-    }
-});
-
-$(document).on('click', '.bx-minus', function() {
-    // پیدا کردن مقدار مربوط به `.Quantity-Number` در کنار دکمه‌ای که کلیک شده است
-    var qtyElement = $(this).siblings('.Quantity-Number');
-    var qty = parseInt(qtyElement.html());
-
-    if (qty > 0) {
-        qty = qty - 1;
-        qtyElement.html(qty);
-        updateTotal(this)
-    }
-
-
-});
-
-    function updateTotal(element) {
-        var productDiv = $(element).closest('.product');
-        var price = parseFloat(productDiv.data('price'));
-        var discount = parseFloat(productDiv.data('discount'));
-        var quantity = parseInt(productDiv.find('.Quantity-Number').text());
-
-        // محاسبه مبلغ پرداختی با احتساب تخفیف
-        var discountedPrice = price - (price * (discount / 100));
-        var totalPrice = discountedPrice * quantity;
-
-        productDiv.find('.Pardakht').html(totalPrice.toLocaleString());
-    }
 
 </script>
 

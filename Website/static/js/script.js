@@ -41,55 +41,42 @@ Hesab();
 //
 
 
+$(document).on('click', '.bx-plus', function() {
+    // پیدا کردن مقدار مربوط به `.Quantity-Number` در کنار دکمه‌ای که کلیک شده است
+    var qtyElement = $(this).siblings('.Quantity-Number');
+    var qty = parseInt(qtyElement.html());
+
+    if (qty < 10) {
+        qty = qty + 1;
+        qtyElement.html(qty);
+        updateTotal(this)
+    }
+});
+
+$(document).on('click', '.bx-minus', function() {
+    // پیدا کردن مقدار مربوط به `.Quantity-Number` در کنار دکمه‌ای که کلیک شده است
+    var qtyElement = $(this).siblings('.Quantity-Number');
+    var qty = parseInt(qtyElement.html());
+
+    if (qty > 0) {
+        qty = qty - 1;
+        qtyElement.html(qty);
+        updateTotal(this)
+    }
 
 
+});
 
+    function updateTotal(element) {
+        var productDiv = $(element).closest('.product');
+        var price = parseFloat(productDiv.data('price'));
+        var discount = parseFloat(productDiv.data('discount'));
+        var quantity = parseInt(productDiv.find('.Quantity-Number').text());
 
+        // محاسبه مبلغ پرداختی با احتساب تخفیف
+        var discountedPrice = price - (price * (discount / 100));
+        var totalPrice = discountedPrice * quantity;
 
+        productDiv.find('.Pardakht').html(totalPrice.toLocaleString());
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// $(document).on('click', '.bx-plus', function() {
-//     if (qty < 10) {
-//         qty++;
-//         $('.Quantity-Number').html(qty);
-//         totalPrice = qty * price;
-//         $('.total-price').html(totalPrice);
-//     }
-// });
-//
-// $(document).on('click', '.bx-minus', function() {
-//     if (qty > 0) {
-//         qty--;
-//         $('.Quantity-Number').html(qty);
-//         totalPrice = qty * price;
-//         $('.total-price').html(totalPrice);
-//     }
-// });
