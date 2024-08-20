@@ -45,13 +45,13 @@ class UpdatePasswordForm(SetPasswordForm):
 
 
 class UpdateInfo(forms.ModelForm):
-    phone = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'تلفن همراه :'}), max_length=100)
-    address1 = forms.CharField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'ادرس اول :'}), max_length=100)
-    address2 = forms.CharField(required=True,label='',widget=forms.TextInput(attrs={'placeholder':'ادرس دوم (اختیاری) :'}), max_length=100)
-    city = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'شهر :'}))
-    country = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'کشور :'}))
-    zipcode = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'کدپستی :'}))
-    melicode = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'کدملی :'}))
+    phone = forms.CharField(required=False,label='', widget=forms.TextInput(attrs={'placeholder':'تلفن همراه :'}), max_length=100)
+    address1 = forms.CharField(required=False,label='',widget=forms.TextInput(attrs={'placeholder':'ادرس اول :'}), max_length=100)
+    address2 = forms.CharField(required=False,label='',widget=forms.TextInput(attrs={'placeholder':'ادرس دوم (اختیاری) :'}), max_length=100)
+    city = forms.CharField(required=False,label='', widget=forms.TextInput(attrs={'placeholder':'شهر :'}))
+    country = forms.CharField(required=False,label='', widget=forms.TextInput(attrs={'placeholder':'کشور :'}))
+    zipcode = forms.CharField(required=False,label='', widget=forms.TextInput(attrs={'placeholder':'کدپستی :'}))
+    melicode = forms.CharField(required=False,label='', widget=forms.TextInput(attrs={'placeholder':'کدملی :'}))
 
     class Meta:
         model = Profile

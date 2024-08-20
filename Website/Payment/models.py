@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from Store.models import Product
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -53,3 +54,19 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'{str(self.id)}'
+
+
+
+
+
+
+
+# Create a User Shipping Address by default when user sign up
+def Create_Shipping_Address(sender, instance, created, **kwargs):
+    if created:
+        user_shipping = ShippingAddress(user=instance)
+        user_shipping.save()
+
+
+#Automate the profile thing
+post_save.connect(Create_Shipping_Address, sender=User)
