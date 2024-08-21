@@ -8,17 +8,17 @@
         <h2 class="sub-Title" style="text-align: center;margin-top: 4rem;">اطلاعات حمل و نقل</h2>
 
                     <hr/>
-        <div class="Register" style="height: 50rem; width: 80%;margin: 0 auto;">
+        <div class="Register" style="height: 40rem; width: 80%;margin: 0 auto;">
             <div class="Register-left" style="width: 100%;">
                 <div class="inputs" style="height: auto; margin: 1rem auto;" >
 
-                    <input type="text" value="{{ shipping_info.shipping_full_name }}" readonly>
-                    <input type="text" value="{{ shipping_info.shipping_email }}" readonly>
-                    <input type="text" value="{{ shipping_info.shipping_address1 }}" readonly>
-                    <input type="text" value="{{ shipping_info.shipping_address2 }}" readonly>
-                    <input type="text" value="{{ shipping_info.shipping_city }}" readonly>
-                    <input type="text" value="{{ shipping_info.shipping_country }}" readonly>
-                    <input type="text" value="{{ shipping_info.shipping_zipcode }}" readonly>
+                    <input type="text" value="{{ shipping_info.shipping_full_name }}">
+                    <input type="text" value="{{ shipping_info.shipping_email }}" >
+                    <input type="text" value="{{ shipping_info.shipping_address1 }}" >
+                    <input type="text" value="{{ shipping_info.shipping_address2 }}" >
+                    <input type="text" value="{{ shipping_info.shipping_city }}" >
+                    <input type="text" value="{{ shipping_info.shipping_country }}" >
+                    <input type="text" value="{{ shipping_info.shipping_zipcode }}" >
 
 
                 </div>
@@ -29,13 +29,19 @@
                     <hr/>
     <div class="Register" style="height: 50rem; width: 80%;margin: 0 auto;">
             <div class="Register-left" style="width: 100%;">
-                <div class="inputs" style="height: auto; margin: 1rem auto;" >
+                <form action="{% url 'Process_Order' %}" method="POST">
+                    {% csrf_token %}
+                        <div class="inputs" style="height: auto; margin: 1rem auto;" >
 
-                    {% for item in billing_form %}
-                        {{ item }}
-                    {% endfor %}
+                            {% for item in billing_form %}
+                                {{ item }}
+                            {% endfor %}
 
-                </div>
+                        </div>
+
+                        <button style="margin: 1rem 10%;width: 80%;height: 7%;">برو به صفحه پرداخت</button>
+
+                    </form>
             </div>
 
     </div>
@@ -67,8 +73,6 @@
             <h4>سود شما :</h4><h5><span class="sood"></span> تومان</h5>
             <hr/>
             <h4>مبلغ قابل پرداخت :</h4><h5><span class="Col-Pardakht"></span> تومان</h5>
-
-            <a href="{% url 'CheckOut_Order' %}" class="btn btn-dark">ادامه روند پرداخت</a>
 
 
         </div>

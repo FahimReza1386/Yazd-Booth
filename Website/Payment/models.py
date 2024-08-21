@@ -39,7 +39,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return f'{str(self.id)}'
+        return f'Order BY {str(self.full_name)} - {str(self.id)}'
 
 
 

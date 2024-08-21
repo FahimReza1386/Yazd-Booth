@@ -5,20 +5,8 @@
 {% block content %}
 
 
-<!--        <div class="WellCome-Sabad">-->
-<!--        <h2>سلام به سبد خریدتون خوش آمدید</h2>-->
-<!--    </div>-->
 
-<!--    <div class="Empty">-->
-<!--        <img src="{% static 'img/sabad.jpeg' %}" alt="basketEmpty">-->
-<!--        <h2>درحال حاظر سبد خرید شما خالی میباشد ..</h2>-->
-<!--        <a href="{% url 'Home' %}" class="btn">برو به محصولات</a>-->
-<!--    </div>-->
-<!--<br/>-->
-<!--<br/>-->
-<!--<br/>-->
-
-
+{% if cart_summary %}
 
 
     <h2 class="sub-Title">سبد خرید شما ...</h2>
@@ -92,7 +80,27 @@
 
     </div>
 
+
+{% else %}
+
+            <div class="WellCome-Sabad">
+        <h2>سلام به سبد خریدتون خوش آمدید</h2>
+    </div>
+
+    <div class="Empty">
+        <img src="{% static 'img/sabad.jpeg' %}" alt="basketEmpty">
+        <h2>درحال حاظر سبد خرید شما خالی میباشد ..</h2>
+        <a href="{% url 'Home' %}" class="btn">برو به محصولات</a>
+    </div>
+<br/>
+<br/>
+<br/>
+
+{% endif %}
+
 {% endblock %}
+
+
 
 {% block js %}
     <script src="{% static 'js/jquery.js' %}"></script>

@@ -1,7 +1,8 @@
 from django.shortcuts import render,HttpResponse,redirect
 from Cart.cart import Cart
 from .forms import ShippingForm , PaymentForm
-from .models import ShippingAddress
+from .models import ShippingAddress , Order , OrderItem
+from django.contrib.auth.models import User
 from django.contrib import messages
 # Create your views here.
 
@@ -35,6 +36,9 @@ def Billing_Info(request):
             quants = cart.get_quants
             total = cart.get_total
 
+            my_shipping=request.POST
+            request.session['my_shipping']=my_shipping
+
             # Get The Billing Form
             billing_form = PaymentForm()
 
@@ -44,4 +48,51 @@ def Billing_Info(request):
             return redirect('/')
     else:
         messages.success(request , "لطفا اول با حساب کاربری خود وارد شوید ...")
+        return redirect('/Login')
+
+
+
+
+def Process_Order(request):
+    if request.POST:
+        cart = Cart(request)
+
+        product = cart.get_prods
+        quants = cart.get_quants
+        totals = cart.get_total()
+
+        # Get The Billing Info From The Last Page
+        payment_form = PaymentForm(request.POST or None)
+        # Get Shipping Session Data
+        my_shipping=request.session.get('my_shipping')
+
+        # Gather Order Info
+        full_name = my_shipping['shipping_full_name']
+        email = my_shipping['shipping_email']
+        # Create Shipping Address From Session Info
+        Shipping_Address = (f"{my_shipping['shipping_address1']}\n{my_shipping['shipping_address2']}\n{my_shipping['shipping_city']}\n{my_shipping['shipping_zipcode']}\n")
+
+        amount_paid=totals
+
+        # Create an Order
+
+        if request.user.is_authenticated:
+            # Get The Cart
+
+            # Logged In
+            user = request.user
+            #Create Order
+
+            create_order=Order(user=user , full_name=full_name , email=email , shipping_address=Shipping_Address,amount_paid=amount_paid)
+            create_order.save()
+
+        else:
+            messages.success(request, "لطفا اول با حساب کاربری خود وارد شوید ...")
+            return redirect('/Login')
+
+
+        messages.success(request , "سفارش شما با موفقیت ثبت شد ..")
+        return redirect('/')
+    else:
+        messages.success(request, "خطای دسترسی ...")
         return redirect('/')
