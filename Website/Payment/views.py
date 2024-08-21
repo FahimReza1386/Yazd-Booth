@@ -57,8 +57,8 @@ def Process_Order(request):
     if request.POST:
         cart = Cart(request)
 
-        product = cart.get_prods
-        quants = cart.get_quants
+        products = cart.get_prods
+        quants = cart.get_quants()
         totals = cart.get_total()
 
         # Get The Billing Info From The Last Page
@@ -70,7 +70,7 @@ def Process_Order(request):
         full_name = my_shipping['shipping_full_name']
         email = my_shipping['shipping_email']
         # Create Shipping Address From Session Info
-        Shipping_Address = (f"{my_shipping['shipping_address1']}\n{my_shipping['shipping_address2']}\n{my_shipping['shipping_city']}\n{my_shipping['shipping_zipcode']}\n")
+        Shipping_Address = (f"{my_shipping['shipping_address1']} \n {my_shipping['shipping_address2']} \n {my_shipping['shipping_city']} \n {my_shipping['shipping_zipcode']} \n ")
 
         amount_paid=totals
 
@@ -86,13 +86,33 @@ def Process_Order(request):
             create_order=Order(user=user , full_name=full_name , email=email , shipping_address=Shipping_Address,amount_paid=amount_paid)
             create_order.save()
 
+            # Create an Order-Items
+            # Get The Order Id
+            order_id = create_order.pk
+            # Get Product Info
+            for product in cart.get_prods():
+                # Get Product Id
+                product_id = product.id
+                # Get Product Price
+                total = totals
+                # Get The Quantity
+
+                for key , value in quants.items():
+                    if int(key) == product_id:
+                        # Create Order Item
+                        create_order_item = OrderItem(order_id=order_id, product_id=product_id , user=user , quantity=value ,price=total)
+                        create_order_item.save()
+
+                        messages.success(request , 'سفارش شما با موفقیت ثبت شد ...')
+                        return redirect('/')
+                    else:
+                        messages.error(request , 'خطای محصول پس از چند دقیقه دوباره امتحان کنید ...')
+                        return redirect('/')
+
+
         else:
             messages.success(request, "لطفا اول با حساب کاربری خود وارد شوید ...")
             return redirect('/Login')
-
-
-        messages.success(request , "سفارش شما با موفقیت ثبت شد ..")
-        return redirect('/')
     else:
         messages.success(request, "خطای دسترسی ...")
         return redirect('/')
