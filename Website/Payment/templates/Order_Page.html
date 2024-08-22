@@ -11,10 +11,10 @@
 
 
 
-    <div class="card" style="width: 70% !important; margin: 1rem auto !important;">
+    <div class="card" style="width: 70% !important; margin: 1rem auto !important;background-color: #CBF3F0">
                         <h1 class="sub-Title" style="margin: 2rem auto">اطلاعات سفارش :</h1>
 
-        <div class="card-header" style="display: flex">
+        <div class="card-header" style="display: flex;background-color: #ffffff; width: 80%;margin: 0 auto;border-radius: 5px;box-shadow: 0px 0px 3px black">
             {% for item in order %}
             <div class="card-header-right">
                 <h2>کاربر :</h2>
@@ -57,14 +57,32 @@
                                 <h1 class="sub-Title text-dark">صورتحساب :</h1>
 
             <h5 style="margin: 2rem auto;font-size: 25px;font-weight: bold;">{{ item.amount_paid|intcomma }} تومان </h5>
+
+            {% if not item.shipped %}
+                <form method="POST" >
+                    {% csrf_token %}
+                    <input type="hidden" name="shipping_status" value="true">
+                    <button type="submit" class="btn btn-dark mt-4" style="background-color: #ffa11e;border: none;padding:10px;font-weight: bold">محصول ارسال شده</button>
+                </form>
+            {% else %}
+                <!-- not shipped  -->
+                <form method="POST" >
+                    {% csrf_token %}
+                    <input type="hidden" name="shipping_status" value="false">
+                    <button type="submit" class="btn btn-dark mt-4" style="background-color: #ffa11e;border: none;padding:10px;font-weight: bold">محصول ارسال نشده</button>
+                </form>
+            {% endif %}
+                        {% endfor %}
+
         </div>
     </div>
-            {% endfor %}
 
 
 <br/>
 <br/>
 <br/>
+
+
 {% endblock %}
 
 

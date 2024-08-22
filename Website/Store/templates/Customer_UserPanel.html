@@ -51,16 +51,42 @@
 
 
 
+         {% if user.is_superuser %}
+
+
                   <div class="PanelMenu">
                     <div class="PanelMenu-right">
                       <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
                     </div>
-                    <a>تاریخچه خرید</a>
+                    <a href="{% url 'Shipping_Dash' %}">سفارشات ارسال شده</a>
                     <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                        <a href="{% url 'Shipping_Dash' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
                     </div>
 
                   </div>
+                    <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
+                    </div>
+                    <a href="{% url 'Not_Shipping_Dash' %}">سفارشات ارسال نشده</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                        <a href="{% url 'Not_Shipping_Dash' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                    {% else %}
+                                      <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
+                    </div>
+                    <a href="tarikhche/1">تاریخچه خرید</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="tarikhche/1"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                    {% endif %}
+
 
                   <div class="PanelMenu">
                     <div class="PanelMenu-right">
@@ -239,28 +265,41 @@
                   </div>
 
                   <hr />
-                  <div class="PanelMenu">
-                    <div class="PanelMenu-right">
-                      <img src="{% static 'img/tasks_113292.png' %}" alt="task-icon">
-                    </div>
-                    <a>سفارشات</a>
-                    <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
-                    </div>
-                  </div>
-
+                    {% if user.is_superuser %}
 
 
                   <div class="PanelMenu">
                     <div class="PanelMenu-right">
                       <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
                     </div>
-                    <a>تاریخچه خرید</a>
+                    <a href="{% url 'Shipped_Dash' %}">سفارشات ارسال شده</a>
                     <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                        <a href="{% url 'Shipped_Dash' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
                     </div>
 
                   </div>
+                    <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
+                    </div>
+                    <a href="{% url 'Not_Shipped_Dash' %}">سفارشات ارسال نشده</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                        <a href="{% url 'Not_Shipped_Dash' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                    {% else %}
+                                      <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
+                    </div>
+                    <a href="tarikhche/1">تاریخچه فروش</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <a href="tarikhche/1"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+                    </div>
+
+                  </div>
+                    {% endif %}
 
                   <div class="PanelMenu">
                     <div class="PanelMenu-right">

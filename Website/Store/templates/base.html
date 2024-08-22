@@ -41,15 +41,6 @@
                 <li class="nav-item">
                                  <a class="nav-link" href="{% url 'Login' %}" style="color: #ffffff;  margin-right: 20px;">ورود / ثبت نام</a>
                         </li>
-                {% else %}
-                    {% if user.is_superuser != False %}
-                        <li class="nav-item">
-                                         <a class="nav-link" href="{% url 'Shipped_Dash' %}" style="color: #ffffff;  margin-right: 20px;">سفارشات ارسال شده</a>
-                                </li>
-                        <li class="nav-item">
-                                         <a class="nav-link" href="{% url 'Not_Shipped_Dash' %}" style="color: #ffffff;  margin-right: 20px;">سفارشات ارسال نشده</a>
-                                </li>
-                    {% endif %}
                 {% endif %}
 
 

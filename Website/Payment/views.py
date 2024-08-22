@@ -5,6 +5,7 @@ from .models import ShippingAddress , Order , OrderItem
 from django.contrib.auth.models import User
 from django.contrib import messages
 import jdatetime
+import datetime
 
 
 # Create your views here.
@@ -128,35 +129,43 @@ def Process_Order(request):
 def Shipped_Dash(request):
     if request.user.is_authenticated and request.user.is_superuser :
         orders = Order.objects.filter(shipped = True)
-        for item in orders:
-            if item.date_ordered:
-                g_date = item.date_ordered  # تاریخ میلادی از نمونه
-                j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
-                formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+        if orders :
+            for item in orders:
+                if item.date_shipped:
+                    g_date = item.date_shipped  # تاریخ میلادی از نمونه
+                    j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
+                    formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+                    messages.success(request, 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
+                    return render(request=request, template_name='Shipped_Dash.html',context={'orders': orders, 'formatted_date': formatted_date})
+                else:
+                    formatted_date =None
+                    return render(request=request, template_name='Shipped_Dash.html',context={'orders': orders, 'formatted_date': formatted_date})
 
-
-        messages.success(request , 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
-        return render(request=request, template_name='Shipped_Dash.html', context={'orders':orders , 'formatted_date':formatted_date })
-
+        else:
+             messages.error(request , 'مدیر گرامی سفارش ارسال شده ای وجود ندارد ...')
+             return redirect('/')
     else:
-
-        messages.error(request , 'این صفحه برای ادمین و مدیران وبسایت میباشد ...')
-        return redirect('/')
+         messages.error(request , 'این صفحه برای ادمین و مدیران وبسایت میباشد ...')
+         return redirect('/')
 
 
 
 def Not_Shipped_Dash(request):
     if request.user.is_authenticated and request.user.is_superuser:
         orders = Order.objects.filter(shipped = False)
-
-        for item in orders:
-            if item.date_ordered:
-                g_date = item.date_ordered  # تاریخ میلادی از نمونه
-                j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
-                formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
-
-        messages.success(request, 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
-        return render(request=request, template_name='Not_Shipped_Dash.html', context={'orders':orders , 'formatted_date':formatted_date})
+        if orders:
+            for item in orders:
+                if item.date_ordered:
+                    g_date = item.date_ordered  # تاریخ میلادی از نمونه
+                    j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
+                    formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+                else:
+                    formatted_date =None
+            messages.success(request, 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
+            return render(request=request, template_name='Not_Shipped_Dash.html', context={'orders':orders , 'formatted_date':formatted_date})
+        else:
+             messages.error(request , 'مدیر گرامی سفارش ارسال شده ای وجود ندارد ...')
+             return redirect('/')
     else:
         messages.error(request, 'این صفحه برای ادمین و مدیران وبسایت میباشد ...')
         return redirect('/')
@@ -169,10 +178,24 @@ def Order_Page(request , id):
         # Get The OrderItem
         order_item=OrderItem.objects.filter(order=id)
         for item in order:
-            if item.date_ordered:
+            if item.date_shipped:
                 g_date = item.date_ordered  # تاریخ میلادی از نمونه
                 j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
                 formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+            else:
+                formatted_date  = None
+
+        if request.POST:
+            status = request.POST.get('shipping_status')
+            # Check if true or false
+            if status == 'true':
+                now = datetime.datetime.now()
+                order.update(shipped=True , date_shipped=now)
+            else:
+                order.update(shipped=False)
+            messages.success(request , 'وضعیت سفارش با موفقیت تغییر کرد ...')
+            return redirect('Customer_UserPanel')
+
 
         return render(request=request, template_name='Order_Page.html', context={'order':order , 'order_item':order_item ,'formatted_date':formatted_date })
     else:

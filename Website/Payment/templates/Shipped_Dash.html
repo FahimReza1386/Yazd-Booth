@@ -22,6 +22,7 @@
         <th>ایمیل کاربر</th>
         <th>قیمت محصول</th>
         <th>زمان ثبت سفارش</th>
+        <th>وضعیت سفارش</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +33,11 @@
         <td>{{ item.email }}</td>
         <td>{{ item.amount_paid|intcomma }} تومان </td>
         <td>{{ formatted_date }}</td>
-
+        {% if item.shipped %}
+            <td>ارسال شده</td>
+          {% else %}
+            <td>ارسال نشده</td>
+          {% endif %}
       </tr>
     {% endfor %}
        </tbody>
