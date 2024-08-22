@@ -27,11 +27,11 @@
     <tbody>
     {% for item in orders %}
       <tr>
-        <td>{{ item.id }}</td>
+        <td><a href="/Payment/order/{{ item.id }}" style="text-decoration: none ; color: black;"> {{ item.id }}</a></td>
         <td>{{ item.user }}</td>
         <td>{{ item.email }}</td>
         <td>{{ item.amount_paid|intcomma }} تومان </td>
-        <td>{{ item.date_ordered }}</td>
+        <td>{{ formatted_date }}</td>
 
       </tr>
     {% endfor %}

@@ -9,4 +9,5 @@ urlpatterns = [
     path('process_order/', views.Process_Order, name='Process_Order'),
     path('shipped_dash/', views.Shipped_Dash, name='Shipped_Dash'),
     path('not_shipped_dash/', views.Not_Shipped_Dash, name='Not_Shipped_Dash'),
+    path('order/<int:id>', views.Order_Page , name='Order_Page'),
 ]

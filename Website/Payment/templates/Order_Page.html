@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+    <div class="card" style="width: 70% !important; margin: 1rem auto !important;">
+                        <h1 class="sub-Title" style="margin: 2rem auto">اطلاعات سفارش :</h1>
+
+        <div class="card-header" style="display: flex">
+            {% for item in order %}
+            <div class="card-header-right">
+                <h2>کاربر :</h2>
+                <h2>ایمیل :</h2>
+                <h2>ادرس حمل و نقل :</h2>
+                <h2>شهر :</h2>
+                <h2>کدپستی :</h2>
+
+                <h2>تاریخ ثبت سفارش :</h2>
+            </div>
+            <div class="card-header-left">
+                <h2>{{ item.user }}</h2>
+                <h2>{{ item.email }}</h2>
+                <h2>{{ item.shipping_address|linebreaks }}</h2>
+
+                <h2>{{ formatted_date }}</h2>
+
+            </div>
+        </div>
+                    <h1 class="sub-Title" style="margin: 2rem auto">محصولات ارسالی :</h1>
+        <hr/>
+
+        <div class="card-body" style="display:flex;justify-content: center">
+            {% for item in order_item %}
+             <div class="Mahsol Mahsolat-Page" style="max-width: 200px;margin: 1rem;">
+        <div class="Layer">
+            <h6>{{ item.product.name }}</h6>
+            {% if item.is_sale %}
+            <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
+                <h2><span class="Pardakht"></span> تومان</h2>
+            {% else %}
+            {% endif %}
+        </div>
+        <img src="{{ item.product.image.url }}" alt="image-product">
+
+    </div>
+{% endfor %}
+        </div>
+        <div class="card-footer" style="display:flex;">
+                                <h1 class="sub-Title text-dark">صورتحساب :</h1>
+
+            <h5 style="margin: 2rem auto;font-size: 25px;font-weight: bold;">{{ item.amount_paid|intcomma }} تومان </h5>
+        </div>
+    </div>
+            {% endfor %}
+
+
+<br/>
+<br/>
+<br/>
+{% endblock %}
+
+
+
+{% block js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
