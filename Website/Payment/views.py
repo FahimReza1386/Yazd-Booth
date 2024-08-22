@@ -4,6 +4,8 @@ from .forms import ShippingForm , PaymentForm
 from .models import ShippingAddress , Order , OrderItem
 from django.contrib.auth.models import User
 from django.contrib import messages
+
+
 # Create your views here.
 
 def CheckOut_Order(request):
@@ -119,4 +121,31 @@ def Process_Order(request):
             return redirect('/Login')
     else:
         messages.success(request, "خطای دسترسی ...")
+        return redirect('/')
+
+
+def Shipped_Dash(request):
+    if request.user.is_authenticated and request.user.is_superuser :
+        orders = Order.objects.filter(shipped = True)
+
+
+
+        messages.success(request , 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
+        return render(request=request, template_name='Shipped_Dash.html', context={'orders':orders })
+
+    else:
+
+        messages.error(request , 'این صفحه برای ادمین و مدیران وبسایت میباشد ...')
+        return redirect('/')
+
+
+
+def Not_Shipped_Dash(request):
+    if request.user.is_authenticated and request.user.is_superuser:
+        orders = Order.objects.filter(shipped = False)
+
+        messages.success(request, 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
+        return render(request=request, template_name='Not_Shipped_Dash.html', context={'orders':orders })
+    else:
+        messages.error(request, 'این صفحه برای ادمین و مدیران وبسایت میباشد ...')
         return redirect('/')

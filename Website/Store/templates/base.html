@@ -37,11 +37,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="color: #ffffff;  margin-right: 20px;">ثبت غرفه</a>
                 </li>
-                    {% if user.is_authenticated != True %}
+                {% if user.is_authenticated != True %}
                 <li class="nav-item">
                                  <a class="nav-link" href="{% url 'Login' %}" style="color: #ffffff;  margin-right: 20px;">ورود / ثبت نام</a>
                         </li>
-                                     {% endif %}
+                {% else %}
+                    {% if user.is_superuser != False %}
+                        <li class="nav-item">
+                                         <a class="nav-link" href="{% url 'Shipped_Dash' %}" style="color: #ffffff;  margin-right: 20px;">سفارشات ارسال شده</a>
+                                </li>
+                        <li class="nav-item">
+                                         <a class="nav-link" href="{% url 'Not_Shipped_Dash' %}" style="color: #ffffff;  margin-right: 20px;">سفارشات ارسال نشده</a>
+                                </li>
+                    {% endif %}
+                {% endif %}
 
 
             </ul>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+
+
+
+<div class="container mt-3">
+  <h2 class="sub-Title">انواع سفارشات ارسال شده</h2>
+  <p>محصولات ارسال شده فروشگاه یزد غرفه با مدیریت فهیم رضا حسینی :</p>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  <table class="table table-hover text-center table-bordered">
+    <thead class="table-primary">
+      <tr>
+        <th>شماره سفارش</th>
+        <th>کاربر</th>
+        <th>ایمیل کاربر</th>
+        <th>قیمت محصول</th>
+        <th>زمان ثبت سفارش</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in orders %}
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.user }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.amount_paid|intcomma }} تومان </td>
+        <td>{{ item.date_shipped }}</td>
+
+      </tr>
+    {% endfor %}
+       </tbody>
+  </table>
+</div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+{% endblock %}
+
+
+
+{% block js %}
+    <script src="{% static 'js/jquery.js' %}" ></script>
+    <script src="{% static 'js/script.js' %}" ></script>
+{% endblock %}
