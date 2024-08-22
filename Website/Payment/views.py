@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from Cart.cart import Cart
 from .forms import ShippingForm , PaymentForm
 from .models import ShippingAddress , Order , OrderItem
+from Store.models import Product , Profile
 from django.contrib.auth.models import User
 from django.contrib import messages
 import jdatetime
@@ -113,6 +114,10 @@ def Process_Order(request):
                 if key == "session_key":
                     # Delete the key
                     del request.session[key]
+
+            # Delete cart from DataBase (old_cart field)
+            current_user=Profile.objects.filter(user__id=request.user.id)
+            current_user.update(old_cart = '')
 
             messages.success(request , 'سفارش شما با موفقیت ثبت شد ...')
             return redirect('/')
