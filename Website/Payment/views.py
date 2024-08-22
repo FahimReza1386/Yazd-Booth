@@ -93,21 +93,24 @@ def Process_Order(request):
             for product in cart.get_prods():
                 # Get Product Id
                 product_id = product.id
+                print(product_id)
                 # Get Product Price
                 total = totals
                 # Get The Quantity
 
                 for key , value in quants.items():
-                    if int(key) == product_id:
+                    if int(key) == product.id:
                         # Create Order Item
-                        create_order_item = OrderItem(order_id=order_id, product_id=product_id , user=user , quantity=value ,price=total)
+                        create_order_item = OrderItem(order_id=order_id, product_id=product.id , user=user , quantity=value ,price=total)
                         create_order_item.save()
 
-                        messages.success(request , 'سفارش شما با موفقیت ثبت شد ...')
-                        return redirect('/')
-                    else:
-                        messages.error(request , 'خطای محصول پس از چند دقیقه دوباره امتحان کنید ...')
-                        return redirect('/')
+            for key in list(request.session.keys()):
+                if key == "session_key":
+                    # Delete the key
+                    del request.session[key]
+
+            messages.success(request , 'سفارش شما با موفقیت ثبت شد ...')
+            return redirect('/')
 
 
         else:
