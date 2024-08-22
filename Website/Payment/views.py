@@ -93,9 +93,10 @@ def Process_Order(request):
             for product in cart.get_prods():
                 # Get Product Id
                 product_id = product.id
-                print(product_id)
+                price = int(product.price)
+                discount = int(product.Discountـpercentage) / 100
                 # Get Product Price
-                total = totals
+                total = price - (price * discount)
                 # Get The Quantity
 
                 for key , value in quants.items():
