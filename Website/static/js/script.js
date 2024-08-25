@@ -80,3 +80,8 @@ $(document).on('click', '.bx-minus', function() {
         productDiv.find('.Pardakht').html(totalPrice.toLocaleString());
     }
 
+
+
+    $(document).on('click' , '.close-tabliq' , function () {
+        $('.tabliq').fadeToggle();
+    })

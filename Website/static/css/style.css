@@ -124,8 +124,9 @@
 
 .close-tabliq{
     color: red;
-    cursor: pointer; 
+    cursor: pointer;
     margin-right: 5rem;
+    width: 10%;
 }
 
 .WellCome1{
