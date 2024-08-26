@@ -24,8 +24,8 @@
             <h5>رنگ های محصول انتخابی :</h5>
 
             <div class="Colors">
-                {% for item in item.colors.all %}
-                        <span class="clr" style="background-color: {{ item.name }}"></span>
+                {% for item in color %}
+                        <span class="clr" style="background-color: {{ item.name }} "></span>
                 {% endfor %}
             </div>
 
@@ -86,11 +86,11 @@
         <div class="features">
             <div class="feature-right">
 
-                {% for item in item.features.all %}
+                {% for item in Feature %}
 
                     <div class="featur">
-                        <h3>{{ item.name }}</h3>
-                        <h2>{{ item.description }}</h2>
+                        <h3>{{ item.feature_name }}</h3>
+                        <h2>{{ item.feature_value }}</h2>
                     </div>
 
                 {% endfor %}

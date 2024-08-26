@@ -22,10 +22,9 @@ from django.contrib import messages
 
 
 def Home(request):
-    products=Product.objects.all()
     booth= Booth.objects.all()
     category = Category.objects.all()
-
+    prd_last = Product.objects.order_by('-created_at')[:5]
     if request.user.is_authenticated:
         user=User.objects.get(id=request.user.id)
     else:
@@ -40,9 +39,9 @@ def Home(request):
             messages.error(request , 'متاسفانه محصولی با این نام وحود ندارد ...')
             return render(request=request , template_name='Home.html' , context={})
         else:
-            return render(request=request, template_name='Home.html',context={'Product': products, 'Booth': booth, 'category': category, 'user': user,'search': searched })
+            return render(request=request, template_name='Home.html',context={'Product': prd_last, 'Booth': booth, 'category': category, 'user': user,'search': searched })
     else:
-        return render(request=request , template_name='Home.html' , context={'Product':products ,'Booth':booth , 'category':category , 'user':user })
+        return render(request=request , template_name='Home.html' , context={'Product':prd_last ,'Booth':booth , 'category':category , 'user':user })
 
 def Like_Booth(request):
     if request.method == 'POST':
@@ -264,7 +263,9 @@ def Update_Info(request):
 def Product_Page(request , id):
     product= Product.objects.filter(id=id).all()
     comment=Comments.objects.filter(product=id).all()
-    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment})
+    FeatureـProducts=FeatureـProduct.objects.filter(product=id).all()
+    color=Color.objects.filter(prd=id).all()
+    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color })
 
 
 def Category_Page(request , foo):
@@ -309,3 +310,73 @@ def Customer_UserPanel(request):
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
         return redirect('Login')
     return render(request=request , template_name='Customer_UserPanel.html' , context={'profile':profile , 'create_booth':formatted_date , 'date_modified':formatted_date2 })
+
+
+def Add_Product(request):
+    if request.user.is_authenticated:
+        curren_user=Profile.objects.get(user=request.user)
+        role= curren_user.role
+        if role == 'Boother':
+            if request.method == 'POST':
+                name = request.POST.get('name')
+                images = request.FILES.get('img')
+                description = request.POST.get('description')
+                price = request.POST.get('price')
+                discount_sale = request.POST.get('sale_price')
+                category = request.POST.get('category')
+                feature_name = request.POST.get('featureـname')
+                feature_value = request.POST.get('feature_value')
+                color = request.POST.get('color')
+                try:
+                    Cat_Instanse = Category.objects.get(name=category)
+                    boothes = Booth.objects.filter(owner=request.user)
+
+                    if not boothes.exists():
+                        messages.error(request, 'شما هیچ غرفه‌ای ندارید.')
+                        return redirect('Add_Product')
+
+                    booth = boothes.first()
+
+                    prd = Product(
+                        name=name,
+                        category=Cat_Instanse,
+                        description=description,
+                        price=price,
+                        Discountـpercentage=discount_sale,
+                        image=images,
+                        booth=booth
+                    )
+
+                    if images and images.content_type in ['image/jpeg', 'image/png', 'image/webp', 'image/jpg']:
+                        prd.image=images
+                    else:
+                        messages.error(request , 'لطفا یک عکس را وارد کنید ..')
+                        return redirect('Add_Product')
+                    prd.save()
+
+                    # اضافه کردن رنگ‌ها به فیلد many-to-many
+                    color_objects = Color(name=color , prd=prd)
+                    color_objects.save()
+
+                    # اضافه کردن ویژگی‌ها به فیلد many-to-many
+                    features = FeatureـProduct(product=prd , feature_name=feature_name , feature_value=feature_value)
+                    features.save()
+
+                    messages.success(request, 'سلام غرفه دار گرامی محصول شما با موفقیت ثبت شد ...')
+                    return redirect('Home')
+
+                except Category.DoesNotExist:
+                    messages.error(request, 'سلام دوست گرامی متاسفانه این دسته بندی وجود ندارد ...')
+                    return redirect('Add_Product')
+                # except Exception as e:
+                #     messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
+                #     return redirect('Add_Product')
+            else:
+                return render(request=request, template_name='CreateProduct.html', context={})
+        else:
+            messages.error(request , "ثبت محصول تنها برای غرفه داران میباشد ...")
+            return redirect('Customer_UserPanel')
+
+    else:
+        messages.error(request, 'لطفاً ابتدا وارد حساب کاربری خود شوید.')
+        return redirect('Login')

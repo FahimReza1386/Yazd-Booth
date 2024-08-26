@@ -71,21 +71,6 @@ class Cart():
         quants = self.cart
         return quants
 
-    # def get_total(self):
-    #     product_ids = self.cart.keys()
-    #
-    #     products = Product.objects.filter(id__in=product_ids).all()
-    #
-    #     quants = self.cart
-    #
-    #     total = 0
-    #
-    #     for key , value in quants.items():
-    #         key = int(key)
-    #         for product in products:
-    #             if product.id == key:
-    #                 total = total + (int(product.price) * int(value))
-    #     return total
 
     def get_total(self):
         product_ids = self.cart.keys()

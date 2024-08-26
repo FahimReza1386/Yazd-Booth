@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block content %}
+
+
+<div class="img-Product" >
+<!--    <img src="{% static 'img/user.ico' %}" alt="" style="border-radius: 50% ;width: 100%">-->
+
+    </div>
+
+    <form method="post" action="{% url 'Add_Product' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+                <div class="input-file">
+<!--                    <img src="{% static 'img/user.ico' %}" style="width: 100%;">-->
+                    <input type="file" name="img" >
+                </div>
+
+
+    <div class="inputs-Product">
+        <input type="text" placeholder="نام محصول خود را وارد کنید ..." name="name">
+        <input type="text" placeholder="معرفی محصول خود را وارد کنید ..." name="description">
+        <input type="text" placeholder="دسته بندی محصول خود را وارد کنید ..." name="category">
+        <input type="color" placeholder="رنگ محصول خود را وارد کنید ..." name="color" style="padding: 10px">
+            <hr style="margin: 10px 17%;"/>
+
+        <input type="number" placeholder="قیمت محصول خود را وارد کنید ..." name="price">
+        <input type="number" placeholder="درصد تخفیف محصول خود را وارد کنید ..." name="sale_price">
+            <hr style="margin: 10px 17%;"/>
+
+        <input type="text" placeholder="نام مشخصات محصول خود را وارد کنید ..." name="featureـname">
+        <input type="text" placeholder="مقدار مشخصات محصول خود را وارد کنید ..." name="feature_value">
+    </div>
+
+    <hr style="margin: 10px 17%;"/>
+
+    <button class="btn product-btn">ثبت تغییرات</button>
+</form>
+
+
+{% endblock %}
+
+
+
+{% block js %}
+<script src="{% static 'ja/jquery.js' %}" ></script>
+<script src="{% static 'ja/script.js' %}" ></script>
+{% endblock %}

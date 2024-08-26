@@ -143,8 +143,7 @@ def Shipped_Dash(request):
                     messages.success(request, 'سلام دسترسی شما تایید شده است به صفحه مدیران خوش آمدید ...')
                     return render(request=request, template_name='Shipped_Dash.html',context={'orders': orders, 'formatted_date': formatted_date})
                 else:
-                    formatted_date =None
-                    return render(request=request, template_name='Shipped_Dash.html',context={'orders': orders, 'formatted_date': formatted_date})
+                    return render(request=request, template_name='Shipped_Dash.html',context={'orders': orders})
 
         else:
              messages.error(request , 'مدیر گرامی سفارش ارسال شده ای وجود ندارد ...')

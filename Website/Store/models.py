@@ -12,11 +12,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Color(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 class Feature(models.Model):
     name = models.CharField(max_length=100)
@@ -79,14 +74,30 @@ class Product(models.Model):
     is_active = models.BooleanField(default=False)
     is_sale = models.BooleanField(default=False)
     Discountـpercentage = models.IntegerField(default=0)
-    colors = models.ManyToManyField(Color) # انتخاب به صورت چند به چند
-    features = models.ManyToManyField(Feature , default='')
+    created_at = models.DateTimeField(auto_now_add=True , null=True)
     booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , related_name='products' , blank=False , default='' )
 
 
 
     def __str__(self):
         return self.name
+
+class Color(models.Model):
+    prd=models.ForeignKey(Product, on_delete=models.CASCADE , null=True , blank=False)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class FeatureـProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE , null=False , blank=False)
+    feature_name = models.CharField(max_length=100 , null=False , blank=False)
+    feature_value = models.CharField(max_length=100 , null=False , blank=False)
+
+    def __str__(self):
+        return self.product
+
 
 
 

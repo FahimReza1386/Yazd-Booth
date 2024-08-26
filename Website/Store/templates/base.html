@@ -76,13 +76,13 @@
         <h1 class="Foot-Titr" style="font-size: 20px;">دسترسی سریع :</h1>
         <div class="Access">
           <ul>
-            <li><a href="#">صفحه اصلی</a></li>
-            <li><a href="#">درباره ما</a></li>
-            <li><a href="#">تماس با ما</a></li>
-            <li><a href="#">غرفه ها</a></li>
+            <li><a href="{% url 'Home' %}">صفحه اصلی</a></li>
+            <li><a href="{% url 'About' %}">درباره ما</a></li>
+            <li><a href="">تماس با ما</a></li>
+            <li><a href="{% url 'Home' %}">غرفه ها</a></li>
             <li><a href="#">قوانین سایت</a></li>
-            <li><a href="#">ثبت نام</a></li>
-            <li><a href="#">افتتاح غرفه</a></li>
+            <li><a href="{% url 'Register' %}">ثبت نام</a></li>
+            <li><a href="{% url 'Home' %}">افتتاح غرفه</a></li>
           </ul>
       </div>
       </div>
