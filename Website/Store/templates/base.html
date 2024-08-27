@@ -35,7 +35,7 @@
                     <a class="nav-link" href="{% url 'Category' 'صنایع-دستی-سنگی' %}" style="color: #ffffff;  margin-right: 20px;">دسته بندی محصولات</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: #ffffff;  margin-right: 20px;">ثبت غرفه</a>
+                    <a class="nav-link" href="{% url 'Create_Booth' %}" style="color: #ffffff;  margin-right: 20px;">ثبت غرفه</a>
                 </li>
                 {% if user.is_authenticated != True %}
                 <li class="nav-item">

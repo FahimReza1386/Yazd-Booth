@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm , UserChangeForm , SetPasswordForm
 from django import forms
-from .models import Profile
+from .models import Profile, Booth
+
 
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(required=True,label='', widget=forms.TextInput(attrs={'placeholder':'نام :'}), max_length=100)
@@ -59,3 +60,17 @@ class UpdateInfo(forms.ModelForm):
 
     def __str__(self):
         return self.phone
+
+
+
+
+
+class CreateBoothForm(forms.ModelForm):
+    name=forms.CharField(required=True , max_length=100 , label='',widget=forms.TextInput(attrs={'placeholder' : 'نام غرفه خود را وارد کنید ..'}))
+    address=forms.CharField(required=True , max_length=100 , label='' , widget=forms.TextInput(attrs={'placeholder' : 'ادرس غرفه خود را وارد کنید ..'}))
+    description=forms.CharField(required=True , max_length=100, label='' , widget=forms.TextInput(attrs={'placeholder' : 'توضیحات غرفه خود را وارد کنید ..'}))
+
+    class Meta:
+        model = Booth
+        fields = ['name' , 'address' , 'description' , 'image']
+

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm , UpdateUserProfile ,UpdatePasswordForm , UpdateInfo
+from .forms import RegisterForm , UpdateUserProfile ,UpdatePasswordForm , UpdateInfo ,CreateBoothForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
@@ -383,3 +383,44 @@ def Add_Product(request):
     else:
         messages.error(request, 'لطفاً ابتدا وارد حساب کاربری خود شوید.')
         return redirect('Login')
+
+
+def Create_Booth(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            user = request.user
+            createbooth_Form=CreateBoothForm(request.POST or None , request.FILES or None)
+            if createbooth_Form.is_valid():
+                profile=Profile.objects.filter(user=request.user)
+                for item in profile:
+                    if item.role == 'Customer':
+                        names=createbooth_Form.data['name']
+                        address=createbooth_Form.data['address']
+                        descriptions=createbooth_Form.data['description']
+                        images=request.FILES['image']
+                        Create=Booth(name=names,address=address,description=descriptions,image=images , owner=user ,date_created=datetime.now())
+                        Create.save()
+                        item.role = 'Boother'
+                        item.booth=Create
+                        item.save()
+                        messages.success(request , 'سلام غرفه دار گرامی درخواست شما جهت بازبینی به همکاران ما ارسال شد ..')
+                        return redirect('/')
+                    else:
+                        messages.error(request , 'مشتری گرامی شما دارای یک غرفه میباشید نمیتوانید غرفه دیگری ثبت کنید لطفا با پشتیبانی صحبت کنید ...')
+                        return redirect('/')
+            else:
+                for error in createbooth_Form.errors.values():
+                    messages.error(request , error)
+                    return redirect('Create_Booth')
+
+                # messages.error(request , 'سلام غرفه دار گرامی لطفا از کلمات مناسب استفاده کنید با تشکر ...')
+                # return redirect('Create_Booth')
+        else:
+            createbooth_Form=CreateBoothForm()
+            return render(request=request , template_name='CreateBooth.html' , context={'boothform':createbooth_Form})
+    else:
+        messages.error(request, 'سلام مراجعه کننده گرامی ، لطفا با حساب کاربری خود وارد شوید...')
+        return redirect('Login')
+
+
+
