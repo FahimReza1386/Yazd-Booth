@@ -12,9 +12,10 @@ from django.db.models import Count , Q
 from Cart.cart import Cart
 from Payment.forms import ShippingForm
 from Payment.models import ShippingAddress
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 from django.contrib import messages
+
 
 
 
@@ -266,9 +267,22 @@ def Product_Page(request , id):
     FeatureـProducts=FeatureـProduct.objects.filter(product=id).all()
     for item in product:
         categorys=item.category
+        booth_Created=item.booth.date_created
+        Today=datetime.now(timezone.utc)
+
+        # محاسبه فاصله
+        time_difference = Today - booth_Created  # این یک شیء timedelta است
+
+        # محاسبه ساعت
+        total_hours = int(time_difference.total_seconds() / 3600)
+        if total_hours <=24:
+            pass
+        else:
+            total_hours = time_difference.days
+
     prd_cat=Product.objects.filter(category=categorys)[:5]
     color=Color.objects.filter(prd=id).all()
-    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat})
+    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat , 'time_difference':total_hours})
 
 
 def Category_Page(request , foo):
