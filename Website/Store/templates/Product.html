@@ -155,54 +155,25 @@
 
  <h1 class="sub-Title" style="margin: 1rem 14rem;">محصولات مشابه :</h1>
  <hr style="margin: 10px 10rem;opacity: 1;"/>
- <div class="Cards row Mahsolat-Moshabe">
-    <div class="card col-md-2 mahsol" >
-        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">22,000,000</h4>
-            <div style="float: left;">                  <a href="Home.html" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-        </div>
-      </div>
-    <div class="card col-md-2 mahsol">
-        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">22,000,000</h4>
-            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-        </div>
-      </div>
-    <div class="card col-md-2 mahsol">
-        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">22,000,000</h4>
-            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-        </div>
-      </div>
-    <div class="card col-md-2 mahsol">
-        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">22,000,000</h4>
-            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-        </div>
-      </div>
+  <div class="Cards row">
+          {% for item in prd_cat %}
+            <div class="card col-md-2 mahsol" >
+                <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+                <div class="card-body">
+                    {% if item.is_sale %}
+                    <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }}</span>
+                  <h4 class="card-title">{{ item.sale_price|intcomma }}</h4>
+                    {% else %}
+                    <h4 class="card-title">{{ item.price|intcomma }}</h4>
+                    {% endif %}
+                    <div style="float: left;">
+                        <a href="/product/{{ item.id }}" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+                </div>
+              </div>
+             {% endfor %}
 
-
-    <div class="card col-md-2 mahsol">
-        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">22,000,000</h4>
-            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
         </div>
-      </div>
-    <div class="card col-md-2 mahsol">
-        <img class="card-img-top" src="{% static 'img/firoze.jpg' %}" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title " style="text-decoration: line-through;">22,000,000</h4>
-          <!-- <span class="card-title ">22,000,000</span> -->
-            <div style="float: left;">                  <a href="#" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-        </div>
-      </div>
 
-</div>
 
 {% endfor %}
 

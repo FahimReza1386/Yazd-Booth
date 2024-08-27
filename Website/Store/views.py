@@ -264,8 +264,11 @@ def Product_Page(request , id):
     product= Product.objects.filter(id=id).all()
     comment=Comments.objects.filter(product=id).all()
     FeatureـProducts=FeatureـProduct.objects.filter(product=id).all()
+    for item in product:
+        categorys=item.category
+    prd_cat=Product.objects.filter(category=categorys)[:7]
     color=Color.objects.filter(prd=id).all()
-    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color })
+    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat})
 
 
 def Category_Page(request , foo):
