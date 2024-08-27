@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block content %}
+
+<div class="container">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+      <table class="table table-hover text-center table-bordered">
+    <thead class="table-primary">
+      <tr>
+        <th>ایدی پیام</th>
+        <th>کاربر</th>
+        <th>ایمیل کاربر</th>
+        <th>پیام کاربر</th>
+        <th>وضعیت سفارش</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in admin %}
+      <tr>
+        <td><a href="/admin_answer/{{ item.id }}" style="text-decoration: none ; color: black;"> {{ item.id }}</a></td>
+        <td>{{ item.user.username }}</td>
+        <td>{{ item.user.email }}</td>
+        <td>{{ item.text }}</td>
+        {% if item.status %}
+            <td>پاسخ داده شده</td>
+          {% else %}
+            <td>پاسخ داده نشده</td>
+          {% endif %}
+      </tr>
+    {% endfor %}
+       </tbody>
+  </table>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+{% endblock %}
+
+
+
+{% block js %}
+{% endblock %}

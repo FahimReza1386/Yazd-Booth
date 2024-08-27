@@ -1547,15 +1547,15 @@ label{
     margin: 7% 0%;
 }
 
-.Panel-Body .PanelBody-left .Poshtiban-Body textarea{
+textarea{
     width: 80%;
-    font-size: ۲0px;
+    font-size: 20px !important;
     background-color: #2EC4B6;
     color: white;
     border: 0;
     outline: 0;
     border-radius: 5px;
-    margin: 2% 10%;
+    margin: 2% 10% !important;
     padding: 10px;
     text-align: right;
     height: 20rem;
@@ -1955,4 +1955,19 @@ label{
     border-radius: 5px;
     padding: 30px;
     text-align: center;
+}
+
+
+.Poshtiban-Body button{
+    width: 80% !important;
+    height: auto;
+    padding: 15px !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    background-color: #FF9F1C !important;
+    color: #ffffff;
+    margin: 10% 10%;
+    outline: none;
+    border-radius: 5px;
+    border: none;
 }

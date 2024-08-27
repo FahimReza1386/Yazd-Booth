@@ -39,17 +39,6 @@
                   </div>
 
                   <hr />
-                  <div class="PanelMenu">
-                    <div class="PanelMenu-right">
-                      <img src="{% static 'img/tasks_113292.png' %}" alt="task-icon">
-                    </div>
-                    <a>سفارشات</a>
-                    <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
-                    </div>
-                  </div>
-
-
 
          {% if user.is_superuser %}
 
@@ -74,6 +63,18 @@
                     </div>
 
                   </div>
+
+                        <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/like.png' %}" alt="Like-icon">
+                    </div>
+                    <a href="{% url 'Questions' %}">سوالات پرسیده شده</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
                     {% else %}
                                       <div class="PanelMenu">
                     <div class="PanelMenu-right">
@@ -88,24 +89,15 @@
                     {% endif %}
 
 
-                  <div class="PanelMenu">
-                    <div class="PanelMenu-right">
-                      <img src="{% static 'img/like.png' %}" alt="Like-icon">
-                    </div>
-                    <a>غرفه های لایک شده</a>
-                    <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
-                    </div>
 
-                  </div>
 
                   <div class="PanelMenu">
                     <div class="PanelMenu-right">
                       <img src="{% static 'img/ecommerce.png' %}" alt="Booth-icon">
                     </div>
-                    <a>افتتاح غرفه</a>
+                    <a href="{% url 'Create_Booth' %}">افتتاح غرفه</a>
                     <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                        <a href="{% url 'Create_Booth' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
                     </div>
 
                   </div>
@@ -288,8 +280,19 @@
                     </div>
 
                   </div>
+                    <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/like.png' %}" alt="Like-icon">
+                    </div>
+                    <a href="{% url 'Questions' %}">سوالات پرسیده شده</a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+
                     {% else %}
-                                      <div class="PanelMenu">
+                    <div class="PanelMenu">
                     <div class="PanelMenu-right">
                       <img src="{% static 'img/clock_icon-icons.com_72357.png' %}" alt="History-icon">
                     </div>
@@ -301,24 +304,25 @@
                   </div>
                     {% endif %}
 
-                  <div class="PanelMenu">
-                    <div class="PanelMenu-right">
-                      <img src="{% static 'img/like.png' %}" alt="Like-icon">
-                    </div>
-                    <a>غرفه های لایک شده</a>
-                    <div class="PanelMenu-left" style="cursor: pointer;">
-                      <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
-                    </div>
-
-                  </div>
 
                   <div class="PanelMenu">
                     <div class="PanelMenu-right">
                       <img src="{% static 'img/ecommerce.png' %}" alt="Booth-icon">
                     </div>
-                    <a>افتتاح غرفه</a>
+                    <a> غرفه های افتتاح شده </a>
                     <div class="PanelMenu-left" style="cursor: pointer;">
                       <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
+                    </div>
+
+                  </div>
+                    <div class="PanelMenu">
+                    <div class="PanelMenu-right">
+                      <img src="{% static 'img/ecommerce.png' %}" alt="Booth-icon">
+                    </div>
+                    <a href="{% url 'Add_Product' %}"> اضافه کردن محصول </a>
+                    <div class="PanelMenu-left" style="cursor: pointer;">
+                        <a href="{% url 'Add_Product' %}"><img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon"></a>
+
                     </div>
 
                   </div>
@@ -367,15 +371,19 @@
                 <h3>ایا مشکلی شما را درگیر کرده است ؟ مطرح کنید تا حلش کنیم</h3>
             </div>
             <div class="Poshtiban-Body">
-                <textarea class="Poshtiban-inp"></textarea>
-                <a href="#" class="btn">ارسال پیام</a>
+                <form method="POST"  action="{% url 'Poshtibani' %}">
+                    {% csrf_token %}
+                <textarea class="Poshtiban-inp"  name="message"></textarea>
+                <button type="submit">ارسال پیام</button>
+                </form>
+
             </div>
           </div>
               </div>
 
         {% endif %}
-
 {% endfor %}
+
 {% endblock %}
 
 

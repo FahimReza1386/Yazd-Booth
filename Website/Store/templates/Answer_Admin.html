@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+    <div class="card" style="width: 70% !important; margin: 1rem auto !important;background-color: #CBF3F0">
+                        <h1 class="sub-Title" style="margin: 2rem auto">اطلاعات سفارش :</h1>
+
+        <div class="card-header" style="display: flex;background-color: #ffffff; width: 80%;margin: 0 auto;border-radius: 5px;box-shadow: 0px 0px 3px black">
+            <div class="card-header-right text-center">
+                <h2>کاربر :</h2>
+                <hr/>
+                <h2>ایمیل :</h2>
+                <hr/>
+                <h2> پیام :</h2>
+                <hr/>
+                <h2>وضعیت :</h2>
+            </div>
+
+            <div class="card-header-left">
+                {% for item in admin %}
+                <h2>{{ item.user.username }}</h2>
+                <hr/>
+                <h2>{{ item.user.email }}</h2>
+                <hr/>
+                <h2>{{ item.text }}</h2>
+                <hr/>
+                <h2>{{ item.status }}</h2>
+            </div>
+        </div>
+        <hr/>
+        <h2 class="sub-Title text-center">پاسخ :</h2>
+        <form method="POST" action="/admin_answer/{{ item.id }}">
+            {% csrf_token %}
+        <div class="card-body" style="display:flex;justify-content: center">
+                {% if item.answer %}
+                            <textarea class="Poshtiban-inp"  name="message" style="width: 70%">{{ item.answer }}</textarea>
+                {% else %}
+                <textarea class="Poshtiban-inp"  name="message" style="width: 70%"></textarea>
+                {% endif %}
+                <button type="submit" class="btn btn-dark mr=5 " style="background-color: #ffa11e;border: none;padding:10px;font-weight: bold ; ">ارسال پاسخ</button>
+        </div>
+                    </form>
+                        {% endfor %}
+
+    </div>
+
+
+<br/>
+<br/>
+<br/>
+
+
+{% endblock %}
+
+
+
+{% block js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+

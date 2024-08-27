@@ -15,6 +15,7 @@ admin.site.register(Feature)
 admin.site.register(Profile)
 admin.site.register(Like)
 admin.site.register(FeatureـProduct)
+admin.site.register(Admin)
 
 
 # Mix profile info and user info

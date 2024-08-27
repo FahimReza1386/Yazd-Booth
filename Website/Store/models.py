@@ -10,7 +10,7 @@ class Category(models.Model):
     image = models.ImageField(upload_to = 'uploads/category/' , null=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 
 class Feature(models.Model):
@@ -18,7 +18,7 @@ class Feature(models.Model):
     description = models.TextField(null=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 
 class Booth(models.Model):
@@ -26,7 +26,7 @@ class Booth(models.Model):
     address = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to='uploads/booth/', null=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE , null=True)
     date_created = models.DateTimeField(auto_now_add=True , null=True)
     popularity_percentage = models.FloatField(default=0)  # فیلد جدید برای نگهداری درصد محبوبیت
 
@@ -37,7 +37,7 @@ class Booth(models.Model):
         return self.product_set.all()
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 class Like(models.Model):
     booth = models.ForeignKey(Booth, related_name='likes', on_delete=models.CASCADE)
@@ -47,7 +47,7 @@ class Like(models.Model):
         unique_together = ('booth', 'user')
 
     def __str__(self):
-        return self.booth.name
+        return f'{self.booth} {self.user}'
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=100 , null=False , blank=False)
@@ -77,17 +77,16 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True , null=True)
     booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , related_name='products' , blank=False , default='' )
 
-
-
     def __str__(self):
-        return self.name
+        return f'{self.name}'
+
 
 class Color(models.Model):
     prd=models.ForeignKey(Product, on_delete=models.CASCADE , null=True , blank=False)
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
 
 
 class FeatureـProduct(models.Model):
@@ -96,7 +95,7 @@ class FeatureـProduct(models.Model):
     feature_value = models.CharField(max_length=100 , null=False , blank=False)
 
     def __str__(self):
-        return self.product
+        return f'{self.product}'
 
 
 
@@ -143,11 +142,11 @@ class Profile(models.Model):
     country = models.CharField(max_length=200 , blank=True)
     melicode = models.CharField(max_length=200 , blank=True)
     role = models.CharField(max_length=200 , blank=True , default='Customer')
-    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , blank=False , default=None)
+    booth = models.OneToOneField(Booth, on_delete=models.CASCADE , null=True , blank=True , default=None)
     old_cart = models.CharField(max_length=200 , null=True , blank=True)
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username}'
 
 
 # Create a User Profile by default when user sign up
@@ -159,3 +158,14 @@ def Create_Profile(sender, instance, created, **kwargs):
 
 #Automate the profile thing
 post_save.connect(Create_Profile, sender=User)
+
+
+
+class Admin(models.Model):
+    user=models.ForeignKey(User , on_delete=models.CASCADE , default=None , null=False , blank=False)
+    text = models.TextField(max_length=300 , default='' , null=True , blank=True)
+    status=models.BooleanField(default=False)
+    answer=models.CharField(max_length=200 , default='' , null=True , blank=True)
+
+    def __str__(self):
+        return f'{self.text}'
