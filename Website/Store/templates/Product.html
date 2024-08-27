@@ -116,14 +116,7 @@
                     <h1>{{ item.user }} :</h1>
                 </div>
                 <div class="Comment-center">
-<!--                        <img src="{% static 'img/star.ico' %}" alt="star-img">-->
-
-<!--                        <div class="star">-->
-<!--                            <h1 class="star-txt">{{ item.star }}</h1>-->
-<!--                            <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px;">-->
-<!--                        </div>-->
-
-=                    {% for _ in  item.star|ranges %}
+            {% for _ in  item.star|ranges %}
                     <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px; margin-bottom: 20px">
                     {% endfor %}
                     <p>{{ item.description }}</p>
@@ -131,16 +124,9 @@
                 </div>
                 <div class="Comment-left">
                     <div class="Like-Comments">
-<!--                        <img src="{% static 'img/like.png' %}" alt="like-img" class="likes-commnet">-->
-                        <i class='bx bxs-like like-icon' style="margin: 0px 0 0 40px !important;"></i>
+                        <i class='bx bxs-like like-icon like-comment'  data-id="{{ item.id }}" style="margin: 0px 0 0 40px !important;"></i>
                         <br/>
-                        <h1 style="margin: 30px auto !important;">{{ item.likes }}</h1>
-                    </div>
-                    <div class="Like-Comments">
-<!--                        <img src="{% static 'img/dislike_health_medical_icon_206864.png' %}" alt="dislike-img" class="dislike-comment">-->
-                        <i class='bx bxs-dislike like-icon' style="margin: 0px 0 0 40px !important;"></i>
-                        <br/>
-                        <h1 style="margin: 30px auto !important;">{{ item.dislikes }}</h1>
+                        <h1 style="margin: 30px auto !important;">{{ item.likes.count }}</h1>
                     </div>
                 </div>
             </div>
@@ -267,13 +253,6 @@
 
 
         Hesab(); // فراخوانی تابع
-
-        $('.like-icon').click(function (){
-            $(this).css({
-             color:'red'
-        })
-
-    })
     </script>
     <script>
         $(document).on('click' , '#add-cart' , function (e){
@@ -297,8 +276,64 @@
             });
         });
     </script>
+<script>
+        // در ابتدا چک میکنیم که آیا قبلاً غرفه رو لایک کرده یا نه
+        var isLiked = false; // فرض میکنیم ابتدا غرفه لایک نشده
+        $(document).ready(function() {
+        // اینجا کد چک کردن وضعیت لایک قبلی رو قرار میدیم
+        // مثلا میتونیم با یک ajax درخواست وضعیت لایک قبلی رو بگیریم
+        var userId = '{{ user }}';
+
+        // چک کردن غرفه‌ها آیا قبلاً لایک شده‌اند یا خیر
+        $.ajax({
+        type: 'GET',
+        url: "{% url 'Check_Like_Comment' %}", // فرض می‌کنیم نام URL این است و آرایه‌ای از lkedBooths را برمی‌گرداند
+        data: {
+        user: userId,
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+    },
+        success: function(response) {
+        response.likedComment.forEach(function(commentId) {
+        // به هر آیکون با data-id مربوطه رنگ قرمز دادیم
+        $('.like-icon[data-id="' + commentId + '"]').css('color', 'red');
+    });
+    }
+    });
+
+        $('.like-icon').click(function() {
+        var commentId = parseInt($(this).data('id'));
+        var userId = '{{ user }}';
+
+        $.ajax({
+        type: 'POST',
+        url: "{% url 'Like_Comment' %}",
+        data: {
+        user: userId,
+        comment: commentId,
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        action: 'post'
+    },
+        success: function(json) {
+            location.reload();
+    },
+        error: function(err, errmsg, xhr) {
+        console.log(err);
+    }
+    });
+
+        isLiked = !isLiked; // تغییر وضعیت لایک
+
+        if (isLiked) {
+        $(this).css('color', 'red');
+    } else {
+        $(this).css('color', 'black');
+    }
+    });
+    });
 
 
- {% endfor %}
+</script>
+
+{% endfor %}
 {% endblock %}
 

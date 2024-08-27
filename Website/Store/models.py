@@ -49,6 +49,7 @@ class Like(models.Model):
     def __str__(self):
         return f'{self.booth} {self.user}'
 
+
 class Customer(models.Model):
     first_name = models.CharField(max_length=100 , null=False , blank=False)
     last_name = models.CharField(max_length=100 , null=False , blank=False)
@@ -121,13 +122,22 @@ class Comments(models.Model):
     image = models.ImageField(upload_to='uploads/comments/')
     star = models.IntegerField(default=0)
     description = models.TextField(max_length=300 , default='' , null=True , blank=True)
-    likes = models.IntegerField(default=0)
-    dislikes = models.IntegerField(default=0)
 
+    def like_count(self):
+        return self.likes.count()
 
     def __str__(self):
         return f'{self.product}'
 
+class LikeComment(models.Model):
+    comment = models.ForeignKey(Comments, related_name='likes', on_delete=models.CASCADE , null=True , blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE , null=False , blank=False)
+
+    class Meta:
+        unique_together = ('comment', 'user')
+
+    def __str__(self):
+        return f'{self.comment} {self.user}'
 
 class Profile(models.Model):
     user = models.OneToOneField(User , on_delete=models.CASCADE , default=None , null=False , blank=False)

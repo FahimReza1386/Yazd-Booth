@@ -107,6 +107,32 @@ def Check_Like(request):
     else:
         return redirect('Home')
 
+
+def Check_Like_Comment(request):
+    if request.method == 'GET':
+        user = request.user
+        liked_Comment = LikeComment.objects.filter(user=user).values_list('comment_id', flat=True)
+        return JsonResponse({'likedComment': list(liked_Comment)})
+    else:
+        return redirect('Home')
+
+
+def Like_Comment(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.POST['user'])
+        comments = Comments.objects.get(id=request.POST['comment'])
+        like, created = LikeComment.objects.get_or_create(user=user, comment=comments)
+        if created:
+            like.save()
+            return redirect('Home')
+        else:
+            like.delete()
+            return redirect('Home')
+
+    else:
+        return redirect('Home')
+
+
 def About(request):
     return render(request=request , template_name='About.html' , context={})
 
