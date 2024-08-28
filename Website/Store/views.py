@@ -510,3 +510,28 @@ def Answer(request , id):
     else:
         messages.error(request, 'لطفا با حساب مدیر وارد شوید ...')
         return redirect('Home')
+
+
+
+def Add_Comments(request , id):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+             user=request.user
+             product=Product.objects.get(id=id)
+             profile=Profile.objects.get(user=request.user)
+             image=profile.image
+
+             star=request.POST.get('star')
+             comment=request.POST.get('comment')
+             new_comment=Comments(product=product , user=user , image=image, star=star, description=comment)
+             new_comment.save()
+
+             messages.success(request , 'مشتری گرامی نظر شما با موفقیت ارسال شد ..')
+             return redirect('/')
+
+        else:
+            messages.error(request , 'خطای دسترسی')
+            return redirect('/')
+    else:
+        messages.error(request, 'سلام مراجعه کننده گرامی ، لطفا با حساب کاربری خود وارد شوید...')
+        return redirect('Login')

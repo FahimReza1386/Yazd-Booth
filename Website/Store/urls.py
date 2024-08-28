@@ -24,4 +24,6 @@ urlpatterns = [
     path('send_to_poshtibani/', views.Poshtibani, name='Poshtibani'),
     path('admin_question/', views.Questions, name='Questions'),
     path('admin_answer/<int:id>', views.Answer, name='Answer'),
+    path('admin_answer/<int:id>', views.Answer, name='Answer'),
+    path('add_comment/<int:id>', views.Add_Comments, name='Add_Comments'),
 ]
