@@ -23,7 +23,7 @@ from django.contrib import messages
 
 
 def Home(request):
-    booth= Booth.objects.all()[:5]
+    booth= Booth.objects.order_by('-popularity_percentage')[:5]
     category = Category.objects.all()
     prd_last = Product.objects.order_by('-created_at')[:5]
     image_Product=ProductImage.objects.filter(product__in=prd_last)
@@ -498,8 +498,6 @@ def Create_Booth(request):
                     messages.error(request , error)
                     return redirect('Create_Booth')
 
-                # messages.error(request , 'سلام غرفه دار گرامی لطفا از کلمات مناسب استفاده کنید با تشکر ...')
-                # return redirect('Create_Booth')
         else:
             createbooth_Form=CreateBoothForm()
             return render(request=request , template_name='CreateBooth.html' , context={'boothform':createbooth_Form})
