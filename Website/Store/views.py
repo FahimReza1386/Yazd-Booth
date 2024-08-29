@@ -461,9 +461,30 @@ def Create_Booth(request):
                         names=createbooth_Form.data['name']
                         address=createbooth_Form.data['address']
                         descriptions=createbooth_Form.data['description']
-                        images=request.FILES['image']
-                        Create=Booth(name=names,address=address,description=descriptions,image=images , owner=user ,date_created=datetime.now())
+                        images=request.FILES.getlist('img')
+                        Create=Booth(name=names,address=address,description=descriptions, owner=user ,date_created=datetime.now())
                         Create.save()
+
+                        if images:
+                            if len(images) == 3:
+                                for img in images:
+                                    if img.content_type in ['image/jpeg', 'image/png', 'image/webp', 'image/jpg']:
+                                        # ذخیره تصویر در ProductImage
+                                        img_instance = BoothImage(booth=Create, image=img)
+                                        img_instance.save()
+                                    else:
+                                        messages.error(request, 'لطفا عکس معتبر را وارد کنید ..')
+                                        Create.delete()
+                                        return redirect('Create_Booth')
+                            else:
+                                messages.error(request, 'سلام کاربر گرامی لطفا حداقل و حداکثر ۳ عکس اضافه کنید ...')
+                                Create.delete()
+                                return redirect('Create_Booth')
+                        else:
+                            messages.error(request, 'لطفا حداقل یک عکس را وارد کنید ..')
+                            Create.delete()
+                            return redirect('Add_Product')
+
                         item.role = 'Boother'
                         item.booth=Create
                         item.save()

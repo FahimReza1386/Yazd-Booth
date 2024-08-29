@@ -7,19 +7,25 @@
 
     <h1 class="sub-Title text-center mt-5">سلام به بخش ایجاد غرفه خوش امدید..</h1>
     <h1 class="text-center mb-5" style="font-size: 15px;font-weight: bold">لطفا تمامی فیلد هارا با دقت و بدون نقص کامل کنید ..</h1>
-    <div class="Register">
+    <div class="Register" style="height: 45rem;">
 
             <div class="Register-left">
+                <div class="inputs_Product">
                   <form method="POST" action="{% url 'Create_Booth' %}" enctype="multipart/form-data">
                       {% csrf_token %}
 
-                <div class="inputs">
+                <div class="input-file">
+                    <img src="{% static 'img/img-add3.ico' %}" style="width: 100%;" onclick="document.getElementById('file-input').click();">
+                    <input type="file" id="file-input" name="img" style="display: none;" multiple>
+                </div>
+                <div class="inputs" style="height: 13rem;">
 
                     {{ boothform }}
 
                 </div>
                 <button type="submit" style="color: #ffffff">ایجاد غرفه</button>
               </form>
+            </div>
             </div>
         <div class="Register-right">
             <div class="Register-Information">
