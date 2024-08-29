@@ -102,6 +102,8 @@
 .card-img-top{
     margin: 15px 2.5rem !important;
     width: 70% !important;
+    aspect-ratio: 4/4;
+    border-radius: 5px;
 }
 
 .card h4{
@@ -166,6 +168,8 @@
     width: 22% !important;
     height: auto !important;
     margin: 5px 30px 16px 5px !important;
+    aspect-ratio: 3 / 3;
+    border-radius: 5px;
 }
 
 

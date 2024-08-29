@@ -25,7 +25,6 @@ class Booth(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='uploads/booth/', null=True)
     owner = models.OneToOneField(User, on_delete=models.CASCADE , null=True)
     date_created = models.DateTimeField(auto_now_add=True , null=True)
     popularity_percentage = models.FloatField(default=0)  # فیلد جدید برای نگهداری درصد محبوبیت
@@ -38,6 +37,17 @@ class Booth(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+
+class BoothImage(models.Model):
+    booth= models.ForeignKey(Booth, on_delete=models.CASCADE , null=True)
+    image = models.ImageField(upload_to='uploads/booth/', null=True)
+
+    def __str__(self):
+        return f'{self.booth.name}'
+
+
 
 class Like(models.Model):
     booth = models.ForeignKey(Booth, related_name='likes', on_delete=models.CASCADE)

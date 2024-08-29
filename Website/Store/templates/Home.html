@@ -103,9 +103,15 @@
         {% for item in Booth %}
           <div class="card Booth">
             <div class="img">
-                <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
-              <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
-              <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+
+
+                {% for img in image_booth %}
+                    {% if img.booth.id == item.id %}
+                        <img class="card-img-top" src="{{ img.image.url }}" alt="Card image">
+                    {% endif %}
+                {% endfor %}
+
+
              </div>
             <div class="card-body">
               <a class="Booth-Titr">{{ item.name }}</a>

@@ -72,4 +72,4 @@ class CreateBoothForm(forms.ModelForm):
 
     class Meta:
         model = Booth
-        fields = ['name' , 'address' , 'description' , 'image']
+        fields = ['name' , 'address' , 'description']

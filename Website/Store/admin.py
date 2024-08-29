@@ -17,6 +17,7 @@ admin.site.register(Like)
 admin.site.register(FeatureـProduct)
 admin.site.register(Admin)
 admin.site.register(ProductImage)
+admin.site.register(BoothImage)
 
 
 # Mix profile info and user info

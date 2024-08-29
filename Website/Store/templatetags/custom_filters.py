@@ -21,3 +21,11 @@ def custom_range(value, arg):
 @register.filter
 def ranges(value):
     return range(value)
+
+
+@register.filter
+def get_item(list, id):
+    for item in list:
+        if item.booth.id == id:
+            return item
+    return None

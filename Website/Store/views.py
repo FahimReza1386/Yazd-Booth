@@ -27,7 +27,9 @@ def Home(request):
     category = Category.objects.all()
     prd_last = Product.objects.order_by('-created_at')[:5]
     image_Product=ProductImage.objects.filter(product__in=prd_last)
-    img2=list(image_Product)
+    image_booth=BoothImage.objects.filter(booth__in=booth)
+    product_img=list(image_Product)
+    booth_img=list(image_booth)
 
     if request.user.is_authenticated:
         user=User.objects.get(id=request.user.id)
@@ -43,9 +45,9 @@ def Home(request):
             messages.error(request , 'متاسفانه محصولی با این نام وحود ندارد ...')
             return render(request=request , template_name='Home.html' , context={})
         else:
-            return render(request=request, template_name='Home.html',context={'Product': prd_last, 'Booth': booth, 'category': category, 'user': user,'search': searched  , 'image_Product':img2})
+            return render(request=request, template_name='Home.html',context={'Product': prd_last, 'Booth': booth, 'category': category, 'user': user,'search': searched  , 'image_Product':product_img , 'image_booth':booth_img})
     else:
-        return render(request=request , template_name='Home.html' , context={'Product':prd_last ,'Booth':booth , 'category':category , 'user':user , 'image_Product':img2})
+        return render(request=request , template_name='Home.html' , context={'Product':prd_last ,'Booth':booth , 'category':category , 'user':user , 'image_Product':product_img , 'image_booth':booth_img})
 
 def Like_Booth(request):
     if request.method == 'POST':
