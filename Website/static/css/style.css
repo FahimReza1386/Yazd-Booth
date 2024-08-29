@@ -2011,3 +2011,13 @@ textarea{
 .Cards.row{
     --bs-gutter-x: -16rem !important;
 }
+
+
+.send_comment{
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}

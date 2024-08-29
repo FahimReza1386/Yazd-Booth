@@ -27,8 +27,8 @@ def Home(request):
     category = Category.objects.all()
     prd_last = Product.objects.order_by('-created_at')[:5]
     image_Product=ProductImage.objects.filter(product__in=prd_last)
-    image_booth=BoothImage.objects.filter(booth__in=booth)
     product_img=list(image_Product)
+    image_booth=BoothImage.objects.filter(booth__in=booth)
     booth_img=list(image_booth)
 
     if request.user.is_authenticated:
@@ -315,7 +315,7 @@ def Product_Page(request , id):
 
     prd_cat=Product.objects.filter(category=categorys)[:5]
     color=Color.objects.filter(prd=id).all()
-    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat , 'time_difference':total_hours , 'images':photo , 'imgfirst':photo2[0]})
+    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat , 'time_difference':total_hours , 'images':photo2})
 
 
 def Category_Page(request , foo):
@@ -334,8 +334,11 @@ def Customer_UserPanel(request):
     formatted_date2=None
     if request.user.is_authenticated:
         profile = Profile.objects.filter(user=request.user)
-        for item in profile:
 
+        for item in profile:
+            booth = Booth.objects.filter(owner=item.user.id).all()
+            image_booth = BoothImage.objects.filter(booth__in=booth)
+            booth_img = list(image_booth)
             # تاریخ ساخت غرفه
             if item.role == 'Boother':
                 if item.booth:
@@ -354,7 +357,7 @@ def Customer_UserPanel(request):
                 # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
 
                 formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
-        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2})
+        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_booth':booth_img[0]})
 
     else:
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')

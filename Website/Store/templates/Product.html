@@ -7,12 +7,17 @@
 
     <div class="Product-Information">
         <div class="Product-right">
-            <img id="large-image" src="{{ imgfirst.image.url }}" alt="img-Product" class="img-product active">
+                {% with product.images.first as image %}
+                    {% if image.product.id == product.id %}
+                        <img id="large-image" src="{{ image.image.url }}" alt="img-Product" class="img-product active">
+                    {% endif %}
+                {% endwith %}
             <div class="smal-images" style="width: 100%;">
                 {% for item in images %}
                     <img src="{{ item.image.url }}" onclick="changeImage('{{ item.image.url }}')" alt="Smal-Image 1" class="img-product">
                 {% endfor %}
             </div>
+
             <i class='bx bx-down-arrow-alt Owner-i'></i>
         </div>
 
@@ -69,9 +74,6 @@
     </div>
 
 
-    </div>
-
-
     <div class="Description">
         <h1>معرفی :</h1>
         <h2>{{ product.description }}</h2>
@@ -87,8 +89,8 @@
                 {% for item in Feature %}
 
                     <div class="featur">
-                        <h3>{{ product.feature_name }}</h3>
-                        <h2>{{ product.feature_value }}</h2>
+                        <h3>{{ item.feature_name }}</h3>
+                        <h2>{{ item.feature_value }}</h2>
                     </div>
 
                 {% endfor %}
@@ -111,29 +113,35 @@
                     <div class="Profile-img">
                         <img src="{{ item.image.url }}" alt="Profile-img">
                     </div>
-                    <h1>{{ product.user }} :</h1>
+                    <h1>{{ item.user.username }} :</h1>
                 </div>
                 <div class="Comment-center">
-            {% for _ in  item.star|ranges %}
+                    {% for _ in  item.star|ranges %}
                     <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px; margin-bottom: 20px">
                     {% endfor %}
-                    <p>{{ product.description }}</p>
+                    <p>{{ item.description }}</p>
 
                 </div>
                 <div class="Comment-left">
                     <div class="Like-Comments">
                         <i class='bx bxs-like like-icon like-comment'  data-id="{{ item.id }}" style="margin: 0px 0 0 40px !important;"></i>
                         <br/>
-                        <h1 style="margin: 30px auto !important;">{{ product.likes.count }}</h1>
+                        <h1 style="margin: 30px auto !important;">{{ item.likes.count }}</h1>
                     </div>
                 </div>
-            </div>
 
             </div>
+            {% endfor %}
+
+
+        </div>
+
         <i class='bx bx-down-arrow-alt i-Comments'></i>
+    </div>
 
-        <h1 class="sub-Title" style="    margin: 3rem 30px;">نظر خود را بگویید ..</h1>
-        <hr style="margin: 10px;opacity: 1;"/>
+        <h1 class="sub-Title" style="margin: 3rem 13rem;">نظر خود را بگویید ..</h1>
+ <hr style="margin: 10px 10rem;opacity: 1;"/>
+
         <div class="send_comment">
             <form method="POST" action="/add_comment/{{ product.id }}">
                 {% csrf_token %}
@@ -146,20 +154,23 @@
                     </div>
                 <input type="hidden" id="rating" name="star" value="0">
                 <textarea placeholder="کامنت خود را بنویسید..." name="comment"></textarea>
-                <button type="submit">ارسال کامنت</button>
+                <button type="submit" style="margin: 3% 10%;">ارسال کامنت</button>
             </form>
-</div>
+        </div>
 
-    </div>
 
 
 
  <h1 class="sub-Title" style="margin: 1rem 14rem;">محصولات مشابه :</h1>
  <hr style="margin: 10px 10rem;opacity: 1;"/>
   <div class="Cards row">
-          {% for product in prd_cat %}
+           {% for product in prd_cat %}
             <div class="card col-md-2 mahsol" >
-                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image">
+                {% with product.images.first as image %}
+                    {% if image.product.id == product.id %}
+                        <img class="card-img-top" src="{{ image.image.url }}" alt="Card image">
+                    {% endif %}
+                {% endwith %}
                 <div class="card-body">
                     {% if product.is_sale %}
                     <span class="card-title" style="text-decoration: line-through;">{{ product.price|intcomma }}</span>
@@ -168,16 +179,13 @@
                     <h4 class="card-title">{{ product.price|intcomma }}</h4>
                     {% endif %}
                     <div style="float: left;">
-                        <a href="/product/{{ product.id }}" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
-                </div>
-              </div>
+                        <a href="/product/{{ product.id }}" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>
+                    </div>
+                    </div>
+            </div>
+                  {% endfor %}
 
-        </div>
-             {% endfor %}
-
-
-{% endfor %}
-
+  </div>
 
 {% endblock %}
 
