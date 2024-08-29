@@ -70,7 +70,16 @@
     <div class="Cards row">
           {% for item in Product %}
             <div class="card col-md-2 mahsol" >
-                <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+                {% with item.images.first as image %}  <!-- فرض بر این است که هر محصول دارای یک رابطه به تصاویر است -->
+                    {% if image %}
+                            <img class="card-img-top" src="{{ image.image.url }}" alt="Card image">
+                    {% else %}
+                            <img class="card-img-top" src="default-image-url.jpg" alt="Default image">  <!-- تصویر پیش‌فرض در صورت عدم وجود تصویر -->
+                    {% endif %}
+                {% endwith %}
+<!--                {% for image in image_Product %}-->
+<!--                    <img class="card-img-top" src="{{ image.image.url }}" alt="Card image">-->
+<!--                {% endfor %}-->
                 <div class="card-body">
                     {% if item.is_sale %}
                     <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }}</span>

@@ -5,22 +5,20 @@
 
 {% block content %}
 
-    {% for item in product %}
-
     <div class="Product-Information">
         <div class="Product-right">
-            <img id="large-image" src="{{ item.image.url }}" alt="img-Product" class="img-product active">
+            <img id="large-image" src="{{ imgfirst.image.url }}" alt="img-Product" class="img-product active">
             <div class="smal-images" style="width: 100%;">
-                <img src="{{ item.image.url }}" onclick="changeImage('{% static 'img/firoze.jpg' %}')" alt="Smal-Image 1"
-                    class="img-product">
-
+                {% for item in images %}
+                    <img src="{{ item.image.url }}" onclick="changeImage('{{ item.image.url }}')" alt="Smal-Image 1" class="img-product">
+                {% endfor %}
             </div>
             <i class='bx bx-down-arrow-alt Owner-i'></i>
         </div>
 
 
         <div class="Product-left">
-            <h1>{{ item.name }}</h1>
+            <h1>{{ product.name }}</h1>
             <h5>رنگ های محصول انتخابی :</h5>
 
             <div class="Colors">
@@ -30,21 +28,21 @@
             </div>
 
             <div class="information-booth">
-                {% if item.is_sale %}
+                {% if product.is_sale %}
                 <div class="sale">
                     <span>تخفیف</span>
-                    <div class="sale-darsad">{{ item.Discountـpercentage }}</div>
+                    <div class="sale-darsad">{{ product.Discountـpercentage }}</div>
                 </div>
                 {% else %}
                 <div class="sale" style="display: none">
                     <span>تخفیف</span>
-                    <div class="sale-darsad">{{ item.Discountـpercentage }}</div>
+                    <div class="sale-darsad">{{ product.Discountـpercentage }}</div>
                 </div>
                 {% endif %}
                 <div class="information-mahsol" style="padding: 10px;">
                     <div class="address infor">
                         <h3>آدرس خرید حضوری :</h3>
-                        <h2>{{ item.booth.address }}</h2>
+                        <h2>{{ product.booth.address }}</h2>
                     </div>
                     <div class="history infor">
                         <h3>سابقه در یزد غرفه :</h3>
@@ -52,11 +50,11 @@
                     </div>
                     <div class="category infor">
                         <h3>در دسته بندی :</h3>
-                        <h2>{{ item.category }}</h2>
+                        <h2>{{ product.category }}</h2>
                     </div>
                     <div class="price infor">
                         <h3>قیمت :</h3>
-                        <h2 class="Gheimat" style="text-decoration: line-through">{{ item.price|intcomma }} تومان</h2>
+                        <h2 class="Gheimat" style="text-decoration: line-through">{{ product.price|intcomma }} تومان</h2>
                     </div>
                 </div>
                 <hr />
@@ -64,7 +62,7 @@
                     <h3>قابل پرداخت :</h3>
                      <h2><span class="Pardakht"></span> تومان</h2>
                 </div>
-                <button class="btn" value="{{ item.id }}" id="add-cart"  onclick="" >افزودن به سبد خرید</button>
+                <button class="btn" value="{{ product.id }}" id="add-cart"  onclick="" >افزودن به سبد خرید</button>
 
             </div>
         </div>
@@ -76,7 +74,7 @@
 
     <div class="Description">
         <h1>معرفی :</h1>
-        <h2>{{ item.description }}</h2>
+        <h2>{{ product.description }}</h2>
     </div>
 
 
@@ -89,8 +87,8 @@
                 {% for item in Feature %}
 
                     <div class="featur">
-                        <h3>{{ item.feature_name }}</h3>
-                        <h2>{{ item.feature_value }}</h2>
+                        <h3>{{ product.feature_name }}</h3>
+                        <h2>{{ product.feature_value }}</h2>
                     </div>
 
                 {% endfor %}
@@ -113,24 +111,23 @@
                     <div class="Profile-img">
                         <img src="{{ item.image.url }}" alt="Profile-img">
                     </div>
-                    <h1>{{ item.user }} :</h1>
+                    <h1>{{ product.user }} :</h1>
                 </div>
                 <div class="Comment-center">
             {% for _ in  item.star|ranges %}
                     <img src="{% static 'img/star.ico' %}" class="star" alt="star-img" style="width: 20px; height: 20px; margin-bottom: 20px">
                     {% endfor %}
-                    <p>{{ item.description }}</p>
+                    <p>{{ product.description }}</p>
 
                 </div>
                 <div class="Comment-left">
                     <div class="Like-Comments">
                         <i class='bx bxs-like like-icon like-comment'  data-id="{{ item.id }}" style="margin: 0px 0 0 40px !important;"></i>
                         <br/>
-                        <h1 style="margin: 30px auto !important;">{{ item.likes.count }}</h1>
+                        <h1 style="margin: 30px auto !important;">{{ product.likes.count }}</h1>
                     </div>
                 </div>
             </div>
-{% endfor %}
 
             </div>
         <i class='bx bx-down-arrow-alt i-Comments'></i>
@@ -138,7 +135,7 @@
         <h1 class="sub-Title" style="    margin: 3rem 30px;">نظر خود را بگویید ..</h1>
         <hr style="margin: 10px;opacity: 1;"/>
         <div class="send_comment">
-            <form method="POST" action="/add_comment/{{ item.id }}">
+            <form method="POST" action="/add_comment/{{ product.id }}">
                 {% csrf_token %}
                     <div id="star-rating" >
                         <span class="star-add" data-value="1">&#9733;</span>
@@ -160,23 +157,23 @@
  <h1 class="sub-Title" style="margin: 1rem 14rem;">محصولات مشابه :</h1>
  <hr style="margin: 10px 10rem;opacity: 1;"/>
   <div class="Cards row">
-          {% for item in prd_cat %}
+          {% for product in prd_cat %}
             <div class="card col-md-2 mahsol" >
-                <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image">
                 <div class="card-body">
-                    {% if item.is_sale %}
-                    <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }}</span>
-                  <h4 class="card-title">{{ item.sale_price|intcomma }}</h4>
+                    {% if product.is_sale %}
+                    <span class="card-title" style="text-decoration: line-through;">{{ product.price|intcomma }}</span>
+                  <h4 class="card-title">{{ product.sale_price|intcomma }}</h4>
                     {% else %}
-                    <h4 class="card-title">{{ item.price|intcomma }}</h4>
+                    <h4 class="card-title">{{ product.price|intcomma }}</h4>
                     {% endif %}
                     <div style="float: left;">
-                        <a href="/product/{{ item.id }}" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
+                        <a href="/product/{{ product.id }}" class="btn btn-primary float-end" style="background-color: #FF9F1C; color: #000; font-weight: bold;">اطلاعات بیشتر</a>                    </div>
                 </div>
               </div>
-             {% endfor %}
 
         </div>
+             {% endfor %}
 
 
 {% endfor %}
@@ -185,7 +182,6 @@
 {% endblock %}
 
 {% block js %}
-    {% for item in product %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script>
 
@@ -258,8 +254,8 @@
             AllComments = !AllComments; // تغییر وضعیت
         });
 
-        var sale = {{ item.Discountـpercentage }} / 100 ;
-        var Gheimat = {{ item.price }};
+        var sale = {{ product.Discountـpercentage }} / 100 ;
+        var Gheimat = {{ product.price }};
         var pardakht = 0;
 
 
@@ -389,6 +385,5 @@
 
 </script>
 
-{% endfor %}
 {% endblock %}
 

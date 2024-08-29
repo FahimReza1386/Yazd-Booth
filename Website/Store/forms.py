@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm , UserChangeForm , SetPasswordForm
 from django import forms
-from .models import Profile, Booth
+from .models import Profile, Booth , Product
 
 
 class RegisterForm(UserCreationForm):
@@ -73,4 +73,3 @@ class CreateBoothForm(forms.ModelForm):
     class Meta:
         model = Booth
         fields = ['name' , 'address' , 'description' , 'image']
-

@@ -1934,13 +1934,12 @@ textarea{
 
 
 .input-file{
-    color: red;
     border: 2px solid #d3b4b4;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: red;
+    margin: 4rem auto;
 }
 
 .input-file input{

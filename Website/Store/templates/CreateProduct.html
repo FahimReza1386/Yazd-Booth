@@ -11,11 +11,38 @@
 
     </div>
 
-    <form method="post" action="{% url 'Add_Product' %}" enctype="multipart/form-data">
+<!--    <form method="post" action="{% url 'Add_Product' %}" enctype="multipart/form-data">-->
+<!--        {% csrf_token %}-->
+<!--            <div class="input-file">-->
+<!--                <img src="{% static 'img/img-add3.ico' %}" style="width: 100%;" onclick="document.getElementById('file-input').click();">-->
+<!--                <input type="file" id="file-input" name="img" style="display: none;">-->
+<!--            </div>-->
+<!--                                <h1 class="sub-Title" style="margin: 2rem auto; text-align: center">عکس خود را وارد کنید ...</h1>-->
+
+
+
+
+<!--    <div class="inputs-Product">-->
+<!--        {% for item in form %}-->
+<!--                {{ item }}-->
+<!--        {% endfor %}-->
+
+
+
+<!--        <input type="color" placeholder="رنگ محصول خود را وارد کنید ..." name="color" style="padding: 10px;">-->
+<!--        <input type="text" placeholder="..." name="category" style="padding: 10px;">-->
+<!--            <hr style="margin: 10px 17%;"/>-->
+<!--        <input type="text" placeholder="نام مشخصات محصول خود را وارد کنید ..." name="featureـname">-->
+<!--        <input type="text" placeholder="مقدار مشخصات محصول خود را وارد کنید ..." name="feature_value">-->
+<!--    </div>-->
+
+
+     <div class="inputs_Product">
+            <form method="post" action="{% url 'Add_Product' %}" enctype="multipart/form-data">
         {% csrf_token %}
                 <div class="input-file">
-<!--                    <img src="{% static 'img/user.ico' %}" style="width: 100%;">-->
-                    <input type="file" name="img" >
+                    <img src="{% static 'img/img-add3.ico' %}" style="width: 100%;" onclick="document.getElementById('file-input').click();">
+                    <input type="file" id="file-input" name="img" style="display: none;" multiple>
                 </div>
 
 
@@ -25,6 +52,7 @@
         <input type="text" placeholder="دسته بندی محصول خود را وارد کنید ..." name="category">
         <input type="color" placeholder="رنگ محصول خود را وارد کنید ..." name="color" style="padding: 10px">
             <hr style="margin: 10px 17%;"/>
+        <input type="number" placeholder="تعداد موجودی محصول خود را وارد کنید ..." name="AvailableQty">
 
         <input type="number" placeholder="قیمت محصول خود را وارد کنید ..." name="price">
         <input type="number" placeholder="درصد تخفیف محصول خود را وارد کنید ..." name="sale_price">
@@ -39,7 +67,6 @@
     <button class="btn product-btn">ثبت تغییرات</button>
 </form>
 
-
 {% endblock %}
 
 
@@ -47,4 +74,11 @@
 {% block js %}
 <script src="{% static 'ja/jquery.js' %}" ></script>
 <script src="{% static 'ja/script.js' %}" ></script>
+
+<script>
+    function selectCategory(categoryName) {
+        // تغییر متن دکمه به نام دسته بندی انتخاب شده
+        document.getElementById('dropdownButton').innerText = categoryName;
+    }
+</script>
 {% endblock %}

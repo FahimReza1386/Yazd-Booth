@@ -71,15 +71,18 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=12, decimal_places=0 , default=0 , null=False , blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE , default=None , null=False , blank=False)
     description = models.TextField(max_length=300 , default='' , null=True , blank=True)
-    image = models.ImageField(upload_to='uploads/product/')
-    is_active = models.BooleanField(default=False)
+    Available_Qty = models.IntegerField(default=0 , null=True)
     is_sale = models.BooleanField(default=False)
     Discountـpercentage = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True , null=True)
-    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , related_name='products' , blank=False , default='' )
+    booth = models.ForeignKey(Booth, on_delete=models.CASCADE , null=True , related_name='products' , blank=False , default='')
 
     def __str__(self):
         return f'{self.name}'
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='uploads/product/')
 
 
 class Color(models.Model):

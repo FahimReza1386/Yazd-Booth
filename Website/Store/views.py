@@ -26,6 +26,9 @@ def Home(request):
     booth= Booth.objects.all()[:5]
     category = Category.objects.all()
     prd_last = Product.objects.order_by('-created_at')[:5]
+    image_Product=ProductImage.objects.filter(product__in=prd_last)
+    img2=list(image_Product)
+
     if request.user.is_authenticated:
         user=User.objects.get(id=request.user.id)
     else:
@@ -40,9 +43,9 @@ def Home(request):
             messages.error(request , 'متاسفانه محصولی با این نام وحود ندارد ...')
             return render(request=request , template_name='Home.html' , context={})
         else:
-            return render(request=request, template_name='Home.html',context={'Product': prd_last, 'Booth': booth, 'category': category, 'user': user,'search': searched })
+            return render(request=request, template_name='Home.html',context={'Product': prd_last, 'Booth': booth, 'category': category, 'user': user,'search': searched  , 'image_Product':img2})
     else:
-        return render(request=request , template_name='Home.html' , context={'Product':prd_last ,'Booth':booth , 'category':category , 'user':user })
+        return render(request=request , template_name='Home.html' , context={'Product':prd_last ,'Booth':booth , 'category':category , 'user':user , 'image_Product':img2})
 
 def Like_Booth(request):
     if request.method == 'POST':
@@ -288,27 +291,29 @@ def Update_Info(request):
         return redirect('/Login')
 
 def Product_Page(request , id):
-    product= Product.objects.filter(id=id).all()
+    product= Product.objects.get(id=id)
     comment=Comments.objects.filter(product=id).all()
+    photo=ProductImage.objects.filter(product=product).all()
+    photo2=list(photo)
+
     FeatureـProducts=FeatureـProduct.objects.filter(product=id).all()
-    for item in product:
-        categorys=item.category
-        booth_Created=item.booth.date_created
-        Today=datetime.now(timezone.utc)
+    categorys=product.category
+    booth_Created=product.booth.date_created
+    Today=datetime.now(timezone.utc)
 
-        # محاسبه فاصله
-        time_difference = Today - booth_Created  # این یک شیء timedelta است
+    # محاسبه فاصله
+    time_difference = Today - booth_Created  # این یک شیء timedelta است
 
-        # محاسبه ساعت
-        total_hours = int(time_difference.total_seconds() / 3600)
-        if total_hours <=24:
-            pass
-        else:
-            total_hours = time_difference.days
+    # محاسبه ساعت
+    total_hours = int(time_difference.total_seconds() / 3600)
+    if total_hours <=24:
+        pass
+    else:
+        total_hours = time_difference.days
 
     prd_cat=Product.objects.filter(category=categorys)[:5]
     color=Color.objects.filter(prd=id).all()
-    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat , 'time_difference':total_hours})
+    return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat , 'time_difference':total_hours , 'images':photo , 'imgfirst':photo2[0]})
 
 
 def Category_Page(request , foo):
@@ -353,7 +358,6 @@ def Customer_UserPanel(request):
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
         return redirect('Login')
 
-
 def Add_Product(request):
     if request.user.is_authenticated:
         curren_user=Profile.objects.get(user=request.user)
@@ -362,7 +366,7 @@ def Add_Product(request):
             if role == 'Boother':
                 if request.method == 'POST':
                     name = request.POST.get('name')
-                    images = request.FILES.get('img')
+                    images = request.FILES.getlist('img') # گرفتن گروهی عکس ها
                     description = request.POST.get('description')
                     price = request.POST.get('price')
                     discount_sale = request.POST.get('sale_price')
@@ -370,6 +374,7 @@ def Add_Product(request):
                     feature_name = request.POST.get('featureـname')
                     feature_value = request.POST.get('feature_value')
                     color = request.POST.get('color')
+                    available =request.POST.get('AvailableQty')
                     try:
                         Cat_Instanse = Category.objects.get(name=category)
                         boothes = Booth.objects.filter(owner=request.user)
@@ -386,18 +391,27 @@ def Add_Product(request):
                             description=description,
                             price=price,
                             Discountـpercentage=discount_sale,
-                            image=images,
+                            Available_Qty=available,
+                            is_sale=True,
                             booth=booth
                         )
 
-                        if images and images.content_type in ['image/jpeg', 'image/png', 'image/webp', 'image/jpg']:
-                            prd.image=images
-                        else:
-                            messages.error(request , 'لطفا یک عکس را وارد کنید ..')
-                            return redirect('Add_Product')
                         prd.save()
 
-                        # اضافه کردن رنگ‌ها به فیلد many-to-many
+                        if images:
+                            for img in images:
+                                if img.content_type in ['image/jpeg', 'image/png', 'image/webp', 'image/jpg']:
+                                    # ذخیره تصویر در ProductImage
+                                    img_instance = ProductImage(product=prd, image=img)
+                                    img_instance.save()
+                                else:
+                                    messages.error(request, 'لطفا یک عکس معتبر را وارد کنید ..')
+                                    return redirect('Add_Product')
+                        else:
+                            messages.error(request, 'لطفا حداقل یک عکس را وارد کنید ..')
+                            return redirect('Add_Product')
+
+                            # اضافه کردن رنگ‌ها به فیلد many-to-many
                         color_objects = Color(name=color , prd=prd)
                         color_objects.save()
 
@@ -411,11 +425,12 @@ def Add_Product(request):
                     except Category.DoesNotExist:
                         messages.error(request, 'سلام دوست گرامی متاسفانه این دسته بندی وجود ندارد ...')
                         return redirect('Add_Product')
-                    # except Exception as e:
-                    #     messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
-                    #     return redirect('Add_Product')
+                    except Exception as e:
+                        messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
+                        return redirect('Add_Product')
                 else:
-                    return render(request=request, template_name='CreateProduct.html', context={})
+                    category=Category.objects.all()
+                    return render(request=request, template_name='CreateProduct.html', context={'category':category})
             else:
                 messages.error(request , "ثبت محصول تنها برای غرفه داران میباشد ...")
                 return redirect('Customer_UserPanel')
@@ -425,6 +440,11 @@ def Add_Product(request):
     else:
         messages.error(request, 'لطفاً ابتدا وارد حساب کاربری خود شوید.')
         return redirect('Login')
+
+
+
+
+
 
 
 def Create_Booth(request):
