@@ -2021,3 +2021,11 @@ textarea{
     border-radius: 5px;
     padding: 10px;
 }
+
+.card-body h4{
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+    margin: 0% 0% 5% 30%;
+}

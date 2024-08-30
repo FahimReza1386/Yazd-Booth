@@ -83,5 +83,3 @@ function updateTotal(element) {
 $(document).on('click', '.close-tabliq', function () {
     $('.tabliq').fadeToggle();
 })
-
-

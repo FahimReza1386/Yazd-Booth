@@ -37,10 +37,10 @@
         <div class="Layer">
             <h6>{{ item.name }}</h6>
             {% if item.is_sale %}
-            <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
-                <h2><span class="Pardakht"></span> تومان</h2>
+                <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }} تومان</span>
+                <h4 class="card-title"><span class="Pardakht"></span> تومان </h4>
             {% else %}
-
+                <h4 class="card-title">{{ item.price|intcomma }}</h4>
             {% endif %}
             <a href="/product/{{ item.id }}" class="btn product-btn"
                 style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
@@ -69,7 +69,7 @@
     <h1 class="sub-Title">محصولاتی که اخیرا اضافه شده اند ..</h1>
     <div class="Cards row">
           {% for item in Product %}
-            <div class="card col-md-2 mahsol" >
+            <div class="card col-md-2 mahsol product" data-id="{{ item.id }}" data-discount="{{ item.Discountـpercentage }}" data-price = '{{ item.price }}' >
                 {% with item.images.first as image %}  <!-- فرض بر این است که هر محصول دارای یک رابطه به تصاویر است -->
                     {% if image %}
                             <img class="card-img-top" src="{{ image.image.url }}" alt="Card image">
@@ -77,13 +77,11 @@
                             <img class="card-img-top" src="default-image-url.jpg" alt="Default image">  <!-- تصویر پیش‌فرض در صورت عدم وجود تصویر -->
                     {% endif %}
                 {% endwith %}
-<!--                {% for image in image_Product %}-->
-<!--                    <img class="card-img-top" src="{{ image.image.url }}" alt="Card image">-->
-<!--                {% endfor %}-->
+
                 <div class="card-body">
                     {% if item.is_sale %}
-                    <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }}</span>
-                  <h4 class="card-title">{{ item.sale_price|intcomma }}</h4>
+                        <span class="card-title" style="text-decoration: line-through;">{{ item.price|intcomma }} تومان</span>
+                      <h4 class="card-title"><span class="Pardakht"></span> تومان </h4>
                     {% else %}
                     <h4 class="card-title">{{ item.price|intcomma }}</h4>
                     {% endif %}
@@ -163,6 +161,24 @@
 {% block js %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+{% for item in Product %}
+<script>
+
+    $('.product').each(function () {
+        // دریافت مقادیر از تگ HTML
+        var Gheimat = parseFloat($(this).data('price'));
+        var sale = parseFloat($(this).data('discount')) / 100;
+
+        // محاسبه مقدار پرداخت
+        var pardakht = (Gheimat - (Gheimat * sale));
+
+
+        // نمایش مقدار پرداخت
+        var pardakht2 = pardakht.toLocaleString();
+        $(this).find('.Pardakht').html(pardakht2);
+
+    });
+</script>
 <script>
     // در ابتدا چک میکنیم که آیا قبلاً غرفه رو لایک کرده یا نه
 var isLiked = false; // فرض میکنیم ابتدا غرفه لایک نشده
@@ -218,4 +234,5 @@ $(document).ready(function() {
     });
 });
 </script>
+{% endfor %}
 {% endblock %}
