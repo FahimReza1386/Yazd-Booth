@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from django.http import JsonResponse
 from .models import *
 from django.contrib.auth import authenticate, login, logout
@@ -579,3 +579,8 @@ def Add_Comments(request , id):
     else:
         messages.error(request, 'سلام مراجعه کننده گرامی ، لطفا با حساب کاربری خود وارد شوید...')
         return redirect('Login')
+
+def All_Booth(request):
+    booth=Booth.objects.all()
+    photo=BoothImage.objects.all()
+    return render(request=request , template_name='AllBooth.html' , context={'booth':booth ,'images':photo})

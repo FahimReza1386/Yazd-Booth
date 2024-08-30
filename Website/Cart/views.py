@@ -1,16 +1,17 @@
 from django.shortcuts import render , get_object_or_404
 from .cart import Cart
 from django.contrib import messages
-from Store.models import Product
+from Store.models import Product , ProductImage , BoothImage , Booth
 from django.http import JsonResponse
 # Create your views here.
 def Cart_Summary(request):
     cart = Cart(request)
-    product = cart.get_prods
+    product = cart.get_prods()
     quants = cart.get_quants
     total = cart.get_total
+    img_Product=ProductImage.objects.filter(product__in=product)
 
-    return render(request=request, template_name='Cart_Summary.html' , context={'products':product , 'quants':quants , 'total':total})
+    return render(request=request, template_name='Cart_Summary.html' , context={'products':product , 'quants':quants , 'total':total , 'img_Product':img_Product})
 
 def Cart_Add(request):
 

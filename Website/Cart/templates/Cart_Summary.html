@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load custom_filters %}
 
 {% block content %}
 
@@ -21,7 +22,7 @@
             <div class="Mahsol-Sabad product" data-id="{{ item.id }}" data-price ='{{ item.price }}' data-discount="{{ item.Discountـpercentage }}" style="margin-top: 20px;">
 
                 <div class="Mahsol-img">
-                    <img src="{{ item.image.url }}" alt="">
+                    <img src="{{ item|get_product_image:img_Product }}" alt="تصویر محصول انتخاب شده .">
                 </div>
                 <div class="Mahsol-Information" style="padding: 10px;width: 60%;">
                     <h1>{{ item.name }}</h1>
@@ -56,15 +57,13 @@
                         {% endfor %}
      </div>
         <div class="SideBar">
-
             <h2>بخش پرداخت و ادامه روند خرید :</h2>
             <hr style="opacity: 1;"/>
             <h2>محصولات انتخابی شما :</h2>
             <div class="images-Shipping">
                 {% for item in products %}
-                <img src="{{ item.image.url }}" alt="تصویر محصول انتخاب شده .">
+                    <img src="{{ item|get_product_image:img_Product }}" alt="تصویر محصول انتخاب شده .">
                 {% endfor %}
-
             </div>
             <hr style="opacity: 1;"/>
             <h4> کل‌ :</h4>

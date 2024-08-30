@@ -29,3 +29,19 @@ def get_item(list, id):
         if item.booth.id == id:
             return item
     return None
+
+
+
+@register.filter
+def get_booth_image(booth_id, images):
+    for img in images:
+        if img.booth.id == booth_id:
+            return img.image.url
+    return None  # مسیر تصویر پیش‌فرض
+
+@register.filter
+def get_product_image(product, images):
+    for img in images:
+        if img.product and img.product.id == product.id:
+            return img.image.url
+    return None  # مسیر تصویر پیش‌فرض

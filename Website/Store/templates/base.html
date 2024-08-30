@@ -29,7 +29,7 @@
                     <a class="nav-link" href="{% url 'Home' %}" style="color: #ffffff; margin-right: 40px;">خانه</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: #ffffff;  margin-right: 20px;">غرفه ها</a>
+                    <a class="nav-link" href="{% url 'All_Booth' %}" style="color: #ffffff;  margin-right: 20px;">غرفه ها</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'Category' 'صنایع-دستی-سنگی' %}" style="color: #ffffff;  margin-right: 20px;">دسته بندی محصولات</a>
@@ -79,10 +79,10 @@
             <li><a href="{% url 'Home' %}">صفحه اصلی</a></li>
             <li><a href="{% url 'About' %}">درباره ما</a></li>
             <li><a href="">تماس با ما</a></li>
-            <li><a href="{% url 'Home' %}">غرفه ها</a></li>
+            <li><a href="{% url 'All_Booth' %}">غرفه ها</a></li>
             <li><a href="#">قوانین سایت</a></li>
             <li><a href="{% url 'Register' %}">ثبت نام</a></li>
-            <li><a href="{% url 'Home' %}">افتتاح غرفه</a></li>
+            <li><a href="{% url 'Create_Booth' %}">افتتاح غرفه</a></li>
           </ul>
       </div>
       </div>

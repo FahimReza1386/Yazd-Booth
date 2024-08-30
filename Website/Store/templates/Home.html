@@ -45,7 +45,7 @@
             <a href="/product/{{ item.id }}" class="btn product-btn"
                 style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
         </div>
-        <img src="{{ item.image.url }}" alt="image-product">
+        <img src="{{ item|get_product_image:image_Product }}" alt="image-product">
     </div>
     {% endfor %}
 </div>

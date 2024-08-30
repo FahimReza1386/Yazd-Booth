@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin_question/', views.Questions, name='Questions'),
     path('admin_answer/<int:id>', views.Answer, name='Answer'),
     path('add_comment/<int:id>', views.Add_Comments, name='Add_Comments'),
+    path('all_booth/', views.All_Booth, name='All_Booth'),
 ]

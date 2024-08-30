@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+
+
+
+
+{% block content %}
+<br/>
+<br/>
+<br/>
+
+
+    <h2 class="sub-Title" style="margin: 5% 0% 3% 0px; text-align: center;">غرفه های یزد غرفه :</h2>
+    <hr/>
+
+    <div class="Booths">
+        {% for item in booth %}
+
+        <div class="Booth-Page">
+        <img src="{{ item.id|get_booth_image:images }}" alt="Picture-Booth" class="w-full h-48 object-cover rounded">
+
+            <div class="Booth-Information">
+                <h3>{{ item.name }}</h3>
+                <h5>{{ item.description }}</h5>
+                <a href="#" class="btn">بازدید از غرفه {{ item.name }}</a>
+            </div>
+        </div>
+    {% endfor %}
+
+    </div>
+<br/>
+<br/>
+<br/>
+{% endblock %}
+
+
+{% block js %}
+
+
+
+{% endblock %}
