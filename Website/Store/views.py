@@ -339,6 +339,7 @@ def Customer_UserPanel(request):
             booth = Booth.objects.filter(owner=item.user.id).all()
             image_booth = BoothImage.objects.filter(booth__in=booth)
             booth_img = list(image_booth)
+            prd_img=ProductImage.objects.all()
             # تاریخ ساخت غرفه
             if item.role == 'Boother':
                 if item.booth:
@@ -357,7 +358,7 @@ def Customer_UserPanel(request):
                 # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
 
                 formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
-        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_booth':booth_img[0]})
+        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_booth':booth_img[0] , 'Product_img':prd_img})
 
     else:
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
@@ -389,13 +390,17 @@ def Add_Product(request):
                             return redirect('Add_Product')
 
                         booth = boothes.first()
+                        if discount_sale:
+                            discount_sales = discount_sale
+                        else:
+                            discount_sales = 0
 
                         prd = Product(
                             name=name,
                             category=Cat_Instanse,
                             description=description,
                             price=price,
-                            Discountـpercentage=discount_sale,
+                            Discountـpercentage=discount_sales,
                             Available_Qty=available,
                             is_sale=True,
                             booth=booth
@@ -411,9 +416,11 @@ def Add_Product(request):
                                     img_instance.save()
                                 else:
                                     messages.error(request, 'لطفا یک عکس معتبر را وارد کنید ..')
+                                    prd.delete()
                                     return redirect('Add_Product')
                         else:
                             messages.error(request, 'لطفا حداقل یک عکس را وارد کنید ..')
+                            prd.delete()
                             return redirect('Add_Product')
 
                             # اضافه کردن رنگ‌ها به فیلد many-to-many
@@ -430,9 +437,9 @@ def Add_Product(request):
                     except Category.DoesNotExist:
                         messages.error(request, 'سلام دوست گرامی متاسفانه این دسته بندی وجود ندارد ...')
                         return redirect('Add_Product')
-                    except Exception as e:
-                        messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
-                        return redirect('Add_Product')
+                    # except Exception as e:
+                    #     messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
+                    #     return redirect('Add_Product')
                 else:
                     category=Category.objects.all()
                     return render(request=request, template_name='CreateProduct.html', context={'category':category})

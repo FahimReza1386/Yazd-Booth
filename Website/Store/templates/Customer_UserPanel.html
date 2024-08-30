@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load custom_filters %}
 
 {% block content %}
 
@@ -218,19 +219,19 @@
 <!--    <div class="Mahsolat-OwnerBooth">-->
         <div class="Mahsolat">
             {% for item in item.booth.products.all %}
-         <div class="Mahsol Mahsolat-Page">
+         <div class="Mahsol Mahsolat-Page product" data-id="{{ item.id }}" data-price="{{ item.price }}" data-discount="{{ item.Discountـpercentage }}">
                 <div class="Layer">
                     <h6>{{ item.name }}</h6>
                     {% if item.is_sale %}
                     <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
                         <h2><span class="Pardakht"></span> تومان</h2>
                     {% else %}
-
+                        <h4>{{ item.price|intcomma }}</h4>
                     {% endif %}
                     <a href="/product/{{ item.id }}" class="btn product-btn"
                         style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
                 </div>
-                <img src="{{ item.image.url }}" alt="image-product">
+                <img src="{{ item|get_product_image:Product_img }}" alt="image-product">
             </div>
             {% endfor %}
             </div>
@@ -309,7 +310,7 @@
                     <div class="PanelMenu-right">
                       <img src="{% static 'img/ecommerce.png' %}" alt="Booth-icon">
                     </div>
-                    <a> غرفه های افتتاح شده </a>
+                    <a href="{% url 'All_Booth' %}"> غرفه های افتتاح شده </a>
                     <div class="PanelMenu-left" style="cursor: pointer;">
                       <img src="{% static 'img/arrow-left.png' %}" alt="arrow-left-icon">
                     </div>
@@ -393,6 +394,23 @@
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script>
+
+    $('.product').each(function () {
+        // دریافت مقادیر از تگ HTML
+        var Gheimat = parseFloat($(this).data('price'));
+        var sale = parseFloat($(this).data('discount')) / 100;
+
+        // محاسبه مقدار پرداخت
+        var pardakht = (Gheimat - (Gheimat * sale));
+
+
+        // نمایش مقدار پرداخت
+        var pardakht2 = pardakht.toLocaleString();
+        $(this).find('.Pardakht').html(pardakht2);
+
+    });
+</script>
+<script>
 
         let isExpanded = false; // وضعیت را پیگیری می‌کند
 

@@ -17,20 +17,43 @@
     <div class="inputs-Product">
         <input type="text" placeholder="نام محصول خود را وارد کنید ..." name="name">
         <input type="text" placeholder="معرفی محصول خود را وارد کنید ..." name="description">
-        <input type="text" placeholder="دسته بندی محصول خود را وارد کنید ..." name="category">
         <input type="color" placeholder="رنگ محصول خود را وارد کنید ..." name="color" style="padding: 10px">
-            <hr style="margin: 10px 17%;"/>
+                    <hr style="margin: 10px;width: 85%;"/>
+
+<!--        Test -->
+        <div class="dropdown text-center" style="width: 83%;">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+      دسته بندی
+    </button>
+    <ul class="dropdown-menu">
+        {% for cat in category %}
+                <li><a class="dropdown-item">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+  </div>
+
+
+        <input type="hidden" placeholder="دسته بندی محصول خود را وارد کنید ..." name="category" class="category-input">
+            <hr style="margin: 10px;width: 85%;"/>
         <input type="number" placeholder="تعداد موجودی محصول خود را وارد کنید ..." name="AvailableQty">
 
         <input type="number" placeholder="قیمت محصول خود را وارد کنید ..." name="price">
-        <input type="number" placeholder="درصد تخفیف محصول خود را وارد کنید ..." name="sale_price">
-            <hr style="margin: 10px 17%;"/>
+        <br/>
+        <div style="display: flex;width: 60%;">
+        <input type="checkbox" class="is_sale" name="is_sale" style="margin: 2rem;width: auto;height: auto;box-shadow:0 0 0 ;">
+                        <h1 style="font-size: 20px;font-weight: bold;margin: 2rem 0;">ایا محصول شما تخفیف دارد ؟</h1>
+
+        </div>
+        <br/>
+        <input type="number" id="sale-darsad" placeholder="درصد تخفیف محصول خود را وارد کنید ..." name="sale_price" style="display: none;">
+            <hr style="margin: 10px;width: 85%;" />
 
         <input type="text" placeholder="نام مشخصات محصول خود را وارد کنید ..." name="featureـname">
         <input type="text" placeholder="مقدار مشخصات محصول خود را وارد کنید ..." name="feature_value">
     </div>
 
-    <hr style="margin: 10px 17%;"/>
+
+    <hr style="margin: 10px 4rem;width: 90%;"/>
 
     <button class="btn product-btn">ثبت تغییرات</button>
 </form>
@@ -40,13 +63,37 @@
 
 
 {% block js %}
-<script src="{% static 'ja/jquery.js' %}" ></script>
-<script src="{% static 'ja/script.js' %}" ></script>
+<script src="{% static 'js/jquery.js' %}" ></script>
+<script src="{% static 'js/script.js' %}" ></script>
 
 <script>
     function selectCategory(categoryName) {
         // تغییر متن دکمه به نام دسته بندی انتخاب شده
         document.getElementById('dropdownButton').innerText = categoryName;
     }
+
+
+    $(document).on('change', '.is_sale', function () {
+    if ($(this).is(':checked')) {
+        $('#sale-darsad').attr('placeholder', 'لطفا درصد تخفیف را وارد کنید ...');
+        $('#sale-darsad').val();
+        $('#sale-darsad').css({
+            'display': 'block'
+        });
+    } else {
+        $('#sale-darsad').attr('placeholder', 'لطفا درصد تخفیف را وارد کنید ...');
+        $('#sale-darsad').css({
+            'display': 'none'
+        });
+    }
+});
+$(document).on('click', '.dropdown-item', function() {
+    $('.dropdown-item').removeClass('active');
+    var select_Category = $(this).addClass('active');
+    var cat_input = $('.category-input');
+    var changetext= $('.dropdown-toggle').text(select_Category.text())
+    cat_input.val(select_Category.text()); // استفاده از text() به جای html()
+});
+
 </script>
 {% endblock %}

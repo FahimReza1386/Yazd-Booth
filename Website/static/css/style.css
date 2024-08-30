@@ -1105,6 +1105,7 @@ label{
     border-radius: 5px;
     display: block;
     transition: transform 0.5s;
+    aspect-ratio: 4 / 4;
 }
 
 .Mahsol.Mahsolat-Page .Layer{
@@ -2028,4 +2029,11 @@ textarea{
     font-weight: 500;
     text-align: left;
     margin: 0% 0% 5% 30%;
+}
+
+.dropdown-toggle{
+    background: #2EC4B6 !important;
+    border: none !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
 }
