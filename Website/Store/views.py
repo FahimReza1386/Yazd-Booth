@@ -323,7 +323,8 @@ def Category_Page(request , foo):
     try:
         category = Category.objects.get(name=foo1)
         product=Product.objects.filter(category=category)
-        return render(request=request , template_name='Category.html' , context={'product':product})
+        product_img=ProductImage.objects.filter(product__in=product)
+        return render(request=request , template_name='Category.html' , context={'product':product , 'image_Product':product_img})
     except:
         messages.success(request , "این دسته بندی وجود ندارد ...")
         return redirect('/')
@@ -591,3 +592,8 @@ def All_Booth(request):
     booth=Booth.objects.all()
     photo=BoothImage.objects.all()
     return render(request=request , template_name='AllBooth.html' , context={'booth':booth ,'images':photo})
+
+
+def All_Category(request):
+    cat=Category.objects.all()
+    return render(request=request , template_name='AllCategory.html' , context={'category':cat})

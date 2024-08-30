@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+
+
+
+
+{% block content %}
+<br/>
+<br/>
+<br/>
+
+
+    <h2 class="sub-Title" style="margin: 5% 0% 3% 0px; text-align: center;">غرفه های یزد غرفه :</h2>
+    <hr/>
+
+    <div class="Booths">
+        {% for item in category %}
+
+        <div class="Booth-Page">
+        <img src="{{ item.image.url }}" alt="Picture-Booth" class="w-full h-48 object-cover rounded">
+
+            <div class="Booth-Information">
+                <h3>{{ item.name }}</h3>
+                <a href="/category/{{ item.name|replace:' ,-' }}" class="btn">محصولات در {{ item.name }}</a>
+            </div>
+        </div>
+    {% endfor %}
+
+    </div>
+<br/>
+<br/>
+<br/>
+{% endblock %}
+
+
+{% block js %}
+
+
+
+{% endblock %}
