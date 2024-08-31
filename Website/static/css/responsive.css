@@ -39,6 +39,9 @@
         padding: 10px 5px  ;
         background-color: #2EC4B6;
         display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-between;
     }
 
     .header-right{
@@ -89,6 +92,8 @@
         border-radius: 5px 0 0px 5px;
         float: left;
         cursor: pointer;
+        height: 100%;
+        object-fit: contain;
     }
     
     .header-left{
@@ -115,21 +120,30 @@
     }
     
     .card{
-        width: 50% !important;
+        width: 70%  !important;
         height: auto !important;
         margin-right: 2rem !important;
         box-shadow: 0px 2px 4px #00000082 !important;
     }
     
     .card-img-top{
-        margin: 15px 2.5rem !important;
-        width: 50% !important;
+        margin: 1rem auto !important;
+        width: 80% !important;
     }
     
     .card h4{
-        font-weight: 500;
-        font-size: 15px;
-        width: 50%;
+        font-size: 17px;
+        width: 90%;
+        font-weight: bold;
+        margin-top: 10%;
+    }
+
+    .card .Booth-p{
+        font-size: 17px;
+        font-weight: bold;
+        margin: 10% 0% 5% 10%;
+        width: 70%;
+        text-align: right;
     }
 
     .like-icon{
@@ -228,7 +242,7 @@
         margin: 0px 5% 0 0;
         text-decoration: none;
         color: black;
-        font-size: 10px;
+        font-size: 15px;
         font-weight: 800;
         text-shadow: 0px 0px 0px black ;
     }
@@ -252,8 +266,7 @@
     
     .number-heart{
         font-size: 20px;
-        float: left;
-        margin: 0 auto;
+        margin: 0 1rem;
         font-weight: bold;
     }
     
@@ -343,7 +356,7 @@
         width: 20rem;
     }
     
-    
+
     .Footer{
         background-color: #2EC4B6;
         width: 100%;
@@ -353,14 +366,14 @@
         display: flex;
         flex-wrap: wrap;
     }
-    
+
     .Foot-About {
         width: 66% ;
         height: 25rem;
         padding: 30px 10px;
     }
     }
-    
+
     .Foot-Titr {
         color: #ffffff;
         text-align: center;
@@ -368,8 +381,8 @@
         font-size: 22px;
         font-weight: 800;
     }
-    
-    
+
+
     .About{
         background-color: #CBF3F0;
         height: 19rem;
@@ -377,12 +390,12 @@
         padding: 30px;
         text-align: justify;
     }
-    
+
     .About h2{
-        line-height: 2; 
+        line-height: 2;
         font-size: 13px;
     }
-    
+
     .Foot-RealtionShip{
         width: 45rem;
         height: 30rem;
@@ -391,8 +404,8 @@
         float: left;
         margin: 0;
     }
-    
-    
+
+
     .RelationShip{
         height: auto;
         border-radius: 10px;
@@ -400,28 +413,28 @@
         line-height: 3;
         text-align: center;
     }
-    
-    
+
+
     .RelationShip .images img{
         width: 2.5rem;
         margin: 0 3%;
         border-radius: 5px;
         box-shadow: 0px 2px 4px #00000082;
-    
+
     }
-    
+
     .RelationShip .images img:hover{
         animation: SlideTop 1.5s ease;
     }
-    
-    
+
+
     .RelationShip .Foot-Address{
         width: 100%;
         height: 100px;
         margin-top: 50px;
     }
-    
-    
+
+
     .RelationShip .Foot-Address .Onvan{
         font-size: 20px;
         font-weight: bold;
@@ -440,28 +453,28 @@
     .RelationShip .Foot-Phone img{
         width: 3rem;
         float: left;
-    
+
     }
-    
-    
-    
+
+
+
     .Phone{
         display: flex;
-    
+
     }
     .RelationShip .Foot-Phone h2{
         font-size: 18px;
         font-weight: 700;
         margin: 17px 10px;
     }
-    
+
     .Foot-Access{
         height: 25rem;
         border-radius: 10px;
         padding-top: 30px;
         width: 34%;
     }
-    
+
     .Access{
         height: 28rem;
         border-radius: 10px;
@@ -471,7 +484,7 @@
         margin-top: 50px;
 
     }
-    
+
     .Foot-Access .Foot-Titr{
         color: #ffffff;
         text-align: center;
@@ -479,11 +492,11 @@
         font-weight: 800;
         margin: 0 0 0 13px;
     }
-    
+
     .Access ul li{
         display: block;
     }
-    
+
     .Access ul li a{
         text-decoration: none;
         font-size: 13px;
@@ -1491,4 +1504,204 @@
 }
 
 
+
 /* --------------------------End Front-------------------:) */
+
+
+/*   Test  */
+
+@media screen and (max-width: 900px) {
+    .search{
+        width: 70%;
+        margin: 2% 3% 0 0;
+    }
+    .Header-Mobile .search button{
+        width: 17% !important;
+        height: 100%;
+    }
+    .Header-Mobile .search img{
+        width: 100%;
+    }
+
+    .header-right {
+        width: 25%;
+        display: none;
+    }
+    .WellCome1{
+        font-size: 20px;
+        margin-right: 15%;
+    }
+    .WellCome2{
+        font-size: 20px;
+        margin-left: 15%;
+    }
+    .Access{
+        width: 129%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Header-Mobile{
+        display: block;
+    }
+        .header-right {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    .Footer{
+        background-color: #2EC4B6;
+        width: 100%;
+        height: 55rem;
+        border-radius: 0 100px 0 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .Foot-About {
+        width: 66% ;
+        height: 25rem;
+        padding: 30px 10px;
+    }
+
+    .Foot-Titr {
+        color: #ffffff;
+        text-align: center;
+        margin: 0 10px 40px 0px;
+        font-size: 22px;
+        font-weight: 800;
+    }
+
+
+    .About{
+        background-color: #CBF3F0;
+        height: 19rem;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: justify;
+    }
+
+    .About h2{
+        line-height: 2;
+        font-size: 13px;
+    }
+
+    .Foot-RealtionShip{
+        width: 45rem;
+        height: 30rem;
+        border-radius: 10px;
+        text-align: justify;
+        float: left;
+        margin: 0;
+    }
+
+
+    .RelationShip{
+        height: auto;
+        border-radius: 10px;
+        padding: 0px 30px;
+        line-height: 3;
+        text-align: center;
+    }
+
+
+    .RelationShip .images img{
+        width: 2.5rem;
+        margin: 0 3%;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px #00000082;
+
+    }
+
+    .RelationShip .images img:hover{
+        animation: SlideTop 1.5s ease;
+    }
+
+
+    .RelationShip .Foot-Address{
+        width: 100%;
+        height: 100px;
+        margin-top: 50px;
+    }
+
+
+    .RelationShip .Foot-Address .Onvan{
+        font-size: 20px;
+        font-weight: bold;
+        float: right;
+    }
+    .RelationShip .Foot-Address .Address{
+        font-size: 15px;
+        font-weight: 300;
+        float: right;
+        margin-right: 30px;
+    }
+    .RelationShip .Foot-Phone{
+        width: 19rem;
+        height: 50px;
+    }
+    .RelationShip .Foot-Phone img{
+        width: 3rem;
+        float: left;
+
+    }
+
+
+
+    .Phone{
+        display: flex;
+
+    }
+    .RelationShip .Foot-Phone h2{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 17px 10px;
+    }
+
+    .Foot-Access{
+        height: 25rem;
+        border-radius: 10px;
+        padding-top: 30px;
+        width: 34%;
+    }
+
+    .Access{
+        height: 28rem;
+        border-radius: 10px;
+        line-height: 2.5;
+        text-align: center;
+        width: 94%;
+        margin-top: 50px;
+
+    }
+
+    .Foot-Access .Foot-Titr{
+        color: #ffffff;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 800;
+        margin: 0 0 0 13px;
+    }
+
+    .Access ul li{
+        display: block;
+    }
+
+    .Access ul li a{
+        text-decoration: none;
+        font-size: 13px;
+        color: black;
+        margin-right: 10px;
+        font-weight: 500;
+    }
+    .card{
+        width: 70%  !important;
+        height: auto !important;
+        margin-right: 2rem !important;
+        box-shadow: 0px 2px 4px #00000082 !important;
+    }
+
+}

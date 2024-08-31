@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from Cart.cart import Cart
 from .forms import ShippingForm , PaymentForm
 from .models import ShippingAddress , Order , OrderItem
-from Store.models import Product , Profile
+from Store.models import Product , Profile  , ProductImage
 from django.contrib.auth.models import User
 from django.contrib import messages
 import jdatetime
@@ -15,9 +15,10 @@ def CheckOut_Order(request):
     # Get The Cart
     cart = Cart(request)
 
-    product = cart.get_prods
+    product = cart.get_prods()
     quants = cart.get_quants
     total = cart.get_total
+    img_product=ProductImage.objects.filter(product__in=product)
 
     if request.user.is_authenticated:
         #Get The Modal Form
@@ -25,10 +26,10 @@ def CheckOut_Order(request):
 
         # Get The Shipping Form
         shipping_form = ShippingForm(request.POST or None , instance=current_user)
-        return render(request=request,template_name='Checkout_Order.html' ,context={'products':product , 'quants':quants , 'total':total , 'shipping_form':shipping_form})
+        return render(request=request,template_name='Checkout_Order.html' ,context={'products':product , 'quants':quants , 'total':total , 'shipping_form':shipping_form , 'img_Product':img_product})
     else:
         shipping_form = ShippingForm(request.POST or None)
-        return render(request=request,template_name='Checkout_Order.html' ,context={'products':product , 'quants':quants , 'total':total , 'shipping_form':shipping_form})
+        return render(request=request,template_name='Checkout_Order.html' ,context={'products':product , 'quants':quants , 'total':total , 'shipping_form':shipping_form , 'img_Product':img_product})
 
 
 def Billing_Info(request):
@@ -37,9 +38,10 @@ def Billing_Info(request):
             # Get The Cart
             cart = Cart(request)
 
-            product = cart.get_prods
+            product = cart.get_prods()
             quants = cart.get_quants
             total = cart.get_total
+            img_product=ProductImage.objects.filter(product__in=product)
 
             my_shipping=request.POST
             request.session['my_shipping']=my_shipping
@@ -47,7 +49,7 @@ def Billing_Info(request):
             # Get The Billing Form
             billing_form = PaymentForm()
 
-            return render(request=request , template_name="Billing_Info.html" , context={'products':product , 'quants':quants , 'total':total , 'shipping_info':request.POST , 'billing_form':billing_form})
+            return render(request=request , template_name="Billing_Info.html" , context={'products':product , 'quants':quants , 'total':total , 'shipping_info':request.POST , 'billing_form':billing_form , 'image_Product':img_product})
         else:
             messages.success(request, "خطای دسترسی ...")
             return redirect('/')

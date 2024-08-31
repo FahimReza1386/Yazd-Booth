@@ -1101,11 +1101,15 @@ label{
 }
 
 .Mahsol.Mahsolat-Page img{
-    width: 100%;
-    border-radius: 5px;
+    width: 35%;
     display: block;
     transition: transform 0.5s;
     aspect-ratio: 4 / 4;
+    height: 100%;
+    border-radius: 10px;
+}
+.Mahsol.Mahsolat-Page .test{
+    width: 100%;
 }
 
 .Mahsol.Mahsolat-Page .Layer{
@@ -2010,7 +2014,7 @@ textarea{
     border: none;
 }
 .Cards.row{
-    --bs-gutter-x: -16rem !important;
+    --bs-gutter-x: -5% !important;
 }
 
 
@@ -2036,4 +2040,56 @@ textarea{
     border: none !important;
     font-size: 20px !important;
     font-weight: bold !important;
+}
+
+.Header-Mobile{
+    width: 0%;
+    transition: all 1s ease;
+    height: 56rem;
+    display: none;
+    background-color: #2EC4B6;
+    position: absolute;
+    z-index: 1;
+}
+
+.Header-Mobile.show {
+    width: 100%; /* حالت نمایش */
+    transition: all 1s ease;
+}
+
+.Header-Mobile .search{
+    width: 90%;
+    margin: 2rem auto;
+    display: none;
+}
+
+.Header-Mobile .menu{
+    display: none;
+}
+
+.Header-Mobile .menu ul li a{
+    color: #ffffff;
+    margin-right: 20px;
+    text-decoration: none;
+}
+.Header-Mobile .menu ul li{
+    list-style: none;
+        margin-top: 1rem;
+}
+.Header-Mobile .menu{
+    margin: 0 0;
+    width: 50%;
+}
+
+
+
+
+
+@keyframes rotatex {
+  0% {
+      transform: rotateX(0);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
 }

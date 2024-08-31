@@ -4,7 +4,7 @@
 {% load custom_filters %}
 
 {% block header %}
-        <div class="header text-white" style="background-color: #2EC4B6; padding: 10px 5px; height: 7rem;">
+<div class="header text-white" style="background-color: #2EC4B6; padding: 10px 5px; height: 7rem;">
       <i class='bx bx-menu'></i>
       <div class="header-right">
             <img src="{% static 'img/logo-asli.png'%}" alt="">
@@ -13,7 +13,7 @@
             <a href="{% url 'Customer_UserPanel' %}"><img src="{% static 'img/user_person_profile_avatar_icon_190943.png'%}" style="cursor: pointer"  alt=""></a>
             <a href="{% url 'Cart_Summary' %}"><img src="{% static 'img/shoppingbasket3_114870.png'%}" alt="">
                                 <span class="Circle" style="background-color: #ffffff ; margin-top: 0.5rem ; text-align: center ; padding: 5px auto">{{ cart|length }}</span>
-</a>
+        </a>
         </div>
         <!-- <img style="width: 11%; display: none;"  class="img-mnu" src="{% static 'img/icon-menubar.ico" alt=""> -->
         <div class="search">
@@ -24,6 +24,24 @@
                  </form>
         </div>
     </div>
+
+<div class="Header-Mobile">
+    <div class="search" style="display: block">
+             <form action="{% url 'Search' %}" method="POST" style="height: 100%">
+                 {% csrf_token %}
+                 <button style="width: 60px;background-color: #ffffff;border-radius: 5px 0 0px 5px;float: left;cursor: pointer;border: 0;"><img src="{% static 'img/search.png'%}" ></button>
+                    <input type="text" name="search" class="inp-search" placeholder="محصول دلخواهتان را جستجو کنید ...">
+                 </form>
+        </div>
+    <div class="menu">
+        <ul>
+            <li><a href="{% url 'Home' %}">خانه</a></li>
+            <li><a href="{% url 'All_Booth' %}">غرفه ها</a></li>
+            <li><a href="{% url 'All_Category' %}">دسته بندی ها</a></li>
+            <li><a href="{% url 'Create_Booth' %}">ثبت غرفه</a></li>
+        </ul>
+    </div>
+</div>
 {% endblock %}
 
 
@@ -233,6 +251,26 @@ $(document).ready(function() {
         }
     });
 });
+</script>
+<script>
+
+let is_click = false;
+
+$('.bx-menu').click(function () {
+    const headerMobile = $('.Header-Mobile');
+
+    if (!is_click) {
+        headerMobile.addClass('show'); // اضافه کردن کلاس برای نمایش
+        $('.bx-menu').css({'animation':'rotatex 1s ease'})
+        $('.menu').css({'display':'block'})
+        is_click = true;
+    } else {
+        headerMobile.removeClass('show'); // حذف کلاس برای پنهان کردن
+        $('.menu').css({'display':'none'})
+        is_click = false;
+    }
+});
+
 </script>
 {% endfor %}
 {% endblock %}

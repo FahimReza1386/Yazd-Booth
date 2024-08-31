@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load custom_filters %}
 
 {% block content %}
 
@@ -55,14 +56,14 @@
             <div class="images-Shipping">
                 {% for item in products %}
                    <div class="Mahsol Mahsolat-Page">
-        <div class="Layer product" id="layer-checkout" data-id="{{ item.id }}" data-price ='{{ item.price }}' data-discount="{{ item.Discountـpercentage }}">
-            {% for key , value in  quants.items %}
-                {% if key == item.id|slugify %}
-                    <a href="{% url 'Cart_Summary' %}" id="a-quantity" class="Quantity-Number qty">{{ value }}</a>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <img src="{{ item.image.url }}" style=" width: 35%;" alt="image-product">
+                        <div class="Layer product" id="layer-checkout" data-id="{{ item.id }}" data-price ='{{ item.price }}' data-discount="{{ item.Discountـpercentage }}">
+                            {% for key , value in  quants.items %}
+                                {% if key == item.id|slugify %}
+                                    <a href="{% url 'Cart_Summary' %}" id="a-quantity" class="Quantity-Number qty">{{ value }}</a>
+                                {% endif %}
+                            {% endfor %}
+                         </div>
+                <img src="{{ item|get_product_image:image_Product }}" style=" width: 35%;" alt="image-product">
     </div>
                 {% endfor %}
 
