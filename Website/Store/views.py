@@ -337,10 +337,10 @@ def Customer_UserPanel(request):
         profile = Profile.objects.filter(user=request.user)
 
         for item in profile:
-            booth = Booth.objects.filter(owner=item.user.id).all()
-            image_booth = BoothImage.objects.filter(booth__in=booth)
-            booth_img = list(image_booth)
-            prd_img=ProductImage.objects.all()
+            booths = Booth.objects.filter(owner=item.user.id).all()
+            booth_img=BoothImage.objects.filter(booth__in=booths)
+            Products=Product.objects.filter(booth__in=booths)
+            product_img=ProductImage.objects.filter(product__in=Products)
             # تاریخ ساخت غرفه
             if item.role == 'Boother':
                 if item.booth:
@@ -359,7 +359,7 @@ def Customer_UserPanel(request):
                 # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
 
                 formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
-        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_booth':booth_img[0] , 'Product_img':prd_img})
+        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_Product':product_img , 'image_Booth':booth_img})
 
     else:
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
