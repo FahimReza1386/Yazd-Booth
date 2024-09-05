@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+
+
+
+
+{% block content %}
+
+ {% for item in Booth %}
+          <div class="card Booth">
+            <div class="img">
+                {% for item in image_Booth %}
+                        <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
+                {% endfor %}
+             </div>
+            <div class="card-body">
+              <a class="Booth-Titr">{{ item.name }}</a>
+              <h4 class="Booth-p">{{ item.description }}</h4>
+<!--                <img id="Booth-heart" src="{% static 'img/like.png'%}" alt="">-->
+<!--                <a href="{% url 'Like_Booth' %}" ><i class='bx bxs-like like-icon' data-id="{{ item.id }}"></i></a>-->
+                <i class='bx bxs-like like-icon' data-id="{{ item.id }}"></i>
+                <span class="number-heart">{{ item.likes.count }}</span>
+              </div>
+            </div>
+        {% endfor %}
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+<script>
+
+    $('.product').each(function () {
+        // دریافت مقادیر از تگ HTML
+        var Gheimat = parseFloat($(this).data('price'));
+        var sale = parseFloat($(this).data('discount')) / 100;
+
+        // محاسبه مقدار پرداخت
+        var pardakht = (Gheimat - (Gheimat * sale));
+
+
+        // نمایش مقدار پرداخت
+        var pardakht2 = pardakht.toLocaleString();
+        $(this).find('.Pardakht').html(pardakht2);
+
+    });
+
+        // در ابتدا چک میکنیم که آیا قبلاً غرفه رو لایک کرده یا نه
+    var isLiked = false; // فرض میکنیم ابتدا غرفه لایک نشده
+    $(document).ready(function() {
+        // اینجا کد چک کردن وضعیت لایک قبلی رو قرار میدیم
+        // مثلا میتونیم با یک ajax درخواست وضعیت لایک قبلی رو بگیریم
+        var userId = '{{ user }}';
+
+        // چک کردن غرفه‌ها آیا قبلاً لایک شده‌اند یا خیر
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'Check_Like' %}", // فرض می‌کنیم نام URL این است و آرایه‌ای از lkedBooths را برمی‌گرداند
+            data: {
+                user: userId,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(response) {
+                response.likedBooths.forEach(function(boothId) {
+                    // به هر آیکون با data-id مربوطه رنگ قرمز دادیم
+                    $('.like-icon[data-id="' + boothId + '"]').css('color', 'red');
+                });
+            }
+        });
+
+        $('.like-icon').click(function() {
+            var boothId = parseInt($(this).data('id'));
+            var userId = '{{ user }}';
+
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'Like_Booth' %}",
+                data: {
+                    user: userId,
+                    booth: boothId,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function(json) {
+                    location.reload();
+                },
+                error: function(err, errmsg, xhr) {
+                    console.log(err);
+                }
+            });
+
+            isLiked = !isLiked; // تغییر وضعیت لایک
+
+            if (isLiked) {
+                $(this).css('color', 'red');
+            } else {
+                $(this).css('color', 'black');
+            }
+        });
+    });
+
+</script>
+
+
+{% endblock %}

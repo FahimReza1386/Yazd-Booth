@@ -130,7 +130,7 @@
 
              </div>
             <div class="card-body">
-              <a class="Booth-Titr">{{ item.name }}</a>
+              <a class="Booth-Titr" href="{% url 'Booth_Page'  item.id  %}">{{ item.name }}</a>
               <h4 class="Booth-p">{{ item.description }}</h4>
 <!--                <img id="Booth-heart" src="{% static 'img/like.png'%}" alt="">-->
 <!--                <a href="{% url 'Like_Booth' %}" ><i class='bx bxs-like like-icon' data-id="{{ item.id }}"></i></a>-->

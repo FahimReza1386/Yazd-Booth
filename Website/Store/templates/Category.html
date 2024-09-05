@@ -45,7 +45,7 @@
 </div>
 <div class="Mahsolat">
     {% for item in product %}
-    <div class="Mahsol Mahsolat-Page">
+    <div class="Mahsol Mahsolat-Page"">
         <div class="Layer">
             <h6>{{ item.name }}</h6>
             {% if item.is_sale %}
@@ -57,7 +57,7 @@
             <a href="/product/{{ item.id }}" class="btn product-btn"
                 style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
         </div>
-        <img src="{{ item|get_product_image:image_Product }}" alt="image-product">
+        <img src="{{ item|get_product_image:image_Product }}"   style="width: 100%; " alt="image-product">
     </div>
     {% endfor %}
 </div>

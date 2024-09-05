@@ -27,4 +27,5 @@ urlpatterns = [
     path('add_comment/<int:id>', views.Add_Comments, name='Add_Comments'),
     path('all_booth/', views.All_Booth, name='All_Booth'),
     path('all_category/', views.All_Category, name='All_Category'),
+    path('booth_page/<int:id>/', views.Booth_Page, name='Booth_Page'),
 ]
