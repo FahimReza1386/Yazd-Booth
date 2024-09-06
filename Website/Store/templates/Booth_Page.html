@@ -7,25 +7,57 @@
 
 
 {% block content %}
+    {% for item in Booth %}
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                        <img class="card-img-top mb-5 mb-md-0" src="{{ item.id|get_booth_image:image_Booth }}" alt="..." />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="small mb-1"></div>
+                        <h1 class="display-5 fw-bolder">{{ item.name }}</h1>
+                        <div class="fs-5 mb-5">
 
- {% for item in Booth %}
-          <div class="card Booth">
-            <div class="img">
-                {% for item in image_Booth %}
-                        <img class="card-img-top" src="{{ item.image.url }}" alt="Card image">
-                {% endfor %}
-             </div>
-            <div class="card-body">
-              <a class="Booth-Titr">{{ item.name }}</a>
-              <h4 class="Booth-p">{{ item.description }}</h4>
-<!--                <img id="Booth-heart" src="{% static 'img/like.png'%}" alt="">-->
-<!--                <a href="{% url 'Like_Booth' %}" ><i class='bx bxs-like like-icon' data-id="{{ item.id }}"></i></a>-->
-                <i class='bx bxs-like like-icon' data-id="{{ item.id }}"></i>
+
+                <i class='bx bxs-like like-icon' data-id="{{ booth.id }}"></i>
                 <span class="number-heart">{{ item.likes.count }}</span>
-              </div>
+
+                        </div>
+                        <p class="lead">
+                            {{ item.description }}
+                        </p>
+
+                    </div>
+                </div>
             </div>
+        </section>
         {% endfor %}
 
+        <!-- Related items section-->
+        <section class="py-5 bg-light">
+            <h1 class="sub-Title">محصولات این غرفه ...</h1>
+
+            <div class="Mahsolat">
+                    {% for prd in Products %}
+
+                   <div class="Mahsol Mahsolat-Page product" data-id="{{ prd.id }}" data-price="{{ prd.price }}" data-discount="{{ prd.Discountـpercentage }}">
+                <div class="Layer">
+                    <h6>{{ prd.name }}</h6>
+                    {% if prd.is_sale %}
+                    <h2 style="text-decoration: line-through">{{ prd.price|intcomma }}</h2>
+                        <h2><span class="Pardakht"></span> تومان</h2>
+                    {% else %}
+                        <h4>{{ prd.price|intcomma }}</h4>
+                    {% endif %}
+                    <a href="/product/{{ item.id }}" class="btn product-btn"
+                        style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
+                </div>
+                <img src="{{ prd|get_product_image:image_Product }}" class="test" alt="image-product">
+            </div>
+                        {% endfor %}
+
+            </div>
 {% endblock %}
 
 

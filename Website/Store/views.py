@@ -648,5 +648,4 @@ def Booth_Page(request , id):
     Products = Product.objects.filter(booth__in=booth)
     img_product = ProductImage.objects.filter(product__in=Products)
     img_booth = BoothImage.objects.filter(booth__in=booth)
-    img_booth = list(img_booth)
     return render(request=request , template_name='Booth_Page.html' , context={'Booth':booth , 'image_Booth':img_booth , 'Products':Products , 'image_Product':img_product})
