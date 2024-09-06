@@ -22,5 +22,50 @@
 
 
 {% block content %}
-    Hi Contact
+<br/>
+<br/>
+<br/>
+<br/>
+        <!-- Header-->
+        <header class=" text-white" style="height: 25rem;padding-top: 8rem;background-color: #ffa11e;margin: 0 10%;border-radius: 10px">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">به وبسایت فروشگاهی یزد غرفه خوش آمدید ..</h1>
+                <p class="lead">یک وبسایت خرید فروش صنایع دستی برای تولیدکنندگان ...</p>
+                <a class="btn btn-lg btn-light" href="{% url 'Home' %}">خرید محصول</a>
+            </div>
+        </header>
+<br/>
+<br/>
+
+        <!-- About section-->
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="sub-Title" style="margin: 20px 20px;">درباره سازه کار مجموعه ما :</h2>
+                        <br/>
+                        <p class="lead">خب تولید کنندگان صنایع دستی میتوانند در این وبسایت غرفه خود را تولید کنند و محصولات خود را به فروش بگذارند و اینکه طرفداران صنایع دستی هم میتوانند در این وبسایت به خرید محصول مورد علاقه خود بپردازند ...</p>
+                        <br/>
+                        <h2 class="sub-Title" style="margin: 20px 20px;">فواید کار با یزد غرفه :</h2>
+                        <ul style="width: 70%;margin: 2rem auto;">
+                            <li>کسر کمترین درصد سود از فروشندگان</li>
+                            <li>کمک در خرید سرمایه اولیه برای غرفه داران بالای یک سال سابقه</li>
+                            <li>ارسال رایگان برای خرید اول و خرید های بالای ۳۰۰ هزار تومان</li>
+                            <li>امکان خرید حضوری از غرفه داران</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<br/>
+<br/>
+<br/>
+<br/>
+{% endblock %}
+
+
+{% block js %}
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
