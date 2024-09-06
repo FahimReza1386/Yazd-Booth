@@ -318,16 +318,59 @@ def Product_Page(request , id):
     return render(request=request , template_name='Product.html' , context={'product':product , 'comment':comment , 'Feature':FeatureـProducts , 'color':color , 'prd_cat':prd_cat , 'time_difference':total_hours , 'images':photo2})
 
 
-def Category_Page(request , foo):
-    foo1 = foo.replace('-' , ' ')
+def Category_Page(request, foo):
+    foo1 = foo.replace('-', ' ')
+
     try:
         category = Category.objects.get(name=foo1)
-        product=Product.objects.filter(category=category)
-        product_img=ProductImage.objects.filter(product__in=product)
-        return render(request=request , template_name='Category.html' , context={'product':product , 'image_Product':product_img})
-    except:
-        messages.success(request , "این دسته بندی وجود ندارد ...")
+    except Category.DoesNotExist:
+        messages.error(request, "این دسته بندی وجود ندارد ...")
         return redirect('/')
+
+    if request.method == 'POST':
+        start_price = request.POST.get('start_price')
+        end_price = request.POST.get('end_price')
+        is_availables = request.POST.get('is_available')
+        start_price= start_price.replace(',' , '')
+        end_price=end_price.replace(',' , '')
+        asas= request.POST.get('assas')
+        print(asas)
+        try: # Validate price inputs
+            start_price = int(start_price)
+            end_price = int(end_price)
+            print(start_price,end_price)
+        except (ValueError, TypeError):
+            messages.error(request, "قیمت‌های وارد شده معتبر نیستند.")
+            return redirect(request.path)
+        #
+        # products = Product.objects.filter(category=category)
+        if asas == 'ارزان ترین' :
+            products = Product.objects.filter(category=category).order_by('price')
+        elif asas == 'گران ترین' :
+            products = Product.objects.filter(category=category).order_by('-price')
+        elif asas == 'جدید  ترین':
+            products = Product.objects.filter(category=category).order_by('-created')
+        else:
+            products = Product.objects.filter(category=category)
+
+        filtered_products = []
+
+        for item in products:
+            if start_price <= item.price <= end_price:
+                if is_availables == 'on' and item.Available_Qty > 0:
+                    filtered_products.append(item)
+                elif is_availables != 'on':
+                    filtered_products.append(item)
+
+
+
+        product_img = ProductImage.objects.filter(product__in=filtered_products)
+        return render(request, 'Category.html', {'product': filtered_products, 'image_Product': product_img})
+
+    else:
+        products = Product.objects.filter(category=category)
+        product_img = ProductImage.objects.filter(product__in=products)
+        return render(request, 'Category.html', {'product': products, 'image_Product': product_img})
 
 
 def Customer_UserPanel(request):

@@ -24,7 +24,7 @@
             <div class="Booth-Information">
                 <h3>{{ item.name }}</h3>
                 <h5>{{ item.description }}</h5>
-                <a href="#" class="btn">بازدید از غرفه {{ item.name }}</a>
+                <a  href="{% url 'Booth_Page'  item.id  %}" class="btn" >بازدید از غرفه {{ item.name }}</a>
             </div>
         </div>
     {% endfor %}

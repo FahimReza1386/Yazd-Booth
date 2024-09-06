@@ -7,45 +7,48 @@
 
 
 <h2 class="sub-Title">فیلتر بندی :</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="Filter">
+        <div class="Filter-right">
 
-<div class="Filter">
-    <div class="Filter-right">
-        <div class="inputs">
-            <label> از :</label>
-            <input type="text" placeholder="0 تومان">
-            <label> تا :</label>
-            <input type="text" placeholder="0 تومان">
+            <div class="inputs">
+                <label> از :</label>
+                <input type="text" placeholder="0 تومان" name="start_price" id="startPrice" class="border p-2 w-full" oninput="formatInput(this)">
+                <label> تا :</label>
+                <input type="text" placeholder="0 تومان" name="end_price" id="endPrice" class="border p-2 w-full" oninput="formatInput(this)">
+            </div>
+            <div id="result" class="mt-4"></div>
+
         </div>
-    </div>
-    <div class="Filter-left">
-        <label>بر اساس‌ :</label>
-        <div class="dropdown" style="width: 50%; margin-right: 10%;">
-            <button type="button" class="btn btn-light ml-5 dropdown-toggle Filter-DropDown" data-bs-toggle="dropdown">
-                مرتبط بودن
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item active" href="#">پربازدید ترین</a></li>
-                <li><a class="dropdown-item" href="#">جدید ترین</a></li>
-                <li><a class="dropdown-item" href="#">پرفروش ترین</a></li>
-                <li><a class="dropdown-item" href="#">ارزان ترین</a></li>
-                <li><a class="dropdown-item" href="#">گران ترین</a></li>
-                <li><a class="dropdown-item" href="#">سریع ترین ارسال</a></li>
-                <li><a class="dropdown-item" href="#">پیشنهاد خریداران</a></li>
-            </ul>
+        <div class="Filter-left">
+            <label>بر اساس‌ :</label>
+            <div class="dropdown" style="width: 50%; margin-right: 10%;">
+                <button type="button" class="btn btn-light ml-5 dropdown-toggle Filter-DropDown" data-bs-toggle="dropdown" name="dropdown">
+                    مرتبط بودن
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" >جدید ترین</a></li>
+                    <li><a class="dropdown-item" >ارزان ترین</a></li>
+                    <li><a class="dropdown-item" >گران ترین</a></li>
+                </ul>
+            </div>
+            <input type="hidden" name="assas" class="category-input">
+            <div style="width: 40%;margin: 3% 20% 0 0;">
+                <input type="checkbox" style="width: 25px;background-color: #CBF3F0;" name="is_available">
+                <h1>کالای موجود</h1>
+            </div>
+            <div style="width: 40%;margin-top:3%; ">
+                <input type="checkbox" style="width: 25px;background-color: #CBF3F0;" name="is_photo">
+                <h1>عکس دار</h1>
+            </div>
         </div>
-        <div style="width: 40%;margin: 3% 20% 0 0;">
-            <input type="checkbox" style="width: 25px;background-color: #CBF3F0;">
-            <h1>کالای موجود</h1>
-        </div>
-        <div style="width: 40%;margin-top:3%; ">
-            <input type="checkbox" style="width: 25px;background-color: #CBF3F0;">
-            <h1>عکس دار</h1>
-        </div>
-    </div>
+    <button class="btn btn-primary">اعمال فیلتر</button>
 </div>
+</form>
 <div class="Mahsolat">
     {% for item in product %}
-    <div class="Mahsol Mahsolat-Page"">
+    <div class="Mahsol Mahsolat-Page product" data-id="{{ item.id }}" data-price="{{ item.price }}" data-discount="{{ item.Discountـpercentage }}" >
         <div class="Layer">
             <h6>{{ item.name }}</h6>
             {% if item.is_sale %}
@@ -73,19 +76,64 @@
 <script src="{% static 'js/jquery.js' %}"></script>
 
 <script>
-    var sale = {{ item.Discountـpercentage }} / 100;
-    var Gheimat = {{ item.price }};
-    var pardakht = 0;
+    // var sale = {{ item.Discountـpercentage }} / 100;
+    // var Gheimat = {{ item.price }};
+    // var pardakht = 0;
+    //
+    // function Hesab() {
+    //     pardakht = Gheimat - (Gheimat * sale); // محاسبه مقدار پرداخت
+    //     var pardakht2 = pardakht.toLocaleString();
+    //     $('.Pardakht').html(pardakht2);
+    // }
+    //
+    //
+    // Hesab(); // فراخوانی تابع
 
-    function Hesab() {
-        pardakht = Gheimat - (Gheimat * sale); // محاسبه مقدار پرداخت
+     $('.product').each(function () {
+        // دریافت مقادیر از تگ HTML
+        var Gheimat = parseFloat($(this).data('price'));
+        var sale = parseFloat($(this).data('discount')) / 100;
+
+        // محاسبه مقدار پرداخت
+        var pardakht = (Gheimat - (Gheimat * sale));
+
+
+        // نمایش مقدار پرداخت
         var pardakht2 = pardakht.toLocaleString();
-        $('.Pardakht').html(pardakht2);
-    }
+        $(this).find('.Pardakht').html(pardakht2);
 
+    });
 
-    Hesab(); // فراخوانی تابع
+$(document).on('click', '.dropdown-item', function() {
+    $('.dropdown-item').removeClass('active');
+    var select_Category = $(this).addClass('active');
+    var cat_input = $('.category-input');
+    var changetext= $('.dropdown-toggle').text(select_Category.text())
+    cat_input.val(select_Category.text()); // استفاده از text() به جای html()
+});
 </script>
+<script>
+       const formatNumber = (num) => {
+        // حذف کاراکترهای غیر عددی
+        num = num.replace(/\D/g, '');
+        return num.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    };
+
+    const formatInput = (input) => {
+        const value = input.value;
+        const formattedValue = formatNumber(value);
+        input.value = formattedValue;
+    };
+    $(document).on('click', '.dropdown-item', function() {
+    $('.dropdown-item').removeClass('active');
+    var select_Category = $(this).addClass('active');
+    var cat_input = $('.category-input');
+    var changetext= $('.dropdown-toggle').text(select_Category.text())
+    cat_input.val(select_Category.text()); // استفاده از text() به جای html()
+});
+
+
+    </script>
 
 
 {% endfor %}
