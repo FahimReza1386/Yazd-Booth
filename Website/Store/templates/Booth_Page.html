@@ -12,7 +12,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6">
-                        <img class="card-img-top mb-5 mb-md-0" src="{{ item.id|get_booth_image:image_Booth }}" alt="..." />
+                        <img class="card-img-top mb-5 mb-md-0" style="border-radius: 5px;" src="{{ item.id|get_booth_image:image_Booth }}" alt="..." />
                     </div>
                     <div class="col-md-6">
                         <div class="small mb-1"></div>
@@ -20,7 +20,7 @@
                         <div class="fs-5 mb-5">
 
 
-                <i class='bx bxs-like like-icon' data-id="{{ booth.id }}"></i>
+                <i class='bx bxs-like like-icon' data-id="{{ item.id }}"></i>
                 <span class="number-heart">{{ item.likes.count }}</span>
 
                         </div>
@@ -39,31 +39,33 @@
             <h1 class="sub-Title">محصولات این غرفه ...</h1>
 
             <div class="Mahsolat">
-                    {% for prd in Products %}
+                    {% for item in Products %}
 
-                   <div class="Mahsol Mahsolat-Page product" data-id="{{ prd.id }}" data-price="{{ prd.price }}" data-discount="{{ prd.Discountـpercentage }}">
+                   <div class="Mahsol Mahsolat-Page product" data-id="{{ item.id }}" data-price="{{ item.price }}" data-discount="{{ item.Discountـpercentage }}">
                 <div class="Layer">
-                    <h6>{{ prd.name }}</h6>
-                    {% if prd.is_sale %}
-                    <h2 style="text-decoration: line-through">{{ prd.price|intcomma }}</h2>
+                    <h6>{{ item.name }}</h6>
+                    {% if item.is_sale %}
+                    <h2 style="text-decoration: line-through">{{ item.price|intcomma }}</h2>
                         <h2><span class="Pardakht"></span> تومان</h2>
                     {% else %}
-                        <h4>{{ prd.price|intcomma }}</h4>
+                        <h4>{{ item.price|intcomma }}</h4>
                     {% endif %}
                     <a href="/product/{{ item.id }}" class="btn product-btn"
                         style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
                 </div>
-                <img src="{{ prd|get_product_image:image_Product }}" class="test" alt="image-product">
+                <img src="{{ item|get_product_image:image_Product }}" class="test" alt="image-product">
             </div>
-                        {% endfor %}
+                {% endfor %}
 
             </div>
+        </section>
 {% endblock %}
 
 
 {% block js %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+{% for item in Products %}
 <script>
 
     $('.product').each(function () {
@@ -81,61 +83,77 @@
 
     });
 
-        // در ابتدا چک میکنیم که آیا قبلاً غرفه رو لایک کرده یا نه
-    var isLiked = false; // فرض میکنیم ابتدا غرفه لایک نشده
-    $(document).ready(function() {
-        // اینجا کد چک کردن وضعیت لایک قبلی رو قرار میدیم
-        // مثلا میتونیم با یک ajax درخواست وضعیت لایک قبلی رو بگیریم
-        var userId = '{{ user }}';
+    // در ابتدا چک میکنیم که آیا قبلاً غرفه رو لایک کرده یا نه
+var isLiked = false; // فرض میکنیم ابتدا غرفه لایک نشده
+$(document).ready(function() {
+    // اینجا کد چک کردن وضعیت لایک قبلی رو قرار میدیم
+    // مثلا میتونیم با یک ajax درخواست وضعیت لایک قبلی رو بگیریم
+    var userId = '{{ user }}';
 
-        // چک کردن غرفه‌ها آیا قبلاً لایک شده‌اند یا خیر
-        $.ajax({
-            type: 'GET',
-            url: "{% url 'Check_Like' %}", // فرض می‌کنیم نام URL این است و آرایه‌ای از lkedBooths را برمی‌گرداند
-            data: {
-                user: userId,
-                csrfmiddlewaretoken: '{{ csrf_token }}'
-            },
-            success: function(response) {
-                response.likedBooths.forEach(function(boothId) {
-                    // به هر آیکون با data-id مربوطه رنگ قرمز دادیم
-                    $('.like-icon[data-id="' + boothId + '"]').css('color', 'red');
-                });
-            }
-        });
-
-        $('.like-icon').click(function() {
-            var boothId = parseInt($(this).data('id'));
-            var userId = '{{ user }}';
-
-            $.ajax({
-                type: 'POST',
-                url: "{% url 'Like_Booth' %}",
-                data: {
-                    user: userId,
-                    booth: boothId,
-                    csrfmiddlewaretoken: '{{ csrf_token }}',
-                    action: 'post'
-                },
-                success: function(json) {
-                    location.reload();
-                },
-                error: function(err, errmsg, xhr) {
-                    console.log(err);
-                }
+    // چک کردن غرفه‌ها آیا قبلاً لایک شده‌اند یا خیر
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'Check_Like' %}", // فرض می‌کنیم نام URL این است و آرایه‌ای از lkedBooths را برمی‌گرداند
+        data: {
+            user: userId,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function(response) {
+            response.likedBooths.forEach(function(boothId) {
+                // به هر آیکون با data-id مربوطه رنگ قرمز دادیم
+                $('.like-icon[data-id="' + boothId + '"]').css('color', 'red');
             });
-
-            isLiked = !isLiked; // تغییر وضعیت لایک
-
-            if (isLiked) {
-                $(this).css('color', 'red');
-            } else {
-                $(this).css('color', 'black');
-            }
-        });
+        }
     });
 
+    $('.like-icon').click(function() {
+        var boothId = parseInt($(this).data('id'));
+        var userId = '{{ user }}';
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'Like_Booth' %}",
+            data: {
+                user: userId,
+                booth: boothId,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function(json) {
+                location.reload();
+            },
+            error: function(err, errmsg, xhr) {
+                console.log(err);
+            }
+        });
+
+        isLiked = !isLiked; // تغییر وضعیت لایک
+
+        if (isLiked) {
+            $(this).css('color', 'red');
+        } else {
+            $(this).css('color', 'black');
+        }
+    });
+});
+
+let is_click = false;
+
+$('.bx-menu').click(function () {
+    const headerMobile = $('.Header-Mobile');
+
+    if (!is_click) {
+        headerMobile.addClass('show'); // اضافه کردن کلاس برای نمایش
+        $('.bx-menu').css({'animation':'rotatex 1s ease'})
+        $('.menu').css({'display':'block'})
+        is_click = true;
+    } else {
+        headerMobile.removeClass('show'); // حذف کلاس برای پنهان کردن
+        $('.menu').css({'display':'none'})
+        is_click = false;
+    }
+});
+
 </script>
-
-
+{% endfor %}
 {% endblock %}

@@ -376,37 +376,63 @@ def Category_Page(request, foo):
 def Customer_UserPanel(request):
     formatted_date=None
     formatted_date2=None
+
     if request.user.is_authenticated:
         profile = Profile.objects.filter(user=request.user)
-
+        # try:
         for item in profile:
-            booths = Booth.objects.filter(owner=item.user.id).all()
+            booths = Booth.objects.filter(owner=item.user)
             booth_img=BoothImage.objects.filter(booth__in=booths)
             Products=Product.objects.filter(booth__in=booths)
             product_img=ProductImage.objects.filter(product__in=Products)
             # تاریخ ساخت غرفه
-            if item.role == 'Boother':
-                if item.booth:
-                    g_date = item.booth.date_created  # تاریخ میلادی از نمونه
-                    j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
-                    formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
-                else:
-                    formatted_date=None
+            if Products:
+                if item.role == 'Boother':
+                    if item.booth:
+                        g_date = item.booth.date_created  # تاریخ میلادی از نمونه
+                        j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
+                        formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+                    else:
+                        formatted_date = None
 
-            # تغییر در حساب کاربری
-            if item.date_modified:
-                h_date = item.date_modified # تاریخ میلادی از نمونه
-                f_date = jdatetime.datetime.fromgregorian(datetime=h_date)  # تبدیل به تاریخ شمسی
+                # تغییر در حساب کاربری
+                if item.date_modified:
+                    h_date = item.date_modified  # تاریخ میلادی از نمونه
+                    f_date = jdatetime.datetime.fromgregorian(datetime=h_date)  # تبدیل به تاریخ شمسی
 
-                # فرمت تاریخ شمسی
-                # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
+                    # فرمت تاریخ شمسی
+                    # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
 
-                formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
-        return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_Product':product_img , 'image_Booth':booth_img})
+                    formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
+            else:
+                product_img='/'
+                if item.role == 'Boother':
+                    if item.booth:
+                        g_date = item.booth.date_created  # تاریخ میلادی از نمونه
+                        j_date = jdatetime.datetime.fromgregorian(datetime=g_date)  # تبدیل به تاریخ شمسی
+                        formatted_date = f"{j_date.year}/{j_date.month}/{j_date.day}"
+                    else:
+                        formatted_date = None
 
+                # تغییر در حساب کاربری
+                if item.date_modified:
+                    h_date = item.date_modified  # تاریخ میلادی از نمونه
+                    f_date = jdatetime.datetime.fromgregorian(datetime=h_date)  # تبدیل به تاریخ شمسی
+
+                    # فرمت تاریخ شمسی
+                    # formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day} ساعت {h_date.hour}:{h_date.minute}"
+
+                    formatted_date2 = f"{f_date.year}/{f_date.month}/{f_date.day}"
+                    print(product_img)
+            return render(request=request, template_name='Customer_UserPanel.html',context={'profile': profile, 'create_booth': formatted_date, 'date_modified': formatted_date2 , 'image_Product':product_img , 'image_Booth':booth_img})
+
+        # except Exception as e:
+        #     messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
+        #     return redirect('/')
     else:
         messages.success(request , 'لطفا با حساب کاربری خود وارد شوید ...')
         return redirect('Login')
+
 
 def Add_Product(request):
     if request.user.is_authenticated:
@@ -481,9 +507,9 @@ def Add_Product(request):
                     except Category.DoesNotExist:
                         messages.error(request, 'سلام دوست گرامی متاسفانه این دسته بندی وجود ندارد ...')
                         return redirect('Add_Product')
-                    # except Exception as e:
-                    #     messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
-                    #     return redirect('Add_Product')
+                    except Exception as e:
+                        messages.error(request, f'خطا در ذخیره محصول: {str(e)}')
+                        return redirect('Add_Product')
                 else:
                     category=Category.objects.all()
                     return render(request=request, template_name='CreateProduct.html', context={'category':category})

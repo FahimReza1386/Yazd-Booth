@@ -200,7 +200,7 @@
     <h1 class="sub-Title" style="margin: 4rem 2rem;">غرفه های ثبت شده :</h1>
     <div class="Booth-Sabt">
         <div class="Owner-img">
-            <img src="{{ item.id|get_booth_image:image_Booth }}" alt="Profile-Owner-img">
+            <img src="{{ item.booth.id|get_booth_image:image_Booth }}" alt="Profile-Owner-img">
         </div>
         <div class="Booth-Sabt-Information">
             <h1 class="Qus">نام غرفه :</h1>
@@ -231,7 +231,7 @@
                     <a href="/product/{{ item.id }}" class="btn product-btn"
                         style="margin: 0; width: 10% ; background-color: #2EC4B6 !important; ">ادامه مطلب</a>
                 </div>
-                <img src="{{ item|get_product_image:Product_img }}" class="test" alt="image-product">
+                <img src="{{ item|get_product_image:image_Product }}" class="test" alt="image-product">
             </div>
             {% endfor %}
             </div>
